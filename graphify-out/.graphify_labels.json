@@ -1,9 +1,9 @@
 {
-  "0": "/ecmis-update command",
+  "0": "ecmis-trace project",
   "1": "ECMIS Master Activity Template (converted)",
-  "2": "Output update rules (match by ID, backup, no protected rows, confirm before write)",
+  "2": "convert_docs.py",
   "3": "graphify skill (knowledge graph pipeline)",
-  "4": "/ecmis-prepare command",
+  "4": "/ecmis — พาทำ Activity ครบทุกขั้น",
   "5": "graphify reference: extra exports and benchmark",
   "6": "graphify reference: query, path, explain",
   "7": "graphify reference: add a URL and watch a folder",
@@ -12,5 +12,10 @@
   "10": "Activity (numbered, e.g. Activity 5)",
   "11": "Work one Activity at a time, stop for review",
   "12": "graphify reference: GitHub clone and cross-repo merge",
-  "13": "graphify reference: transcribe video and audio"
+  "13": "graphify reference: transcribe video and audio",
+  "14": "ขั้น 5 — ตรวจไฟล์ output",
+  "15": "ขั้น 1 — เตรียมเอกสาร (แปลงเล่มด้วย markitdown)",
+  "16": "ขั้น 2 — สกัดข้อมูล",
+  "17": "ขั้น 3 — เทียบกับโค้ด",
+  "18": "ขั้น 4 — อัปเดต Excel"
 }
