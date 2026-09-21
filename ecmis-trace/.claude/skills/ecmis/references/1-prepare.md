@@ -10,8 +10,9 @@
 ## ขั้นตอน
 1. รันตัวแปลง (แปลงเฉพาะไฟล์ใหม่/เปลี่ยน; ใส่ `--force` ถ้าผู้ใช้ขอแปลงใหม่ทั้งหมด)
    ```
-   python3 .claude/skills/ecmis/scripts/convert_docs.py .
+   python3 "<SKILL_DIR>/scripts/convert_docs.py" .
    ```
+   (`<SKILL_DIR>` = โฟลเดอร์ skill ตามที่ระบุใน SKILL.md)
    ผลเป็น JSON: `converted` / `skipped` / `failed` / `orphaned` ต่อไฟล์มี `pages`, `scanned_pages`, `garbled_pages`, `needs_vision`, `ref_style`
    - exit 2 → ไม่มีไฟล์ใน `input/docs` ให้หยุดแจ้งผู้ใช้
    - `failed` → แจ้งผู้ใช้พร้อมเหตุผล (เช่น `.doc` ให้บันทึกเป็น `.docx` ก่อน) แล้วทำไฟล์อื่นต่อ

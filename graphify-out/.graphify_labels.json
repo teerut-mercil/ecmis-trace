@@ -17,5 +17,10 @@
   "15": "ขั้น 1 — เตรียมเอกสาร (แปลงเล่มด้วย markitdown)",
   "16": "ขั้น 2 — สกัดข้อมูล",
   "17": "ขั้น 3 — เทียบกับโค้ด",
-  "18": "ขั้น 4 — อัปเดต Excel"
+  "18": "ขั้น 4 — อัปเดต Excel",
+  "19": "Source recorded in 18_Change_Log for tabs without Source column",
+  "20": "Invoke-Py",
+  "21": "build-ecmis-zip.sh script",
+  "22": "install.sh script",
+  "23": "build-ecmis-zip.ps1"
 }

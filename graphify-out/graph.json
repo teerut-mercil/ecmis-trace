@@ -487,6 +487,110 @@
       "source_location": "L111"
     },
     {
+      "id": "packaging_installer_install_invoke_py",
+      "label": "Invoke-Py()",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "Invoke-Py",
+      "file_type": "code",
+      "norm_label": "invoke-py()",
+      "source_file": "packaging/installer/install.ps1",
+      "source_location": "L49"
+    },
+    {
+      "id": "packaging_installer_install_ps1_packaging_installer_install",
+      "label": "install.ps1",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "Invoke-Py",
+      "file_type": "code",
+      "norm_label": "install.ps1",
+      "source_file": "packaging/installer/install.ps1",
+      "source_location": "L1"
+    },
+    {
+      "id": "packaging_installer_install_test_deps",
+      "label": "Test-Deps()",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "Invoke-Py",
+      "file_type": "code",
+      "norm_label": "test-deps()",
+      "source_file": "packaging/installer/install.ps1",
+      "source_location": "L53"
+    },
+    {
+      "id": "packaging_build_ecmis_zip_sh__entry",
+      "label": "build-ecmis-zip.sh script",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "build-ecmis-zip.sh script",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "norm_label": "build-ecmis-zip.sh script",
+      "source_file": "packaging/build-ecmis-zip.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "packaging_build_ecmis_zip_sh_packaging_build_ecmis_zip",
+      "label": "build-ecmis-zip.sh",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "build-ecmis-zip.sh script",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "norm_label": "build-ecmis-zip.sh",
+      "source_file": "packaging/build-ecmis-zip.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "packaging_installer_install_sh__entry",
+      "label": "install.sh script",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "install.sh script",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "norm_label": "install.sh script",
+      "source_file": "packaging/installer/install.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "packaging_installer_install_sh_packaging_installer_install",
+      "label": "install.sh",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "install.sh script",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "norm_label": "install.sh",
+      "source_file": "packaging/installer/install.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "packaging_build_ecmis_zip_ps1_packaging_build_ecmis_zip",
+      "label": "build-ecmis-zip.ps1",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "build-ecmis-zip.ps1",
+      "file_type": "code",
+      "norm_label": "build-ecmis-zip.ps1",
+      "source_file": "packaging/build-ecmis-zip.ps1",
+      "source_location": "L1"
+    },
+    {
       "id": "ecmis_trace_claude_skills_ecmis_skill",
       "label": "SKILL.md",
       "_origin": "ast",
@@ -525,7 +629,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 0 \u2014 \u0e15\u0e23\u0e27\u0e08\u0e04\u0e27\u0e32\u0e21\u0e1e\u0e23\u0e2d\u0e21",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L28"
+      "source_location": "L31"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_1_\u0e40\u0e15\u0e23_\u0e22\u0e21\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23",
@@ -537,7 +641,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 1 \u2014 \u0e40\u0e15\u0e23\u0e35\u0e22\u0e21\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L43"
+      "source_location": "L46"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_2_\u0e2a\u0e01_\u0e14\u0e02_\u0e2d\u0e21_\u0e25",
@@ -549,7 +653,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 2 \u2014 \u0e2a\u0e01\u0e31\u0e14\u0e02\u0e2d\u0e21\u0e25",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L46"
+      "source_location": "L49"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_3_\u0e40\u0e17_\u0e22\u0e1a\u0e01_\u0e1a\u0e42\u0e04_\u0e14",
@@ -561,7 +665,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 3 \u2014 \u0e40\u0e17\u0e35\u0e22\u0e1a\u0e01\u0e31\u0e1a\u0e42\u0e04\u0e14",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L59"
+      "source_location": "L62"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_4_\u0e2d_\u0e1b\u0e40\u0e14\u0e15_excel",
@@ -573,7 +677,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 4 \u2014 \u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15 excel",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L63"
+      "source_location": "L66"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_5_\u0e15\u0e23\u0e27\u0e08\u0e44\u0e1f\u0e25_output",
@@ -585,7 +689,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 5 \u2014 \u0e15\u0e23\u0e27\u0e08\u0e44\u0e1f\u0e25\u0e4c output",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L66"
+      "source_location": "L69"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e16_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e32\u0e07\u0e01\u0e25\u0e32\u0e07\u0e17\u0e32\u0e07",
@@ -597,7 +701,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e16\u0e32\u0e07\u0e32\u0e19\u0e04\u0e32\u0e07\u0e01\u0e25\u0e32\u0e07\u0e17\u0e32\u0e07",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L75"
+      "source_location": "L78"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e20\u0e32\u0e1e\u0e23\u0e27\u0e21",
@@ -609,7 +713,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e20\u0e32\u0e1e\u0e23\u0e27\u0e21",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L14"
+      "source_location": "L17"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e2a\u0e23_\u0e1b\u0e17_\u0e32\u0e22\u0e07\u0e32\u0e19",
@@ -621,7 +725,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e2a\u0e23\u0e1b\u0e17\u0e32\u0e22\u0e07\u0e32\u0e19",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L69"
+      "source_location": "L72"
     },
     {
       "id": "claude_skills_graphify_references_exports",
@@ -1203,21 +1307,6 @@
       "source_url": null
     },
     {
-      "id": "ecmis_trace_claude_source_for_tabs_without_column",
-      "label": "Source recorded in 18_Change_Log for tabs without Source column",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 1,
-      "community_name": "ECMIS Master Activity Template (converted)",
-      "contributor": null,
-      "file_type": "concept",
-      "norm_label": "source recorded in 18_change_log for tabs without source column",
-      "source_file": "ecmis-trace/CLAUDE.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
       "id": "graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_00_activity_index",
       "label": "Sheet 00_Activity_Index",
       "_origin": "semantic",
@@ -1503,21 +1592,6 @@
       "source_url": null
     },
     {
-      "id": "graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_18_change_log",
-      "label": "Sheet 18_Change_Log",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 1,
-      "community_name": "ECMIS Master Activity Template (converted)",
-      "contributor": null,
-      "file_type": "document",
-      "norm_label": "sheet 18_change_log",
-      "source_file": "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
       "id": "graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_99_lists",
       "label": "Sheet 99_Lists",
       "_origin": "semantic",
@@ -1578,21 +1652,6 @@
       "source_url": null
     },
     {
-      "id": "ecmis_trace_claude_no_guessing_rule",
-      "label": "No-guessing rule: every filled cell needs Source Ref",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 1,
-      "community_name": "ECMIS Master Activity Template (converted)",
-      "contributor": null,
-      "file_type": "rationale",
-      "norm_label": "no-guessing rule: every filled cell needs source ref",
-      "source_file": "ecmis-trace/CLAUDE.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
       "id": "ecmis_trace_claude_open_issue_rule",
       "label": "Missing data or doc/code mismatch opens Open Issue; doc value wins",
       "_origin": "semantic",
@@ -1648,6 +1707,51 @@
       "contributor": null,
       "file_type": "rationale",
       "norm_label": "work one activity at a time, stop for review",
+      "source_file": "ecmis-trace/CLAUDE.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "ecmis_trace_claude_source_for_tabs_without_column",
+      "label": "Source recorded in 18_Change_Log for tabs without Source column",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 19,
+      "community_name": "Source recorded in 18_Change_Log for tabs without Source column",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "source recorded in 18_change_log for tabs without source column",
+      "source_file": "ecmis-trace/CLAUDE.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_18_change_log",
+      "label": "Sheet 18_Change_Log",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 19,
+      "community_name": "Source recorded in 18_Change_Log for tabs without Source column",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "sheet 18_change_log",
+      "source_file": "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "ecmis_trace_claude_no_guessing_rule",
+      "label": "No-guessing rule: every filled cell needs Source Ref",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 19,
+      "community_name": "Source recorded in 18_Change_Log for tabs without Source column",
+      "contributor": null,
+      "file_type": "rationale",
+      "norm_label": "no-guessing rule: every filled cell needs source ref",
       "source_file": "ecmis-trace/CLAUDE.md",
       "source_location": null,
       "source_url": null
@@ -1952,6 +2056,17 @@
       "context": "parameter_type",
       "source_file": "ecmis-trace/.claude/skills/ecmis/scripts/convert_docs.py",
       "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "packaging_installer_install_test_deps",
+      "target": "packaging_installer_install_invoke_py",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packaging/installer/install.ps1",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -2534,7 +2649,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L14",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -2545,7 +2660,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L28",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -2556,7 +2671,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L43",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -2567,7 +2682,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L46",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -2578,7 +2693,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L59",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -2589,7 +2704,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L63",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -2600,7 +2715,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L66",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -2611,7 +2726,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L69",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -2622,7 +2737,51 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L75",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "packaging_build_ecmis_zip_sh_packaging_build_ecmis_zip",
+      "target": "packaging_build_ecmis_zip_sh__entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packaging/build-ecmis-zip.sh",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "packaging_installer_install_ps1_packaging_installer_install",
+      "target": "packaging_installer_install_invoke_py",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packaging/installer/install.ps1",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "packaging_installer_install_ps1_packaging_installer_install",
+      "target": "packaging_installer_install_test_deps",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packaging/installer/install.ps1",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "packaging_installer_install_sh_packaging_installer_install",
+      "target": "packaging_installer_install_sh__entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packaging/installer/install.sh",
+      "source_location": "L1",
       "weight": 1.0
     },
     {
@@ -3336,5 +3495,5 @@
       "source_file": "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md"
     }
   ],
-  "built_at_commit": "3bfe5231fd01810184dee0f4ecb78e3e3e03252e"
+  "built_at_commit": "8a6d8611d0bc369201fb275a3476932c45f1bb68"
 }

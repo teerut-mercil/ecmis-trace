@@ -1,16 +1,16 @@
 # Graph Report - AI  (2026-09-21)
 
 ## Corpus Check
-- 24 files · ~29,452 words
+- 28 files · ~30,757 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 132 nodes · 139 edges · 19 communities (15 shown, 4 thin omitted)
+- 140 nodes · 144 edges · 24 communities (17 shown, 7 thin omitted)
 - Extraction: 93% EXTRACTED · 6% INFERRED · 1% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3bfe5231`
+- Built from commit: `8a6d8611`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -34,6 +34,10 @@
 - ขั้น 2 — สกัดข้อมูล
 - ขั้น 3 — เทียบกับโค้ด
 - ขั้น 4 — อัปเดต Excel
+- Source recorded in 18_Change_Log for tabs without Source column
+- Invoke-Py
+- build-ecmis-zip.sh script
+- install.sh script
 
 ## God Nodes (most connected - your core abstractions)
 1. `ECMIS Master Activity Template (converted)` - 21 edges
@@ -65,15 +69,15 @@
 ## Hyperedges (group relationships)
 - **Flow to Test Case traceability chain** — graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_04_mainflow, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_11_process_step_detail, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_14_testcase_master, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_15_test_steps, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_16_traceability [INFERRED 0.75]
 
-## Communities (19 total, 4 thin omitted)
+## Communities (24 total, 7 thin omitted)
 
 ### Community 0 - "ecmis-trace project"
 Cohesion: 0.15
 Nodes (16): ecmis-trace CLAUDE.md, ecmis-trace project, Highlight FFF2CC modified, E2EFDA added, HYPERLINK formulas and fixed-range formulas (no delete_rows), ID patterns FLOW-Axx-nnn SCR TR TC DOC TD ISS CHG, input/code (screen-level verification source), input/docs (primary source of truth), E-CMIS Master Activity Template xlsx (+8 more)
 
 ### Community 1 - "ECMIS Master Activity Template (converted)"
-Cohesion: 0.09
-Nodes (29): Draft rows reconciled against docs, Dropdown values only from 99_Lists or inline list, LAW / Function No. process step, No-guessing rule: every filled cell needs Source Ref, Missing data or doc/code mismatch opens Open Issue; doc value wins, Source recorded in 18_Change_Log for tabs without Source column, Test Cases must cover Happy Path, Negative, Return/Rework, Sheet 00_Activity_Index (+21 more)
+Cohesion: 0.10
+Nodes (26): Draft rows reconciled against docs, Dropdown values only from 99_Lists or inline list, LAW / Function No. process step, Missing data or doc/code mismatch opens Open Issue; doc value wins, Test Cases must cover Happy Path, Negative, Return/Rework, Sheet 00_Activity_Index, Sheet 01_ภาพรวม_Activity, Sheet 02_ASIS_TOBE (+18 more)
 
 ### Community 2 - "convert_docs.py"
 Cohesion: 0.38
@@ -127,21 +131,27 @@ Nodes (3): ขั้น 3 — เทียบกับโค้ด, ขั้น
 Cohesion: 0.50
 Nodes (3): ขั้น 4 — อัปเดต Excel, ขั้นตอน, เงื่อนไขก่อนเริ่ม
 
+### Community 19 - "Source recorded in 18_Change_Log for tabs without Source column"
+Cohesion: 0.67
+Nodes (3): No-guessing rule: every filled cell needs Source Ref, Source recorded in 18_Change_Log for tabs without Source column, Sheet 18_Change_Log
+
 ## Ambiguous Edges - Review These
 - `Sheet 11_Process_Step_Detail` → `Sheet 11_Screen_Sequence`  [AMBIGUOUS]
   ecmis-trace/CLAUDE.md · relation: semantically_similar_to
 
 ## Knowledge Gaps
-- **58 isolated node(s):** `For /graphify add`, `For --watch`, `Step 6b - Wiki (only if --wiki flag)`, `Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag)`, `Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag)` (+53 more)
+- **60 isolated node(s):** `build-ecmis-zip.sh script`, `install.sh script`, `For /graphify add`, `For --watch`, `Step 6b - Wiki (only if --wiki flag)` (+55 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **What is the exact relationship between `Sheet 11_Process_Step_Detail` and `Sheet 11_Screen_Sequence`?**
   _Edge tagged AMBIGUOUS (relation: semantically_similar_to) - confidence is low._
-- **What connects `For /graphify add`, `For --watch`, `Step 6b - Wiki (only if --wiki flag)` to the rest of the system?**
-  _58 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `ECMIS Master Activity Template (converted)` connect `ECMIS Master Activity Template (converted)` to `Source recorded in 18_Change_Log for tabs without Source column`?**
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+- **What connects `build-ecmis-zip.sh script`, `install.sh script`, `For /graphify add` to the rest of the system?**
+  _60 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ECMIS Master Activity Template (converted)` be split into smaller, more focused modules?**
-  _Cohesion score 0.08866995073891626 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10153846153846154 - nodes in this community are weakly interconnected._

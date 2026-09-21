@@ -84,9 +84,9 @@
     "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
   },
   "ecmis-trace/CLAUDE.md": {
-    "mtime": 1789979981.7815306,
-    "seen": 1789980004.839255,
-    "ast_hash": "e22366315cbf35b8be57d6f5b5eab9ca",
+    "mtime": 1789980725.836212,
+    "seen": 1789980837.390409,
+    "ast_hash": "ecda3f2a387cd1f60f6a2dcfdcbd33cd",
     "semantic_hash": ""
   },
   "ecmis-trace/README.md": {
@@ -108,15 +108,15 @@
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/SKILL.md": {
-    "mtime": 1789979912.6324484,
-    "seen": 1789980004.8392498,
-    "ast_hash": "8d01e324756ce59183c60aa61c3606c5",
+    "mtime": 1789980725.8354073,
+    "seen": 1789980837.3904052,
+    "ast_hash": "1c9a08fdd1b142bb5369548ab1feb674",
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/references/1-prepare.md": {
-    "mtime": 1789979932.741289,
-    "seen": 1789980004.8392498,
-    "ast_hash": "589f8500f49af173aa511f4190af9885",
+    "mtime": 1789980725.83585,
+    "seen": 1789980837.3904052,
+    "ast_hash": "85d9da95bd62cd4c17223de70a7378f6",
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/references/2-extract.md": {
@@ -141,6 +141,36 @@
     "mtime": 1789979948.496493,
     "seen": 1789980004.839253,
     "ast_hash": "32c7391324fd8e07a21767d437588f18",
+    "semantic_hash": ""
+  },
+  "packaging/build-ecmis-zip.ps1": {
+    "mtime": 1789980805.0816317,
+    "seen": 1789980837.39039,
+    "ast_hash": "8a78cb54801bf7ac8ed60ce3e28abb89",
+    "semantic_hash": ""
+  },
+  "packaging/build-ecmis-zip.sh": {
+    "mtime": 1789980736.1135514,
+    "seen": 1789980837.390391,
+    "ast_hash": "a5bc34b1b287b984eaa30ff17e7f0b04",
+    "semantic_hash": ""
+  },
+  "packaging/installer/install.ps1": {
+    "mtime": 1789980828.4651809,
+    "seen": 1789980837.390392,
+    "ast_hash": "cc98d74ec82cafdf29d9158c56075514",
+    "semantic_hash": ""
+  },
+  "packaging/installer/install.sh": {
+    "mtime": 1789980828.3767264,
+    "seen": 1789980837.390393,
+    "ast_hash": "7a22a91d4c95a921e3243fc4908614b2",
+    "semantic_hash": ""
+  },
+  "packaging/installer/README.txt": {
+    "mtime": 1789980756.978874,
+    "seen": 1789980837.390412,
+    "ast_hash": "1688542553c1aeff796d1ab2d3a0f5b9",
     "semantic_hash": ""
   }
 }

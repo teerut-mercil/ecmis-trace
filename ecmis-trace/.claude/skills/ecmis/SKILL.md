@@ -9,6 +9,9 @@ argument-hint: <เลข Activity เช่น 5>
 Activity: **$ARGUMENTS**
 
 อ่าน `CLAUDE.md` ของโปรเจกต์ให้ครบก่อนเริ่ม และทำตามกติกาในนั้นตลอดงาน
+
+**โฟลเดอร์ skill (`<SKILL_DIR>`):** `${CLAUDE_SKILL_DIR}` — ถ้าข้อความนี้ยังไม่ถูกแทนเป็น path จริง ให้ใช้ `.claude/skills/ecmis` ในโปรเจกต์ถ้ามี ไม่อย่างนั้นใช้ `~/.claude/skills/ecmis` (ติดตั้งแบบ global)
+คำสั่ง Python: ใช้ `python3` — บน Windows ถ้าไม่มี `python3` ให้ใช้ `python` หรือ `py -3` แทน
 ผู้ใช้มีทั้งสายเทคนิคและไม่เทคนิค — คุยเป็นภาษาไทย ใช้คำง่าย ไม่ต้องอธิบายคำสั่ง/โค้ดเบื้องหลัง
 
 ## ภาพรวม
@@ -35,7 +38,7 @@ Activity: **$ARGUMENTS**
    - `input/code/` ว่างได้ แต่แจ้งว่าจะข้ามการเทียบกับโค้ดในขั้น 3
 3. **markitdown** — รัน
    ```
-   python3 .claude/skills/ecmis/scripts/convert_docs.py . --check-deps
+   python3 "<SKILL_DIR>/scripts/convert_docs.py" . --check-deps
    ```
    - exit 0 → ผ่าน
    - exit 3 → JSON บอกแพ็กเกจที่ขาดและ `python` ที่ใช้ ให้ถามผู้ใช้ว่า "ยังไม่ได้ติดตั้งตัวแปลงเอกสาร (markitdown) ติดตั้งให้เลยไหม?" ถ้าตกลง รัน `"<python>" -m pip install <แพ็กเกจที่ขาด>` แล้วตรวจซ้ำ ถ้าติดตั้งไม่สำเร็จให้แสดงข้อความ error และหยุด
