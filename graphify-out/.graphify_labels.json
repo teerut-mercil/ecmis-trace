@@ -1,1 +1,16 @@
-{"0": "Check & Update Workflow", "1": "Overview & Catalog Sheets", "2": "Extract & Verify Rules", "3": "Graphify Tooling Docs", "4": "Prepare & Source Docs", "5": "Process Flow Sheets", "6": "Test Case Sheets", "7": "Open Issues & Reconcile", "8": "Dropdown Lists", "9": "Excel Formula Tooling", "10": "Activity Unit", "11": "One-Activity Review"}
+{
+  "0": "/ecmis-update command",
+  "1": "ECMIS Master Activity Template (converted)",
+  "2": "Output update rules (match by ID, backup, no protected rows, confirm before write)",
+  "3": "graphify skill (knowledge graph pipeline)",
+  "4": "/ecmis-prepare command",
+  "5": "graphify reference: extra exports and benchmark",
+  "6": "graphify reference: query, path, explain",
+  "7": "graphify reference: add a URL and watch a folder",
+  "8": "graphify reference: commit hook and native CLAUDE.md integration",
+  "9": "graphify reference: incremental update and cluster-only",
+  "10": "Activity (numbered, e.g. Activity 5)",
+  "11": "Work one Activity at a time, stop for review",
+  "12": "graphify reference: GitHub clone and cross-repo merge",
+  "13": "graphify reference: transcribe video and audio"
+}

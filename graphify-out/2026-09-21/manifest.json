@@ -1,0 +1,134 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1789978462.1645372,
+    "seen": 1789978652.76795,
+    "ast_hash": "1625377d753f9f2d7507372b9442fcf6",
+    "semantic_hash": "1625377d753f9f2d7507372b9442fcf6"
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1789978454.89563,
+    "seen": 1789978652.7679539,
+    "ast_hash": "f1e53ecc9194573d3c28fc116c743a2e",
+    "semantic_hash": "f1e53ecc9194573d3c28fc116c743a2e"
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1789978454.8958418,
+    "seen": 1789978652.7679548,
+    "ast_hash": "6d73634a678cf1e1c71930adf80bd1f0",
+    "semantic_hash": "6d73634a678cf1e1c71930adf80bd1f0"
+  },
+  ".claude/CLAUDE.md": {
+    "mtime": 1789978462.163655,
+    "seen": 1789978652.767956,
+    "ast_hash": "9b31786b637be3c13978bec4c2330752",
+    "semantic_hash": "9b31786b637be3c13978bec4c2330752"
+  },
+  ".claude/skills/graphify/SKILL.md": {
+    "mtime": 1789978462.1633701,
+    "seen": 1789978652.767957,
+    "ast_hash": "1656a8a8e4a05bbe69f32cd15de81e87",
+    "semantic_hash": "1656a8a8e4a05bbe69f32cd15de81e87"
+  },
+  ".claude/skills/graphify/references/add-watch.md": {
+    "mtime": 1787629877.1802776,
+    "seen": 1789978652.767957,
+    "ast_hash": "d59d027fe449f06aa03905a01184e779",
+    "semantic_hash": "d59d027fe449f06aa03905a01184e779"
+  },
+  ".claude/skills/graphify/references/exports.md": {
+    "mtime": 1787629877.1804142,
+    "seen": 1789978652.767958,
+    "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
+    "semantic_hash": "9da2a2152e60a22f07f05fed5158f287"
+  },
+  ".claude/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1787629877.1806228,
+    "seen": 1789978652.767959,
+    "ast_hash": "42fef56a01698118f7fd722acdadea34",
+    "semantic_hash": "42fef56a01698118f7fd722acdadea34"
+  },
+  ".claude/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1787629877.1807745,
+    "seen": 1789978652.76796,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": "cde13df085e4c492aeb7ba298a996d0d"
+  },
+  ".claude/skills/graphify/references/hooks.md": {
+    "mtime": 1787629877.1809149,
+    "seen": 1789978652.76796,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": "3f545db6ce646650bb9de588f5512a27"
+  },
+  ".claude/skills/graphify/references/query.md": {
+    "mtime": 1787629877.1811652,
+    "seen": 1789978652.767961,
+    "ast_hash": "3c46f8ad006874260614ed8657d02307",
+    "semantic_hash": "3c46f8ad006874260614ed8657d02307"
+  },
+  ".claude/skills/graphify/references/transcribe.md": {
+    "mtime": 1787629877.1813629,
+    "seen": 1789978652.7679622,
+    "ast_hash": "67b6a5fa6c0974e18f60db9f8932fbd8",
+    "semantic_hash": "67b6a5fa6c0974e18f60db9f8932fbd8"
+  },
+  ".claude/skills/graphify/references/update.md": {
+    "mtime": 1787629877.1816344,
+    "seen": 1789978652.7679622,
+    "ast_hash": "9378bd03d56baaf78bd738ab3848f142",
+    "semantic_hash": "9378bd03d56baaf78bd738ab3848f142"
+  },
+  "CLAUDE.md": {
+    "mtime": 1789978462.1641448,
+    "seen": 1789978652.767963,
+    "ast_hash": "82efb97a359f5c7290bf2513d14686be",
+    "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
+  },
+  "ecmis-trace/.claude/commands/ecmis-check.md": {
+    "mtime": 1789978286.4440246,
+    "seen": 1789978652.767964,
+    "ast_hash": "726a8e47500b9a101ca170b7b3b6338e",
+    "semantic_hash": "726a8e47500b9a101ca170b7b3b6338e"
+  },
+  "ecmis-trace/.claude/commands/ecmis-extract.md": {
+    "mtime": 1789978286.4362264,
+    "seen": 1789978652.767964,
+    "ast_hash": "551e6ee26d31de4f614fc304aa5f0174",
+    "semantic_hash": "551e6ee26d31de4f614fc304aa5f0174"
+  },
+  "ecmis-trace/.claude/commands/ecmis-prepare.md": {
+    "mtime": 1789978286.4334526,
+    "seen": 1789978652.7679648,
+    "ast_hash": "5e73bea13395d6c2b058e4241df1e5a3",
+    "semantic_hash": "5e73bea13395d6c2b058e4241df1e5a3"
+  },
+  "ecmis-trace/.claude/commands/ecmis-update.md": {
+    "mtime": 1789978286.441591,
+    "seen": 1789978652.767966,
+    "ast_hash": "02121e40caf9feb6c45021e067b18206",
+    "semantic_hash": "02121e40caf9feb6c45021e067b18206"
+  },
+  "ecmis-trace/.claude/commands/ecmis-verify.md": {
+    "mtime": 1789978286.4389098,
+    "seen": 1789978652.767966,
+    "ast_hash": "53c75a07a91252770e90125fd9cad888",
+    "semantic_hash": "53c75a07a91252770e90125fd9cad888"
+  },
+  "ecmis-trace/CLAUDE.md": {
+    "mtime": 1789978211.367629,
+    "seen": 1789978652.767967,
+    "ast_hash": "76c67e63526fc8f0070505ed50358fea",
+    "semantic_hash": "76c67e63526fc8f0070505ed50358fea"
+  },
+  "ecmis-trace/README.md": {
+    "mtime": 1789978298.25049,
+    "seen": 1789978652.767968,
+    "ast_hash": "3ea549fd860867c9fcb581c1d522f9fe",
+    "semantic_hash": "3ea549fd860867c9fcb581c1d522f9fe"
+  },
+  "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md": {
+    "mtime": 1789978534.509318,
+    "seen": 1789978652.767968,
+    "ast_hash": "4b85bf2419f42dcb82a1e1946e863008",
+    "semantic_hash": "4b85bf2419f42dcb82a1e1946e863008"
+  }
+}
