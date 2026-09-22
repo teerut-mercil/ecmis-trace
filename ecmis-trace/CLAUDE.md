@@ -6,11 +6,12 @@
 
 - `input/docs/` = เล่มเอกสาร เป็น **แหล่งความจริงหลัก**
 - `input/code/` = source code (หรือไฟล์ชี้ path ไป repo) ใช้ **ยืนยันและเติมข้อมูลชั้นหน้าจอ** เท่านั้น ได้แก่ Page Code, ปุ่ม, สถานะ, validation, notification — ไม่ใช่แหล่งหลัก
+- prototype ใน `input/code/` เป็นแบบอ่านอย่างเดียว **ยกเว้น** ขั้น 6 ที่เพิ่มไฟล์ Playwright test ตาม user flow ได้ (ไฟล์ test/config test เท่านั้น ห้ามแก้โค้ดหน้าจอ) หลังผู้ใช้ยืนยันในจุดตรวจ 3
 - `template/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` = template ต้นฉบับ **ห้ามแก้**
 - `work/docs/` = เล่มที่แปลงเป็น Markdown ด้วย **markitdown** (สคริปต์ `scripts/convert_docs.py` ในโฟลเดอร์ skill) — PDF มีเลขหน้า, PPTX มีเลขสไลด์, DOCX และอื่น ๆ อ้างอิงด้วยหัวข้อ
 - `work/extract/` = ข้อมูลที่สกัดแยกราย Activity (extract / verify / plan)
 - ทุกขั้นทำผ่าน skill `/ecmis <เลข Activity>` (ติดตั้งที่ `.claude/skills/ecmis/` ในโปรเจกต์ หรือ `~/.claude/skills/ecmis/` แบบ global)
-- Output มีไฟล์เดียวคือ `output/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` **ห้ามสร้างไฟล์ output อื่น**
+- Output มีไฟล์เดียวคือ `output/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` **ห้ามสร้างไฟล์ output อื่น** (Playwright test และ screenshot ของขั้น 6 อยู่ใน repo prototype ไม่นับเป็น output)
 - `output/backup/` = ไฟล์สำรองก่อนแก้ทุกครั้ง (ไม่นับเป็น output)
 
 ## กติกาข้อมูล

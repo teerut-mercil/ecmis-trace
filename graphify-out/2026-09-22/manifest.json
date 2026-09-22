@@ -150,9 +150,9 @@
     "semantic_hash": ""
   },
   "packaging/build-ecmis-zip.sh": {
-    "mtime": 1789980736.1135514,
-    "seen": 1789980837.390391,
-    "ast_hash": "a5bc34b1b287b984eaa30ff17e7f0b04",
+    "mtime": 1790059093.109808,
+    "seen": 1790059118.4091709,
+    "ast_hash": "60b84859d3685c779e397418b5ebc0ca",
     "semantic_hash": ""
   },
   "packaging/installer/install.ps1": {
@@ -171,6 +171,18 @@
     "mtime": 1789980756.978874,
     "seen": 1789980837.390412,
     "ast_hash": "1688542553c1aeff796d1ab2d3a0f5b9",
+    "semantic_hash": ""
+  },
+  ".github/workflows/release-zip.yml": {
+    "mtime": 1790059099.4101849,
+    "seen": 1790059118.409184,
+    "ast_hash": "bf1c8dd65ca3fc3b93a42326a64f04ee",
+    "semantic_hash": ""
+  },
+  "RELEASING.md": {
+    "mtime": 1790059102.8472016,
+    "seen": 1790059118.4091861,
+    "ast_hash": "01772a30d3db3128df998451f06d87ca",
     "semantic_hash": ""
   }
 }

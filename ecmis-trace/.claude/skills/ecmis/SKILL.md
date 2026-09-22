@@ -1,7 +1,7 @@
 ---
 name: ecmis
-description: เติมและอัปเดต E-CMIS Master Activity Template ทีละ Activity แบบครบวงจร — แปลงเล่มเอกสารด้วย markitdown, สกัดข้อมูล, เทียบกับโค้ด, อัปเดตไฟล์ Excel output และตรวจความถูกต้อง โดยหยุดถามผู้ใช้เฉพาะจุดที่ต้องตัดสินใจ ใช้เมื่อผู้ใช้สั่ง /ecmis หรือขอให้ทำ/อัปเดต Activity ของ E-CMIS
-argument-hint: <เลข Activity เช่น 5>
+description: เติมและอัปเดต E-CMIS Master Activity Template ทีละ Activity แบบครบวงจร — แปลงเล่มเอกสารด้วย markitdown, สกัดข้อมูล, เทียบกับโค้ด, อัปเดตไฟล์ Excel output, ตรวจความถูกต้อง และสร้าง Playwright test ตาม user flow ให้ prototype ที่ยังไม่มี โดยหยุดถามผู้ใช้เฉพาะจุดที่ต้องตัดสินใจ ใช้เมื่อผู้ใช้สั่ง /ecmis หรือขอให้ทำ/อัปเดต Activity ของ E-CMIS
+argument-hint: <เลข Activity เช่น 5> [test]
 ---
 
 # /ecmis — พาทำ Activity ครบทุกขั้น
@@ -23,14 +23,15 @@ Activity: **$ARGUMENTS**
 3. เทียบกับโค้ด       → references/3-verify.md
 4. อัปเดต Excel       → references/4-update.md    ⏸ จุดตรวจ 2: ผู้ใช้ยืนยันรายการเพิ่ม/แก้/ลบ
 5. ตรวจไฟล์ output    → references/5-check.md
+6. Playwright test    → references/6-playwright.md ⏸ จุดตรวจ 3: ผู้ใช้ยืนยันก่อนเขียน test ลง prototype
 ```
 
 ก่อนเริ่มแต่ละขั้น ให้อ่านไฟล์ reference ของขั้นนั้นแล้วทำตาม (ข้อความ "หยุดรอผู้ใช้ก่อนไปขั้นถัดไป" ในไฟล์ reference ให้ถือตามจุดตรวจในไฟล์นี้แทน — หยุดจริงเฉพาะจุดตรวจ ⏸)
-ระหว่างทางแจ้งความคืบหน้าสั้น ๆ เช่น `ขั้น 2/5 สกัดข้อมูล Activity 5…`
+ระหว่างทางแจ้งความคืบหน้าสั้น ๆ เช่น `ขั้น 2/6 สกัดข้อมูล Activity 5…`
 
 ## ขั้น 0 — ตรวจความพร้อม
 
-1. **เลข Activity** — ถ้า `$ARGUMENTS` ว่าง ให้ถามผู้ใช้ (ถ้ามี `work/docs/_index.md` ให้แสดงรายการ Activity ที่พบในเล่มเป็นตัวเลือก)
+1. **เลข Activity** — เลขแรกใน `$ARGUMENTS` (ถ้ามีคำว่า `test` ต่อท้าย = ทำเฉพาะขั้น 6) ถ้า `$ARGUMENTS` ว่าง ให้ถามผู้ใช้ (ถ้ามี `work/docs/_index.md` ให้แสดงรายการ Activity ที่พบในเล่มเป็นตัวเลือก)
 2. **โฟลเดอร์และไฟล์** — ตรวจและสร้างโฟลเดอร์ที่ขาด (`input/docs`, `input/code`, `work/docs`, `work/extract`, `output/backup`) แล้วรายงานเป็นตาราง ✅/❌:
    - `template/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` ต้องมี — ถ้าไม่มีให้หยุด
    - `input/docs/` ต้องมีอย่างน้อย 1 ไฟล์ — ถ้าไม่มีให้หยุด และบอกผู้ใช้ให้วางเล่มเอกสารที่โฟลเดอร์นี้
@@ -67,13 +68,22 @@ Activity: **$ARGUMENTS**
 ทำตาม `references/4-update.md` — **⏸ จุดตรวจ 2** อยู่ในขั้นนี้ (ยืนยันแผนก่อนเขียนไฟล์)
 
 ## ขั้น 5 — ตรวจไฟล์ output
-ทำตาม `references/5-check.md` สำหรับ Activity นี้
+ทำตาม `references/5-check.md` สำหรับ Activity นี้ แล้วไปขั้น 6 ต่อ
+
+## ขั้น 6 — Playwright test ตาม user flow
+ทำตาม `references/6-playwright.md` กับ prototype ของ Activity นี้ (โค้ดใน `input/code/`)
+- ถ้า prototype มี Playwright test ตาม user flow ครบแล้ว → แจ้งแล้วข้าม
+- ถ้ายังไม่มี/มีไม่ครบ → Extracting screen details ตาม user flow ในเอกสารของ prototype, **⏸ จุดตรวจ 3** ยืนยันก่อนเขียน test, แล้วรันจนผ่านทั้งหมด
+- ไม่มี prototype (`input/code/` ว่าง หรือข้ามขั้น 3) → ข้ามขั้นนี้
 
 ## สรุปท้ายงาน
 - สิ่งที่เขียนลงไฟล์แยกตามแท็บ, ชื่อไฟล์ backup, ผลตรวจ (ผ่าน/ไม่ผ่าน)
+- Playwright test: ไฟล์ที่สร้างใน prototype, ผลรัน (ผ่าน / fixme), ที่เก็บ screenshot, จุดที่ prototype ไม่ตรง flow (หรือเหตุผลที่ข้าม)
 - Open Issue ที่เปิดใหม่ (ผู้ใช้ต้องไปหาคำตอบ)
 - หน้าที่อ่านจากภาพ (ถ้ามี) ซึ่งควรให้คนตรวจทาน
 - **หยุด** ไม่ไป Activity ถัดไปจนกว่าผู้ใช้สั่ง `/ecmis <เลขถัดไป>`
 
 ## ถ้างานค้างกลางทาง
-เรียก `/ecmis <เลขเดิม>` ซ้ำได้ — ขั้น 1 ข้ามเล่มที่ไม่เปลี่ยน, ขั้น 2 เสนอใช้ไฟล์ extract เดิม, ขั้น 3 ถ้ามี `A{nn}_verify.md` ที่ใหม่กว่าไฟล์ extract ให้ถามว่าใช้ของเดิมหรือเทียบใหม่
+เรียก `/ecmis <เลขเดิม>` ซ้ำได้ — ขั้น 1 ข้ามเล่มที่ไม่เปลี่ยน, ขั้น 2 เสนอใช้ไฟล์ extract เดิม, ขั้น 3 ถ้ามี `A{nn}_verify.md` ที่ใหม่กว่าไฟล์ extract ให้ถามว่าใช้ของเดิมหรือเทียบใหม่, ขั้น 6 ทำต่อเฉพาะ flow ที่ยังไม่มี test
+
+ถ้าต้องการทำเฉพาะขั้น 6 (เช่น Excel เสร็จแล้ว) ให้ผู้ใช้สั่ง `/ecmis <เลข> test` — ตรวจขั้น 0 แล้วไปขั้น 6 เลย (ต้องมีไฟล์ extract ของ Activity นั้นแล้ว)
