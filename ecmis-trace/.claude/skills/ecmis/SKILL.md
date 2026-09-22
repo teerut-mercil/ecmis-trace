@@ -1,93 +1,94 @@
 ---
 name: ecmis
-description: เติมและอัปเดต E-CMIS Master Activity Template ทีละ Activity แบบครบวงจร — แปลงเล่มเอกสารด้วย markitdown, สกัดข้อมูล, เทียบกับโค้ด, อัปเดตไฟล์ Excel output, ตรวจความถูกต้อง และสร้าง Playwright test ตาม user flow ให้ prototype ที่ยังไม่มี โดยหยุดถามผู้ใช้เฉพาะจุดที่ต้องตัดสินใจ ใช้เมื่อผู้ใช้สั่ง /ecmis หรือขอให้ทำ/อัปเดต Activity ของ E-CMIS
-argument-hint: <เลข Activity เช่น 5> [test]
+description: End-to-end fill/update of the E-CMIS Master Activity Template one Activity at a time — convert source documents with markitdown, extract data, verify against code, update the Excel output, validate it, and create Playwright tests per user flow for prototypes that lack them, pausing for the user only at decision points. Use when the user runs /ecmis or asks to do/update an E-CMIS Activity (ทำ/อัปเดต Activity ของ E-CMIS).
+argument-hint: <Activity no., e.g. 5> [test]
 ---
 
-# /ecmis — พาทำ Activity ครบทุกขั้น
+# /ecmis — Run an Activity through every step
 
 Activity: **$ARGUMENTS**
 
-อ่าน `CLAUDE.md` ของโปรเจกต์ให้ครบก่อนเริ่ม และทำตามกติกาในนั้นตลอดงาน
+Read the project `CLAUDE.md` fully before starting and follow its rules throughout.
 
-**โฟลเดอร์ skill (`<SKILL_DIR>`):** `${CLAUDE_SKILL_DIR}` — ถ้าข้อความนี้ยังไม่ถูกแทนเป็น path จริง ให้ใช้ `.claude/skills/ecmis` ในโปรเจกต์ถ้ามี ไม่อย่างนั้นใช้ `~/.claude/skills/ecmis` (ติดตั้งแบบ global)
-คำสั่ง Python: ใช้ `python3` — บน Windows ถ้าไม่มี `python3` ให้ใช้ `python` หรือ `py -3` แทน
-ผู้ใช้มีทั้งสายเทคนิคและไม่เทคนิค — คุยเป็นภาษาไทย ใช้คำง่าย ไม่ต้องอธิบายคำสั่ง/โค้ดเบื้องหลัง
+**Skill folder (`<SKILL_DIR>`):** `${CLAUDE_SKILL_DIR}` — if this was not substituted with a real path, use `.claude/skills/ecmis` in the project if present, otherwise `~/.claude/skills/ecmis` (global install).
+Python command: `python3` — on Windows, if `python3` is missing use `python` or `py -3`.
+Users are both technical and non-technical — **talk in simple Thai**, don't explain commands/code behind the scenes.
+Thai text in quotes/backticks in the skill files (option labels, progress messages, statuses, labels, markers) is literal — use it verbatim.
 
-## ภาพรวม
+## Overview
 
 ```
-0. ตรวจความพร้อม     → โฟลเดอร์, template, เล่มเอกสาร, markitdown, graphify (ถ้ามีโค้ด), ถามว่าใช้ sub-agent ไหม
-1. เตรียมเอกสาร      → references/1-prepare.md   (ข้ามถ้าเล่มไม่เปลี่ยน)
-2. สกัดข้อมูล         → references/2-extract.md   ⏸ จุดตรวจ 1: ผู้ใช้ตรวจข้อมูล/ตอบคำถาม
-3. เทียบกับโค้ด       → references/3-verify.md    (ใช้แผนที่โค้ด references/code-graph.md)
-4. อัปเดต Excel       → references/4-update.md    ⏸ จุดตรวจ 2: ผู้ใช้ยืนยันรายการเพิ่ม/แก้/ลบ
-5. ตรวจไฟล์ output    → references/5-check.md
-6. Playwright test    → references/6-playwright.md (ใช้แผนที่โค้ด) ⏸ จุดตรวจ 3: ผู้ใช้ยืนยันก่อนเขียน test ลง prototype
+0. Readiness check   → folders, template, documents, markitdown, graphify (if code), ask about sub-agents
+1. Prepare docs      → references/1-prepare.md   (skip if documents unchanged)
+2. Extract           → references/2-extract.md   ⏸ Checkpoint 1: user reviews data/answers questions
+3. Verify vs code    → references/3-verify.md    (uses code map references/code-graph.md)
+4. Update Excel      → references/4-update.md    ⏸ Checkpoint 2: user confirms adds/edits/deletes
+5. Check output      → references/5-check.md
+6. Playwright tests  → references/6-playwright.md (uses code map) ⏸ Checkpoint 3: user confirms before writing tests into the prototype
 ```
 
-ขั้น 2, 3, 6 แบ่งงานให้ sub-agent (Sonnet) ทำพร้อมกันได้ ถ้าผู้ใช้เลือกในขั้น 0 → `references/subagents.md` (ตัวหลักรวมผลและเขียนไฟล์สุดท้ายเสมอ, ขั้น 4 ไม่ใช้ sub-agent)
+Steps 2, 3, 6 can be split across parallel sub-agents (Sonnet) if the user chose so in step 0 → `references/subagents.md` (the main agent always merges and writes final files; step 4 never uses sub-agents).
 
-ก่อนเริ่มแต่ละขั้น ให้อ่านไฟล์ reference ของขั้นนั้นแล้วทำตาม (ข้อความ "หยุดรอผู้ใช้ก่อนไปขั้นถัดไป" ในไฟล์ reference ให้ถือตามจุดตรวจในไฟล์นี้แทน — หยุดจริงเฉพาะจุดตรวจ ⏸)
-ระหว่างทางแจ้งความคืบหน้าสั้น ๆ เช่น `ขั้น 2/6 สกัดข้อมูล Activity 5…`
+Before each step, read that step's reference file and follow it. (Any "stop and wait for the user before the next step" in a reference file is overridden by the checkpoints here — only truly stop at ⏸ checkpoints.)
+Report short progress along the way, e.g. `ขั้น 2/6 สกัดข้อมูล Activity 5…`
 
-## ขั้น 0 — ตรวจความพร้อม
+## Step 0 — Readiness check
 
-1. **เลข Activity** — เลขแรกใน `$ARGUMENTS` (ถ้ามีคำว่า `test` ต่อท้าย = ทำเฉพาะขั้น 6) ถ้า `$ARGUMENTS` ว่าง ให้ถามผู้ใช้ (ถ้ามี `work/docs/_index.md` ให้แสดงรายการ Activity ที่พบในเล่มเป็นตัวเลือก)
-2. **โฟลเดอร์และไฟล์** — ตรวจและสร้างโฟลเดอร์ที่ขาด (`input/docs`, `input/code`, `work/docs`, `work/extract`, `output/backup`) แล้วรายงานเป็นตาราง ✅/❌:
-   - `template/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` ต้องมี — ถ้าไม่มีให้หยุด
-   - `input/docs/` ต้องมีอย่างน้อย 1 ไฟล์ — ถ้าไม่มีให้หยุด และบอกผู้ใช้ให้วางเล่มเอกสารที่โฟลเดอร์นี้
-   - ถ้าเจอไฟล์เอกสารวางผิดที่ (เช่น PDF/DOCX ที่ root โปรเจกต์ หรือใน `input/` ตรง ๆ) ให้เสนอย้ายเข้า `input/docs/` โดยถามก่อน
-   - `input/code/` ว่างได้ แต่แจ้งว่าจะข้ามการเทียบกับโค้ดในขั้น 3
-3. **markitdown** — รัน
+1. **Activity number** — first number in `$ARGUMENTS` (a trailing `test` = run only step 6). If `$ARGUMENTS` is empty, ask the user (if `work/docs/_index.md` exists, offer the Activities found in the documents as options).
+2. **Folders and files** — check and create missing folders (`input/docs`, `input/code`, `work/docs`, `work/extract`, `output/backup`), then report as a ✅/❌ table:
+   - `template/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` must exist — otherwise stop
+   - `input/docs/` must have at least 1 file — otherwise stop and tell the user to put the documents in this folder
+   - If document files are misplaced (e.g. PDF/DOCX at the project root or directly in `input/`), offer to move them into `input/docs/` — ask first
+   - `input/code/` may be empty, but say code verification in step 3 will be skipped
+3. **markitdown** — run
    ```
    python3 "<SKILL_DIR>/scripts/convert_docs.py" . --check-deps
    ```
-   - exit 0 → ผ่าน
-   - exit 3 → JSON บอกแพ็กเกจที่ขาดและ `python` ที่ใช้ ให้ถามผู้ใช้ว่า "ยังไม่ได้ติดตั้งตัวแปลงเอกสาร (markitdown) ติดตั้งให้เลยไหม?" ถ้าตกลง รัน `"<python>" -m pip install <แพ็กเกจที่ขาด>` แล้วตรวจซ้ำ ถ้าติดตั้งไม่สำเร็จให้แสดงข้อความ error และหยุด
-4. **graphify (ตัวช่วยอ่านโค้ด)** — เฉพาะเมื่อ `input/code/` ไม่ว่าง ทำตามข้อ 1 ของ `references/code-graph.md` (ถ้าไม่มีให้ถามว่าจะติดตั้งให้ไหม) — ไม่มีก็ทำงานต่อได้ แค่อ่านโค้ดแบบปกติ ใส่ผลในตาราง ✅/❌ ด้วย
-5. **sub-agent** — ถามผู้ใช้ตามข้อ "การถามผู้ใช้ (ขั้น 0)" ใน `references/subagents.md` ว่าจะให้ผู้ช่วยหลายตัวทำพร้อมกันไหม — คำตอบใช้กับขั้น 2, 3, 6 ตลอดรอบนี้
+   - exit 0 → pass
+   - exit 3 → JSON lists missing packages and the `python` used. Ask the user "ยังไม่ได้ติดตั้งตัวแปลงเอกสาร (markitdown) ติดตั้งให้เลยไหม?" If yes, run `"<python>" -m pip install <missing packages>` and re-check. If install fails, show the error and stop.
+4. **graphify (code reading helper)** — only when `input/code/` is not empty: follow item 1 of `references/code-graph.md` (if missing, ask whether to install). Work continues without it, just reading code normally. Include the result in the ✅/❌ table.
+5. **Sub-agents** — ask the user per "Asking the user (step 0)" in `references/subagents.md` whether to use multiple helpers in parallel — the answer applies to steps 2, 3, 6 for this whole run.
 
-## ขั้น 1 — เตรียมเอกสาร
-ทำตาม `references/1-prepare.md` — สคริปต์แปลงเฉพาะไฟล์ที่เพิ่มหรือเปลี่ยน ถ้าไม่มีไฟล์เปลี่ยนและมี `work/docs/_index.md` อยู่แล้ว ให้แจ้ง "เอกสารไม่เปลี่ยน ใช้ของเดิม" แล้วไปขั้น 2
+## Step 1 — Prepare docs
+Follow `references/1-prepare.md` — the script converts only added/changed files. If nothing changed and `work/docs/_index.md` exists, say "เอกสารไม่เปลี่ยน ใช้ของเดิม" and go to step 2.
 
-## ขั้น 2 — สกัดข้อมูล
-- ถ้ามี `work/extract/A{nn}_extract.md` อยู่แล้ว **และ** ขั้น 1 ไม่มีเล่มเปลี่ยน → ถามผู้ใช้: ใช้ไฟล์เดิม (แนะนำ) / สกัดใหม่
-- ทำตาม `references/2-extract.md` — ถ้าเลือกใช้ sub-agent ให้แบ่งงานตาม `references/subagents.md` ข้อ "ขั้น 2"
+## Step 2 — Extract
+- If `work/extract/A{nn}_extract.md` already exists **and** no document changed in step 1 → ask the user: ใช้ไฟล์เดิม (แนะนำ) / สกัดใหม่
+- Follow `references/2-extract.md` — if sub-agents were chosen, split work per `references/subagents.md` section "Step 2"
 
-**⏸ จุดตรวจ 1** — สรุปให้ผู้ใช้เห็นในแชท (ไม่ต้องให้เปิดไฟล์เอง):
-- จำนวน Step / หน้าจอ / Transition / Test Case ที่สกัดได้
-- รายการที่ไม่ตรงกับร่างเดิม
-- **รายการคำถาม** ทั้งหมด เป็นข้อ ๆ พร้อมที่มา
+**⏸ Checkpoint 1** — summarize in chat (don't make the user open files):
+- Counts of Steps / screens / Transitions / Test Cases extracted
+- Items that differ from the existing draft
+- **All questions** as a numbered list with sources
 
-แล้วถามผู้ใช้ (AskUserQuestion): `ไปต่อ` / `ขอตอบคำถามก่อน` / `หยุดไว้ก่อน`
-- ถ้าผู้ใช้ตอบคำถาม → บันทึกคำตอบลงไฟล์ extract ในหัวข้อ "คำตอบจากผู้ใช้" (ระบุว่าเป็นคำตอบจากผู้ใช้ วันที่) แล้วใช้เป็นที่มาได้ ต่อจากนั้นไปขั้น 3
-- คำถามที่ยังไม่มีคำตอบจะกลายเป็น Open Issue ตอนขั้น 4
+Then ask the user (AskUserQuestion): `ไปต่อ` / `ขอตอบคำถามก่อน` / `หยุดไว้ก่อน`
+- If the user answers questions → record the answers in the extract file under heading "คำตอบจากผู้ใช้" (mark as user answer, with date); they may then be used as a source. Then go to step 3.
+- Unanswered questions become Open Issues in step 4.
 
-## ขั้น 3 — เทียบกับโค้ด
-- ถ้า `input/code/` ว่าง → ถามผู้ใช้: `ข้ามการเทียบโค้ด` / `หยุดเพื่อวางโค้ดก่อน` ถ้าข้าม ให้สร้าง `A{nn}_verify.md` ที่ระบุว่า "ข้ามการเทียบโค้ด — ไม่มี source code" และไม่เติมข้อมูลชั้นหน้าจอจากโค้ด
-- ไม่เช่นนั้นสร้าง/อัปเดตแผนที่โค้ดตาม `references/code-graph.md` ข้อ 2 (ถ้ามี graphify) แล้วทำตาม `references/3-verify.md` (ถ้าเลือกใช้ sub-agent ให้แบ่งงานตาม `references/subagents.md` ข้อ "ขั้น 3") แล้วไปขั้น 4 ต่อได้เลย (แจ้งสรุปผลสั้น ๆ: ตรงเล่ม / ไม่ตรงเล่ม / ไม่พบในโค้ด)
+## Step 3 — Verify vs code
+- If `input/code/` is empty → ask the user: `ข้ามการเทียบโค้ด` / `หยุดเพื่อวางโค้ดก่อน`. If skipped, create `A{nn}_verify.md` stating "ข้ามการเทียบโค้ด — ไม่มี source code" and fill no screen-level data from code.
+- Otherwise build/update the code map per `references/code-graph.md` item 2 (if graphify is available), then follow `references/3-verify.md` (if sub-agents were chosen, split per `references/subagents.md` section "Step 3"), then continue straight to step 4 (brief summary: ตรงเล่ม / ไม่ตรงเล่ม / ไม่พบในโค้ด).
 
-## ขั้น 4 — อัปเดต Excel
-ทำตาม `references/4-update.md` — **⏸ จุดตรวจ 2** อยู่ในขั้นนี้ (ยืนยันแผนก่อนเขียนไฟล์)
+## Step 4 — Update Excel
+Follow `references/4-update.md` — **⏸ Checkpoint 2** is in this step (confirm the plan before writing the file).
 
-## ขั้น 5 — ตรวจไฟล์ output
-ทำตาม `references/5-check.md` สำหรับ Activity นี้ แล้วไปขั้น 6 ต่อ
+## Step 5 — Check output
+Follow `references/5-check.md` for this Activity, then continue to step 6.
 
-## ขั้น 6 — Playwright test ตาม user flow
-ทำตาม `references/6-playwright.md` กับ prototype ของ Activity นี้ (โค้ดใน `input/code/`) — ใช้แผนที่โค้ด (`references/code-graph.md`) ช่วยหาไฟล์ test/route/หน้าจอ — ถ้าเลือกใช้ sub-agent ให้แบ่งงานตาม `references/subagents.md` ข้อ "ขั้น 6"
-- ถ้า prototype มี Playwright test ตาม user flow ครบแล้ว → แจ้งแล้วข้าม
-- ถ้ายังไม่มี/มีไม่ครบ → Extracting screen details ตาม user flow ในเอกสารของ prototype, **⏸ จุดตรวจ 3** ยืนยันก่อนเขียน test, แล้วรันจนผ่านทั้งหมด
-- ไม่มี prototype (`input/code/` ว่าง หรือข้ามขั้น 3) → ข้ามขั้นนี้
+## Step 6 — Playwright tests per user flow
+Follow `references/6-playwright.md` on this Activity's prototype (code in `input/code/`) — use the code map (`references/code-graph.md`) to find test/route/screen files. If sub-agents were chosen, split per `references/subagents.md` section "Step 6".
+- Prototype already has complete Playwright tests per user flow → report and skip
+- Missing/incomplete → Extracting screen details per the prototype's user-flow documents, **⏸ Checkpoint 3** confirm before writing tests, then run until all pass
+- No prototype (`input/code/` empty or step 3 skipped) → skip this step
 
-## สรุปท้ายงาน
-- สิ่งที่เขียนลงไฟล์แยกตามแท็บ, ชื่อไฟล์ backup, ผลตรวจ (ผ่าน/ไม่ผ่าน)
-- Playwright test: ไฟล์ที่สร้างใน prototype, ผลรัน (ผ่าน / fixme), ที่เก็บ screenshot, จุดที่ prototype ไม่ตรง flow (หรือเหตุผลที่ข้าม)
-- Open Issue ที่เปิดใหม่ (ผู้ใช้ต้องไปหาคำตอบ)
-- หน้าที่อ่านจากภาพ (ถ้ามี) ซึ่งควรให้คนตรวจทาน
-- **หยุด** ไม่ไป Activity ถัดไปจนกว่าผู้ใช้สั่ง `/ecmis <เลขถัดไป>`
+## Final summary (in Thai)
+- What was written per sheet, backup file name, check result (ผ่าน/ไม่ผ่าน)
+- Playwright tests: files created in the prototype, run result (ผ่าน / fixme), screenshot location, places where the prototype doesn't match the flow (or why skipped)
+- Newly opened Open Issues (the user needs to find answers)
+- Pages read from images (if any), which should be human-reviewed
+- **Stop.** Don't go to the next Activity until the user runs `/ecmis <next no.>`
 
-## ถ้างานค้างกลางทาง
-เรียก `/ecmis <เลขเดิม>` ซ้ำได้ — ขั้น 1 ข้ามเล่มที่ไม่เปลี่ยน, ขั้น 2 เสนอใช้ไฟล์ extract เดิม, ขั้น 3 ถ้ามี `A{nn}_verify.md` ที่ใหม่กว่าไฟล์ extract ให้ถามว่าใช้ของเดิมหรือเทียบใหม่, ขั้น 6 ทำต่อเฉพาะ flow ที่ยังไม่มี test
+## Resuming interrupted work
+`/ecmis <same no.>` can be rerun — step 1 skips unchanged documents, step 2 offers to reuse the existing extract file, step 3 asks whether to reuse `A{nn}_verify.md` if it is newer than the extract file, step 6 continues only flows without tests.
 
-ถ้าต้องการทำเฉพาะขั้น 6 (เช่น Excel เสร็จแล้ว) ให้ผู้ใช้สั่ง `/ecmis <เลข> test` — ตรวจขั้น 0 แล้วไปขั้น 6 เลย (ต้องมีไฟล์ extract ของ Activity นั้นแล้ว)
+To run only step 6 (e.g. Excel is done), the user runs `/ecmis <no.> test` — do step 0 then jump to step 6 (the Activity's extract file must already exist).

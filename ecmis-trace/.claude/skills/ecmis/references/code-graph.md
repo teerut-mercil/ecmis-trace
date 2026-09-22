@@ -1,43 +1,43 @@
-# แผนที่โค้ด (graphify) — ใช้ประกอบขั้น 3 และขั้น 6
+# Code map (graphify) — used in steps 3 and 6
 
-ใช้ **graphify** สร้างแผนที่โค้ด (knowledge graph) ของ prototype เพื่อหาไฟล์/ฟังก์ชัน/หน้าจอที่เกี่ยวกับ Activity ได้เร็ว และเห็นว่าอะไรเรียกอะไร ก่อนเปิดอ่านไฟล์จริง
+Use **graphify** to build a code map (knowledge graph) of the prototype, to quickly find files/functions/screens related to the Activity and see what calls what, before opening the actual files.
 
-## หลักการ
-- graphify เป็น **ตัวช่วยหาตำแหน่ง** ไม่ใช่ที่มาของข้อมูล — ทุกผลที่บันทึกยังต้องเปิดอ่านไฟล์จริงแล้วอ้างเป็น `path/ไฟล์:บรรทัด` ห้ามอ้างผลจาก graph ตรง ๆ
-- ใช้เฉพาะโหมดอ่านโครงสร้างโค้ด (`--code-only`) — เร็ว ไม่ใช้ API key และไม่เสียค่า AI เพิ่ม
-- **ห้ามเขียนอะไรลง prototype** — แผนที่เก็บที่ `work/graph/graphify-out/` ในโปรเจกต์ ecmis-trace เท่านั้น (ไม่รัน `graphify update` หรือ `/graphify` ในโฟลเดอร์ prototype เพราะจะสร้าง `graphify-out/` ใน repo นั้น)
-- คำสั่ง: ใช้ `graphify` — ถ้าไม่พบคำสั่ง (มักเกิดบน Windows) ให้ใช้ `"<python>" -m graphify` แทน
+## Principles
+- graphify is a **locator**, not a data source — every recorded result must still come from opening the actual file and be cited as `path/ไฟล์:บรรทัด`; never cite graph results directly
+- Use only code-structure mode (`--code-only`) — fast, no API key, no extra AI cost
+- **Never write anything into the prototype** — the map lives only at `work/graph/graphify-out/` in the ecmis-trace project (never run `graphify update` or `/graphify` in the prototype folder, as that creates `graphify-out/` in that repo)
+- Command: `graphify` — if not found (common on Windows), use `"<python>" -m graphify`
 
-## 1. ตรวจว่ามี graphify
-ทำครั้งเดียวต่อรอบ (ขั้น 0) เมื่อ `input/code/` ไม่ว่าง:
+## 1. Check graphify is available
+Once per run (step 0) when `input/code/` is not empty:
 ```
 graphify --help
 ```
-- ใช้ได้ → ผ่าน
-- ไม่พบ → ถามผู้ใช้ (AskUserQuestion): "ยังไม่ได้ติดตั้งตัวช่วยอ่านโค้ด (graphify) ซึ่งช่วยให้หาโค้ดที่เกี่ยวข้องได้เร็วและครบขึ้น ติดตั้งให้เลยไหม?" — `ติดตั้งเลย (แนะนำ)` / `ไม่ติดตั้ง อ่านโค้ดแบบปกติ`
-  - ติดตั้ง → รัน `"<python>" -m pip install graphifyy` (ใช้ `python` ตัวเดียวกับที่ตรวจ markitdown) แล้วตรวจซ้ำ ถ้าไม่สำเร็จให้แจ้งสั้น ๆ แล้วอ่านโค้ดแบบปกติต่อ (ไม่หยุดงาน)
-  - ไม่ติดตั้ง → อ่านโค้ดแบบปกติ และไม่ถามซ้ำในรอบนี้
+- Works → pass
+- Not found → ask the user (AskUserQuestion): "ยังไม่ได้ติดตั้งตัวช่วยอ่านโค้ด (graphify) ซึ่งช่วยให้หาโค้ดที่เกี่ยวข้องได้เร็วและครบขึ้น ติดตั้งให้เลยไหม?" — `ติดตั้งเลย (แนะนำ)` / `ไม่ติดตั้ง อ่านโค้ดแบบปกติ`
+  - Install → run `"<python>" -m pip install graphifyy` (same `python` used for the markitdown check), then re-check. If it fails, say so briefly and continue reading code normally (don't stop)
+  - Don't install → read code normally and don't ask again this run
 
-## 2. สร้าง/อัปเดตแผนที่
-รันที่ root โปรเจกต์ ecmis-trace ก่อนเริ่มขั้น 3 (และก่อนขั้น 6 ถ้าข้ามมาจาก `/ecmis <เลข> test`) — `<CODE_ROOT>` = โฟลเดอร์ใน `input/code/` หรือ path ของ repo ที่ไฟล์ใน `input/code/` ชี้ไป
+## 2. Build/update the map
+Run at the ecmis-trace project root before step 3 (and before step 6 if jumping in via `/ecmis <no.> test`) — `<CODE_ROOT>` = folder in `input/code/` or the repo path that a file in `input/code/` points to
 ```
 graphify extract "<CODE_ROOT>" --code-only --out work/graph
 ```
-- ไม่ต้องถามผู้ใช้ — ครั้งแรกสร้างใหม่ ครั้งต่อไปอัปเดตเฉพาะไฟล์ที่เปลี่ยน
-- ถ้า `input/code/` มีหลาย repo ให้แยกโฟลเดอร์ต่อ repo เช่น `--out work/graph/<ชื่อ repo>`
-- ถ้ารันไม่สำเร็จ ให้แจ้งสั้น ๆ แล้วอ่านโค้ดแบบปกติต่อ
-- แจ้งความคืบหน้า เช่น `ขั้น 3/6 สร้างแผนที่โค้ด…`
+- No need to ask the user — first time builds, later runs update only changed files
+- If `input/code/` has multiple repos, use one folder per repo, e.g. `--out work/graph/<repo name>`
+- If it fails, say so briefly and continue reading code normally
+- Report progress, e.g. `ขั้น 3/6 สร้างแผนที่โค้ด…`
 
-## 3. ใช้แผนที่หาโค้ด
-ทุกคำสั่งใส่ `--graph work/graph/graphify-out/graph.json` (ถ้าแยกต่อ repo ให้ชี้ไปโฟลเดอร์ของ repo นั้น)
+## 3. Use the map to find code
+Add `--graph work/graph/graphify-out/graph.json` to every command (per-repo: point to that repo's folder)
 
-| ต้องการ | คำสั่ง |
+| Need | Command |
 |---|---|
-| หาโค้ดที่เกี่ยวกับหน้าจอ/ปุ่ม/สถานะ | `graphify query "<Page Code / ชื่อหน้าจอ / คำสำคัญ>" --graph …` |
-| ดูว่าสิ่งหนึ่งเชื่อมกับอะไร (เช่น หน้าจอ → validation) | `graphify explain "<ชื่อ component/ฟังก์ชัน>" --graph …` |
-| ดูเส้นทางระหว่างสองจุด (เช่น หน้าจอ A → หน้าจอ B) | `graphify path "<A>" "<B>" --graph …` |
-| ไฟล์ศูนย์กลาง (route, store, enum สถานะ) | `graphify god-nodes --graph …` |
+| Find code for a screen/button/status | `graphify query "<Page Code / screen name / keyword>" --graph …` |
+| See what something connects to (e.g. screen → validation) | `graphify explain "<component/function name>" --graph …` |
+| Path between two points (e.g. screen A → screen B) | `graphify path "<A>" "<B>" --graph …` |
+| Hub files (routes, store, status enums) | `graphify god-nodes --graph …` |
 
-- ผลแต่ละ node มี `src=<ไฟล์> loc=L<บรรทัด>` (path นับจาก `<CODE_ROOT>`) — ใช้เปิดอ่านไฟล์จริงต่อ
-- ถ้าผลถูกตัด (`TRUNCATED`) ให้แคบคำค้นลง หรือเพิ่ม `--budget 4000`
-- ถ้าหาไม่เจอในแผนที่ (เช่น ข้อความใน HTML/JSON หรือ string ในโค้ด) ให้ค้นในไฟล์ด้วยวิธีปกติต่อ — **ห้ามสรุปว่า "ไม่พบในโค้ด" จากแผนที่อย่างเดียว**
+- Each result node has `src=<file> loc=L<line>` (path relative to `<CODE_ROOT>`) — use it to open the actual file
+- If results are cut (`TRUNCATED`), narrow the query or add `--budget 4000`
+- If not found in the map (e.g. text in HTML/JSON or strings in code), continue with a normal file search — **never conclude "ไม่พบในโค้ด" from the map alone**

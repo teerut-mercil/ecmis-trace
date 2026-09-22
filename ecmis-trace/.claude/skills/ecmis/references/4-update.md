@@ -1,48 +1,48 @@
-# ขั้น 4 — อัปเดต Excel
+# Step 4 — Update Excel
 
-เติมหรืออัปเดตข้อมูลของ Activity ที่ระบุลงไฟล์ output ตามกติกาการอัปเดต (ยืนยันก่อนเขียนทุกครั้ง) แล้วไปขั้น 5
+Fill or update the given Activity's data in the output file per the update rules (always confirm before writing), then go to step 5.
 
 Activity: **{Activity}**
 
-## เงื่อนไขก่อนเริ่ม
-- ต้องมี `work/extract/A{เลข 2 หลัก}_extract.md` และ `work/extract/A{เลข 2 หลัก}_verify.md` ถ้าขาดให้กลับไปทำขั้นที่ขาดก่อน
-- ไฟล์ที่เขียนได้มีไฟล์เดียว: `output/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` (ห้ามแก้ template)
+## Preconditions
+- `work/extract/A{2-digit no.}_extract.md` and `work/extract/A{2-digit no.}_verify.md` must exist; if missing, do the missing step first
+- The only writable file: `output/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` (never edit the template)
 
-## ขั้นตอน
-1. **เตรียมไฟล์**
-   - ถ้ายังไม่มีไฟล์ output → คัดลอกจาก `template/` มาเป็นไฟล์ output
-   - ถ้ามีแล้ว → ใช้ไฟล์เดิมเสมอ
-2. **วางแผน (ยังไม่เขียนไฟล์)** จากไฟล์ extract + verify เทียบกับข้อมูล Activity นี้ในไฟล์ output:
-   - จับคู่ด้วยรหัส (Flow ID, Screen Seq ID, Transition ID, Test Case ID, Document ID, Test Data ID, Issue ID) ไม่ใช่ลำดับแถว
-   - รายการใหม่ → รันเลขต่อจากเลขสูงสุดของ pattern นั้น (รวมเลขที่เคยลบใน `18_Change_Log`) ห้ามใช้เลขที่เคยลบ
-   - ค่าเปลี่ยน → แก้ (เก็บค่าเดิมไว้ลง Change Log)
-   - รายการที่ไม่พบในฉบับใหม่ → ลบ พร้อมแถวที่อ้างถึงในแท็บอื่นทั้งหมด (เช่น ลบ Flow → Screen Sequence, Process Step, Transition, Test Case, Test Steps, Traceability ที่อ้าง Flow ID นั้น)
-   - **ข้าม** แถว "ยืนยันแล้ว" และคอลัมน์ `Actual Result`, `Test Result`, `Step Result`, `Defect ID` ทุกกรณี
-   - แถวที่ต้องลบแต่ "ยืนยันแล้ว" หรือมีผลทดสอบ/Defect → ไม่ลบ แต่วางแผนเปิด Open Issue
-   - เล่มกับโค้ดไม่ตรง / ข้อมูลหาไม่เจอ / ร่างเดิมไม่พบในเล่ม → วางแผนเปิด Open Issue
-   - ค่า dropdown ต้องอยู่ในรายการที่อนุญาต (99_Lists หรือ inline list ของช่องนั้น)
-   - Test Case ต้องครอบคลุม Happy Path, Negative, Return/Rework ตาม Decision ของทุก Step
-3. **⏸ จุดตรวจ 2 — แสดงแผนให้ผู้ใช้ยืนยัน** ให้อ่านง่ายสำหรับคนไม่เทคนิค
-   - บันทึกแผนเต็มทุกรายการ (รหัส, คอลัมน์, ค่าเดิม → ค่าใหม่, ที่มา) ที่ `work/extract/A{เลข 2 หลัก}_plan.md`
-   - ในแชทแสดงตามลำดับนี้:
-     1. ตารางสรุป `| แท็บ | เพิ่ม | แก้ | ลบ | Open Issue ใหม่ |`
-     2. **รายการที่จะลบ** ทุกรายการ (เสี่ยงที่สุด แสดงก่อน) — รหัส, ข้อความสั้น ๆ ว่าคืออะไร, เหตุผล
-     3. **รายการที่จะแก้** — `รหัส · คอลัมน์: ค่าเดิม → ค่าใหม่ (ที่มา)`
-     4. รายการที่จะเพิ่ม — ถ้าเกิน 15 รายการให้แสดงแค่จำนวนและรหัสต่อแท็บ แล้วอ้างถึงไฟล์ plan
-     5. รายการที่ข้ามเพราะ "ยืนยันแล้ว"/มีผลทดสอบ
-   - ถามผู้ใช้ด้วย AskUserQuestion:
+## Procedure
+1. **Prepare the file**
+   - No output file yet → copy from `template/` as the output file
+   - Exists → always use the existing file
+2. **Plan (don't write yet)** from extract + verify vs. this Activity's data in the output file:
+   - Match by ID (Flow ID, Screen Seq ID, Transition ID, Test Case ID, Document ID, Test Data ID, Issue ID), not row order
+   - New items → continue from the highest number of that pattern (including numbers deleted per `18_Change_Log`); never reuse deleted numbers
+   - Changed values → edit (keep old value for the Change Log)
+   - Items not in the new version → delete, together with all referencing rows in other sheets (e.g. deleting a Flow → its Screen Sequence, Process Step, Transition, Test Case, Test Steps, Traceability rows referencing that Flow ID)
+   - **Always skip** rows that are "ยืนยันแล้ว" and the columns `Actual Result`, `Test Result`, `Step Result`, `Defect ID`
+   - Rows to delete that are "ยืนยันแล้ว" or have test results/Defects → don't delete; plan an Open Issue instead
+   - Document vs code mismatch / data not found / draft not in documents → plan an Open Issue
+   - Dropdown values must be in the allowed list (99_Lists or the cell's inline list)
+   - Test Cases must cover Happy Path, Negative, Return/Rework per every Step's Decision
+3. **⏸ Checkpoint 2 — show the plan for confirmation**, easy to read for non-technical users (Thai)
+   - Save the full plan (ID, column, old → new value, source) to `work/extract/A{2-digit no.}_plan.md`
+   - In chat, show in this order:
+     1. Summary table `| แท็บ | เพิ่ม | แก้ | ลบ | Open Issue ใหม่ |`
+     2. **Items to delete**, all of them (highest risk, shown first) — ID, short description, reason
+     3. **Items to edit** — `รหัส · คอลัมน์: ค่าเดิม → ค่าใหม่ (ที่มา)`
+     4. Items to add — if more than 15, show only counts and IDs per sheet and refer to the plan file
+     5. Items skipped because "ยืนยันแล้ว"/has test results
+   - Ask the user with AskUserQuestion:
      - `ยืนยันทั้งหมด`
-     - `ยืนยัน แต่ไม่ลบ` — รายการลบทั้งหมดเปลี่ยนเป็นเปิด Open Issue แทน
-     - `ขอแก้บางรายการ` — ให้ผู้ใช้บอกรหัสที่ต้องการตัดออก/เปลี่ยน แล้วปรับแผนและถามใหม่
-     - `ยกเลิก` — ไม่เขียนไฟล์ จบงาน
-   **ห้ามเขียนไฟล์ก่อนได้รับการยืนยัน**
-4. **สำรองไฟล์** ไป `output/backup/ECMIS_Master_Activity_Template_FlowScreenTrace_{YYYYMMDD-HHMM}.xlsx` (ข้ามได้เฉพาะกรณีเพิ่งคัดลอกจาก template ในรอบนี้)
-5. **เขียนไฟล์** ด้วย openpyxl:
-   - ล้างไฮไลต์ของรอบก่อน (คืน fill ให้เหมือน style เดิมของแถวในกรอบตาราง)
-   - ช่องที่แก้ → ไฮไลต์เหลืองอ่อน `FFF2CC`, แถวที่เพิ่ม → ไฮไลต์เขียวอ่อน `E2EFDA`
-   - ใส่ที่มาในคอลัมน์ Source Ref ของแท็บนั้น (หรือใน Change Log สำหรับแท็บที่ไม่มีคอลัมน์ที่มา)
-   - การลบ: เลื่อนข้อมูลแถวล่างขึ้นภายในกรอบตาราง ห้ามใช้ `delete_rows`
-   - เขียนสูตรของทุกแถวข้อมูลตาม pattern เดิม และคำนวณ hyperlink ใหม่ให้ชี้แถวที่รหัสปลายทางอยู่จริง
-   - บันทึก `18_Change_Log` ทุกรายการ: Change ID (CHG-xxx ต่อจากเลขสูงสุด), รอบที่ (ต่อจากรอบสูงสุด), วันที่, Activity, แท็บ, รหัสแถว, คอลัมน์, ประเภท (เพิ่ม/แก้/ลบ), ค่าเดิม, ค่าใหม่, ที่มา, เหตุผล — การลบให้เก็บค่าทั้งแถวในช่องค่าเดิม
-   - เปิด Open Issue ใน `10_Open_Issue` ตามแผน (ISS-xxx ต่อจากเลขสูงสุด, Status = เปิด)
-6. **ไปขั้น 5** ต่อทันที (`references/5-check.md`) แล้วสรุปท้ายงานตาม SKILL.md
+     - `ยืนยัน แต่ไม่ลบ` — all deletions become Open Issues instead
+     - `ขอแก้บางรายการ` — user states IDs to drop/change; revise the plan and ask again
+     - `ยกเลิก` — don't write the file, end
+   **Never write the file before confirmation**
+4. **Back up** to `output/backup/ECMIS_Master_Activity_Template_FlowScreenTrace_{YYYYMMDD-HHMM}.xlsx` (skip only if the file was just copied from the template in this run)
+5. **Write the file** with openpyxl:
+   - Clear previous run's highlights (restore fill to the row's original style within the table frame)
+   - Edited cells → light yellow `FFF2CC`, added rows → light green `E2EFDA`
+   - Put the source in the sheet's Source Ref column (or in the Change Log for sheets without a source column)
+   - Deletion: shift lower rows up within the table frame; never use `delete_rows`
+   - Rewrite formulas for every data row per the existing pattern and recompute hyperlinks to point to the row where the target ID actually is
+   - Log every item in `18_Change_Log`: Change ID (CHG-xxx continuing from the highest), round no. (continuing from the highest), date, Activity, sheet, row ID, column, type (เพิ่ม/แก้/ลบ), old value, new value, source, reason — for deletions store the whole row in the old-value cell
+   - Open Open Issues in `10_Open_Issue` per the plan (ISS-xxx continuing from the highest, Status = เปิด)
+6. **Go to step 5** immediately (`references/5-check.md`), then give the final summary per SKILL.md

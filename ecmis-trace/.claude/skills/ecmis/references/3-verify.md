@@ -1,28 +1,28 @@
-# ขั้น 3 — เทียบกับโค้ด
+# Step 3 — Verify vs code
 
-เทียบไฟล์ extract ของ Activity ที่ระบุกับ source code ใน input/code เติมข้อมูลชั้นหน้าจอ และระบุผลตรง/ไม่ตรงเล่ม
+Compare the given Activity's extract file with the source code in input/code, fill screen-level data, and mark each item as matching/not matching the documents.
 
 Activity: **{Activity}**
 
-## ขอบเขต
-- **ห้ามแตะไฟล์ Excel ใด ๆ**
-- ห้ามแก้ไฟล์ใน `input/code/` หรือ repo ที่ชี้ไป (อ่านอย่างเดียว) — ยกเว้นขั้น 6 ที่เพิ่มไฟล์ Playwright test ได้หลังผู้ใช้ยืนยัน
-- ต้องมี `work/extract/A{เลข 2 หลัก}_extract.md` ก่อน ถ้าไม่มีให้กลับไปทำขั้น 2 ก่อน
+## Scope
+- **Never touch any Excel file**
+- Never modify files in `input/code/` or the repo it points to (read-only) — except step 6 may add Playwright test files after user confirmation
+- `work/extract/A{2-digit no.}_extract.md` must exist; if not, do step 2 first
 
-## ขั้นตอน
-1. อ่าน `input/code/` ถ้าเป็นไฟล์ชี้ path ไป repo ให้เปิด repo นั้น ถ้า path เข้าไม่ได้ให้หยุดแจ้งผู้ใช้
-2. หาโค้ดที่เกี่ยวกับ Activity นี้ โดยค้นจาก Page Code, LAW / Function No., SDD ID, ชื่อหน้าจอ และคำสำคัญจากไฟล์ extract
-   - ถ้ามีแผนที่โค้ด (`work/graph/graphify-out/graph.json`) ให้เริ่มจาก `graphify query` / `explain` / `path` ตาม `code-graph.md` ข้อ 3 เพื่อหาไฟล์ที่เกี่ยวข้องและความเชื่อมโยง (หน้าจอ → ปุ่ม → validation → สถานะถัดไป) แล้วค่อยเปิดอ่านไฟล์จริง
-   - ไม่มีแผนที่ หรือหาในแผนที่ไม่เจอ → ค้นในไฟล์ด้วยวิธีปกติ (ผล `ไม่พบในโค้ด` ต้องผ่านการค้นในไฟล์แล้ว ไม่ใช่ดูจากแผนที่อย่างเดียว)
-3. สำหรับทุกรายการในไฟล์ extract ที่เป็นข้อมูล **ชั้นหน้าจอ** ได้แก่ Page Code, ปุ่ม/Action, สถานะ (status/enum), validation, notification, permission ของหน้าจอ, ลำดับหน้าจอ/route ให้ตรวจกับโค้ดและระบุผล:
-   - `ตรงเล่ม` — โค้ดตรงกับเล่ม
-   - `ไม่ตรงเล่ม` — ระบุค่าในโค้ดและค่าในเล่มพร้อมที่มาทั้งสองฝั่ง (ตามกติกา: ใช้ค่าจากเล่ม และจะเปิด Open Issue ตอน update)
+## Procedure
+1. Read `input/code/`; if it is a file pointing to a repo path, open that repo. If the path is inaccessible, stop and tell the user
+2. Find code related to this Activity by searching Page Code, LAW / Function No., SDD ID, screen names, and keywords from the extract file
+   - If a code map exists (`work/graph/graphify-out/graph.json`), start with `graphify query` / `explain` / `path` per `code-graph.md` item 3 to find relevant files and links (screen → button → validation → next status), then open the actual files
+   - No map, or not found in the map → search files normally (a `ไม่พบในโค้ด` result must come from a file search, not from the map alone)
+3. For every **screen-level** item in the extract file — Page Code, buttons/Actions, statuses (status/enum), validation, notifications, screen permissions, screen order/routes — check against code and mark:
+   - `ตรงเล่ม` — code matches the document
+   - `ไม่ตรงเล่ม` — give the code value and document value with sources for both (rule: use the document value; an Open Issue will be opened in the update step)
    - `ไม่พบในโค้ด`
-   ทุกผลต้องมี path ไฟล์ (และบรรทัดถ้ามี) เช่น `src/pages/case/CaseAccept.tsx:120`
-4. **เติมข้อมูลชั้นหน้าจอที่เล่มไม่มี** จากโค้ด (เช่น ชื่อปุ่ม ข้อความ validation สถานะหลังกด) โดยติดป้าย `[code]` และใส่ path เป็นที่มา — ห้ามใช้โค้ดแทนข้อมูลธุรกิจที่เล่มควรเป็นผู้กำหนด ถ้าเล่มไม่มีข้อมูลธุรกิจนั้น ให้คงเป็นรายการคำถาม
-5. รายการที่พบในโค้ดแต่ไม่มีในเล่ม (หน้าจอ/ปุ่ม/สถานะเพิ่มเติม) ให้แยกหัวข้อ "พบในโค้ดแต่ไม่พบในเล่ม" และเพิ่มเป็นรายการคำถาม
-6. บันทึกผลที่ `work/extract/A{เลข 2 หลัก}_verify.md` (ไม่เขียนทับไฟล์ extract) ประกอบด้วย:
-   - ตารางผลรายรายการ: หัวข้อ | ค่าในเล่ม [ที่มา] | ค่าในโค้ด [path] | ผล
-   - ข้อมูลชั้นหน้าจอที่เติมจากโค้ด
-   - รายการคำถามเพิ่มเติม
-7. รายงานผู้ใช้: จำนวน ตรงเล่ม / ไม่ตรงเล่ม / ไม่พบในโค้ด, รายการที่ไม่ตรงทั้งหมด, และรายการคำถามใหม่ แล้วไปขั้น 4
+   Every result must include a file path (and line if possible), e.g. `src/pages/case/CaseAccept.tsx:120`
+4. **Fill screen-level data missing from the documents** using code (e.g. button labels, validation messages, status after click), tagged `[code]` with the path as source — never use code in place of business data the documents should define; if the documents lack that business data, keep it as a question
+5. Items found in code but not in the documents (extra screens/buttons/statuses) → separate section "พบในโค้ดแต่ไม่พบในเล่ม" and add them as questions
+6. Save results to `work/extract/A{2-digit no.}_verify.md` (never overwrite the extract file), containing:
+   - Per-item result table: หัวข้อ | ค่าในเล่ม [ที่มา] | ค่าในโค้ด [path] | ผล
+   - Screen-level data filled from code
+   - Additional questions
+7. Report to the user (Thai): counts of ตรงเล่ม / ไม่ตรงเล่ม / ไม่พบในโค้ด, all mismatches, and new questions, then go to step 4

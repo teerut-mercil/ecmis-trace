@@ -1,7 +1,7 @@
 # Graph Report - AI  (2026-09-22)
 
 ## Corpus Check
-- 32 files · ~34,113 words
+- 32 files · ~37,296 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `07bde5cb`
+- Built from commit: `393cad97`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,7 +19,7 @@
 - ECMIS Master Activity Template (converted)
 - convert_docs.py
 - graphify skill (knowledge graph pipeline)
-- /ecmis — พาทำ Activity ครบทุกขั้น
+- /ecmis — Run an Activity through every step
 - graphify reference: extra exports and benchmark
 - graphify reference: query, path, explain
 - graphify reference: add a URL and watch a folder
@@ -29,24 +29,24 @@
 - Work one Activity at a time, stop for review
 - graphify reference: GitHub clone and cross-repo merge
 - graphify reference: transcribe video and audio
-- ขั้น 5 — ตรวจไฟล์ output
-- ขั้น 1 — เตรียมเอกสาร (แปลงเล่มด้วย markitdown)
-- ขั้น 2 — สกัดข้อมูล
-- ขั้น 3 — เทียบกับโค้ด
-- ขั้น 4 — อัปเดต Excel
+- Step 5 — Check output
+- Step 1 — Prepare docs (convert with markitdown)
+- Step 2 — Extract
+- Step 3 — Verify vs code
+- Step 4 — Update Excel
 - Releasing the ECMIS skill
 - Invoke-Py
 - build-ecmis-zip.sh script
 - install.sh script
-- ขั้นตอน
-- แผนที่โค้ด (graphify) — ใช้ประกอบขั้น 3 และขั้น 6
-- ทำงานคู่ขนานด้วย sub-agent (Sonnet) — ใช้ประกอบขั้น 2, 3 และ 6
+- Procedure
+- Code map (graphify) — used in steps 3 and 6
+- Parallel work with sub-agents (Sonnet) — used in steps 2, 3 and 6
 
 ## God Nodes (most connected - your core abstractions)
 1. `ECMIS Master Activity Template (converted)` - 21 edges
-2. `/ecmis — พาทำ Activity ครบทุกขั้น` - 11 edges
-3. `ขั้นตอน` - 9 edges
-4. `ทำงานคู่ขนานด้วย sub-agent (Sonnet) — ใช้ประกอบขั้น 2, 3 และ 6` - 9 edges
+2. `/ecmis — Run an Activity through every step` - 11 edges
+3. `Procedure` - 9 edges
+4. `Parallel work with sub-agents (Sonnet) — used in steps 2, 3 and 6` - 9 edges
 5. `convert_one()` - 8 edges
 6. `graphify reference: extra exports and benchmark` - 8 edges
 7. `convert_pdf()` - 6 edges
@@ -90,9 +90,9 @@ Nodes (11): check_deps(), convert_one(), convert_pdf(), convert_pptx(), main(), 
 Cohesion: 0.29
 Nodes (8): graphify rules, graphify workflow, .claude CLAUDE.md, AI CLAUDE.md graphify rules, graphify extraction spec, graphify extraction spec, graphify SKILL, graphify skill (knowledge graph pipeline)
 
-### Community 4 - "/ecmis — พาทำ Activity ครบทุกขั้น"
+### Community 4 - "/ecmis — Run an Activity through every step"
 Cohesion: 0.17
-Nodes (11): /ecmis — พาทำ Activity ครบทุกขั้น, ขั้น 0 — ตรวจความพร้อม, ขั้น 1 — เตรียมเอกสาร, ขั้น 2 — สกัดข้อมูล, ขั้น 3 — เทียบกับโค้ด, ขั้น 4 — อัปเดต Excel, ขั้น 5 — ตรวจไฟล์ output, ขั้น 6 — Playwright test ตาม user flow (+3 more)
+Nodes (11): /ecmis — Run an Activity through every step, Final summary (in Thai), Overview, Resuming interrupted work, Step 0 — Readiness check, Step 1 — Prepare docs, Step 2 — Extract, Step 3 — Verify vs code (+3 more)
 
 ### Community 5 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -114,37 +114,37 @@ Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify refer
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
-### Community 14 - "ขั้น 5 — ตรวจไฟล์ output"
+### Community 14 - "Step 5 — Check output"
 Cohesion: 0.40
-Nodes (4): ขั้น 5 — ตรวจไฟล์ output, ขอบเขต, รายการตรวจ, รายงาน
+Nodes (4): Checks, Report (Thai), Scope, Step 5 — Check output
 
-### Community 15 - "ขั้น 1 — เตรียมเอกสาร (แปลงเล่มด้วย markitdown)"
+### Community 15 - "Step 1 — Prepare docs (convert with markitdown)"
 Cohesion: 0.50
-Nodes (3): ขั้น 1 — เตรียมเอกสาร (แปลงเล่มด้วย markitdown), ขั้นตอน, ขอบเขต
+Nodes (3): Procedure, Scope, Step 1 — Prepare docs (convert with markitdown)
 
-### Community 16 - "ขั้น 2 — สกัดข้อมูล"
+### Community 16 - "Step 2 — Extract"
 Cohesion: 0.50
-Nodes (3): ขั้น 2 — สกัดข้อมูล, ขั้นตอน, ขอบเขต
+Nodes (3): Procedure, Scope, Step 2 — Extract
 
-### Community 17 - "ขั้น 3 — เทียบกับโค้ด"
+### Community 17 - "Step 3 — Verify vs code"
 Cohesion: 0.50
-Nodes (3): ขั้น 3 — เทียบกับโค้ด, ขั้นตอน, ขอบเขต
+Nodes (3): Procedure, Scope, Step 3 — Verify vs code
 
-### Community 18 - "ขั้น 4 — อัปเดต Excel"
+### Community 18 - "Step 4 — Update Excel"
 Cohesion: 0.50
-Nodes (3): ขั้น 4 — อัปเดต Excel, ขั้นตอน, เงื่อนไขก่อนเริ่ม
+Nodes (3): Preconditions, Procedure, Step 4 — Update Excel
 
-### Community 24 - "ขั้นตอน"
+### Community 24 - "Procedure"
 Cohesion: 0.17
-Nodes (11): 1. ตรวจว่ามี test ตาม user flow แล้วหรือยัง, 2. รวบรวม user flow, 3. เตรียมการรัน prototype, 4. Extracting screen details, 5. ⏸ จุดตรวจ 3 — ยืนยันก่อนเขียน test ลง prototype, 6. เขียน test, 7. ติดตั้งและรัน จนผ่านทั้งหมด, 8. บันทึกและรายงาน (+3 more)
+Nodes (11): 1. Check whether user-flow tests already exist, 2. Gather the user flows, 3. Prepare to run the prototype, 4. Extracting screen details, 5. ⏸ Checkpoint 3 — confirm before writing tests into the prototype, 6. Write the tests, 7. Install and run until all pass, 8. Record and report (+3 more)
 
-### Community 25 - "แผนที่โค้ด (graphify) — ใช้ประกอบขั้น 3 และขั้น 6"
+### Community 25 - "Code map (graphify) — used in steps 3 and 6"
 Cohesion: 0.33
-Nodes (5): 1. ตรวจว่ามี graphify, 2. สร้าง/อัปเดตแผนที่, 3. ใช้แผนที่หาโค้ด, หลักการ, แผนที่โค้ด (graphify) — ใช้ประกอบขั้น 3 และขั้น 6
+Nodes (5): 1. Check graphify is available, 2. Build/update the map, 3. Use the map to find code, Code map (graphify) — used in steps 3 and 6, Principles
 
-### Community 26 - "ทำงานคู่ขนานด้วย sub-agent (Sonnet) — ใช้ประกอบขั้น 2, 3 และ 6"
+### Community 26 - "Parallel work with sub-agents (Sonnet) — used in steps 2, 3 and 6"
 Cohesion: 0.20
-Nodes (9): กติกาที่ต้องใส่ในคำสั่งของ sub-agent ทุกตัว, การถามผู้ใช้ (ขั้น 0), การรวมผล (ตัวหลักทำทุกครั้ง), ขั้น 2 — สกัดข้อมูล, ขั้น 3 — เทียบกับโค้ด, ขั้น 6 — Playwright test, ทำงานคู่ขนานด้วย sub-agent (Sonnet) — ใช้ประกอบขั้น 2, 3 และ 6, หลักการ (+1 more)
+Nodes (9): Asking the user (step 0), Merging (main agent, every time), Parallel work with sub-agents (Sonnet) — used in steps 2, 3 and 6, Part files, Principles, Rules every sub-agent prompt must include, Step 2 — Extract, Step 3 — Verify vs code (+1 more)
 
 ## Ambiguous Edges - Review These
 - `Sheet 11_Process_Step_Detail` → `Sheet 11_Screen_Sequence`  [AMBIGUOUS]

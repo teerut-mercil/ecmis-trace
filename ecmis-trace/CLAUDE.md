@@ -1,57 +1,59 @@
-# ecmis-trace — กติกาโปรเจกต์
+# ecmis-trace — Project Rules
 
-โปรเจกต์นี้ใช้เติมและอัปเดต E-CMIS Master Activity Template (Flow / Screen / LAW / Test Case / Traceability) ทีละ Activity จากเล่มเอกสารและ source code
+This project fills in and updates the E-CMIS Master Activity Template (Flow / Screen / LAW / Test Case / Traceability) one Activity at a time, from the source documents and source code.
 
-## แหล่งข้อมูลและ Output
+**Language:** Always talk to the user in simple Thai. Thai text in quotes/backticks in these instructions (sheet names, column names, status values, citation formats, labels, markers, messages) is a literal value — use it verbatim, never translate it.
 
-- `input/docs/` = เล่มเอกสาร เป็น **แหล่งความจริงหลัก**
-- `input/code/` = source code (หรือไฟล์ชี้ path ไป repo) ใช้ **ยืนยันและเติมข้อมูลชั้นหน้าจอ** เท่านั้น ได้แก่ Page Code, ปุ่ม, สถานะ, validation, notification — ไม่ใช่แหล่งหลัก
-- prototype ใน `input/code/` เป็นแบบอ่านอย่างเดียว **ยกเว้น** ขั้น 6 ที่เพิ่มไฟล์ Playwright test ตาม user flow ได้ (ไฟล์ test/config test เท่านั้น ห้ามแก้โค้ดหน้าจอ) หลังผู้ใช้ยืนยันในจุดตรวจ 3
-- `template/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` = template ต้นฉบับ **ห้ามแก้**
-- `work/docs/` = เล่มที่แปลงเป็น Markdown ด้วย **markitdown** (สคริปต์ `scripts/convert_docs.py` ในโฟลเดอร์ skill) — PDF มีเลขหน้า, PPTX มีเลขสไลด์, DOCX และอื่น ๆ อ้างอิงด้วยหัวข้อ
-- `work/extract/` = ข้อมูลที่สกัดแยกราย Activity (extract / verify / plan)
-- `work/extract/_parts/` = ไฟล์ส่วนย่อยชั่วคราวของ sub-agent (เมื่อผู้ใช้เลือกทำพร้อมกัน — ดู `references/subagents.md` ในโฟลเดอร์ skill) ตัวหลักรวมเข้าไฟล์ของ Activity แล้วลบทิ้ง ไม่ใช่ที่มาของข้อมูล
-- `work/graph/` = แผนที่โค้ด (graphify) ของ prototype ใช้ช่วยหาโค้ดในขั้น 3 และ 6 — สร้างที่นี่เท่านั้น ห้ามสร้าง `graphify-out/` ใน repo prototype
-- ทุกขั้นทำผ่าน skill `/ecmis <เลข Activity>` (ติดตั้งที่ `.claude/skills/ecmis/` ในโปรเจกต์ หรือ `~/.claude/skills/ecmis/` แบบ global)
-- Output มีไฟล์เดียวคือ `output/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` **ห้ามสร้างไฟล์ output อื่น** (Playwright test และ screenshot ของขั้น 6 อยู่ใน repo prototype ไม่นับเป็น output)
-- `output/backup/` = ไฟล์สำรองก่อนแก้ทุกครั้ง (ไม่นับเป็น output)
+## Sources and Output
 
-## กติกาข้อมูล
+- `input/docs/` = source documents, the **primary source of truth**
+- `input/code/` = source code (or a file pointing to a repo path), used **only to confirm and fill screen-level data**: Page Code, buttons, statuses, validation, notifications — not a primary source
+- The prototype in `input/code/` is read-only, **except** step 6 may add Playwright tests per user flow (test files / test config only, never screen code) after the user confirms at checkpoint 3
+- `template/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` = original template, **never edit**
+- `work/docs/` = documents converted to Markdown with **markitdown** (script `scripts/convert_docs.py` in the skill folder) — PDF has page numbers, PPTX has slide numbers, DOCX and others are cited by heading
+- `work/extract/` = per-Activity extracted data (extract / verify / plan)
+- `work/extract/_parts/` = temporary sub-agent part files (when the user chooses parallel work — see `references/subagents.md` in the skill folder). The main agent merges them into the Activity files and deletes them; they are not a data source
+- `work/graph/` = code map (graphify) of the prototype, used to locate code in steps 3 and 6 — create it only here, never create `graphify-out/` inside the prototype repo
+- Every step runs through the skill `/ecmis <Activity no.>` (installed at `.claude/skills/ecmis/` in the project or `~/.claude/skills/ecmis/` globally)
+- There is exactly one output: `output/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx`. **Never create any other output file** (step 6 Playwright tests and screenshots live in the prototype repo and don't count as output)
+- `output/backup/` = backup taken before every edit (not output)
 
-1. **ห้ามเดา** ทุกช่องที่เติมต้องมีที่มาในคอลัมน์ `Source Ref / Page` (รูปแบบ: `ชื่อเล่ม น.xx` สำหรับ PDF, `ชื่อเล่ม สไลด์ xx` สำหรับ PPTX, `ชื่อเล่ม §ชื่อหัวข้อ` สำหรับ DOCX และไฟล์ที่ไม่มีเลขหน้า, `path/ไฟล์:บรรทัด` สำหรับโค้ด — ข้อมูลที่ถอดจากภาพให้ต่อท้ายด้วย `[อ่านจากภาพ]`) — ดูข้อ "ที่มาของแท็บที่ไม่มีคอลัมน์ Source Ref" ด้านล่าง
-2. **หาข้อมูลไม่เจอ** → เว้นว่าง และเปิดรายการใน `10_Open_Issue` ระบุ Activity, แท็บ/ช่องที่ขาด และคำถามที่ต้องให้ผู้รู้ตอบ
-3. **เล่มกับโค้ดไม่ตรงกัน** → ใช้ค่าจากเล่ม และเปิด Open Issue ระบุทั้งสองค่าพร้อมที่มา
-4. **ข้อมูลร่างเดิม** (สถานะ "Draft - รอเทียบเล่ม" หรือ "Draft / รอเทียบเล่ม") ให้เทียบกับเล่ม:
-   - ตรง → คงไว้และใส่ที่มา
-   - ไม่ตรง → แก้ตามเล่ม
-   - ไม่พบในเล่ม → คงไว้และเปิด Open Issue
-5. **ค่าในช่อง dropdown ต้องมาจากแท็บ `99_Lists` เท่านั้น** — ถ้าช่องนั้นมี dropdown ที่ template กำหนดรายการไว้ในตัวช่องเอง (inline list เช่น Scenario Type, Screen Type, Test Result) ให้ใช้ได้เฉพาะค่าในรายการของช่องนั้น ห้ามพิมพ์ค่านอกรายการ
-6. **รหัสตาม pattern เดิมและห้ามซ้ำ**: `FLOW-A05-001`, `SCR-A05-001-01`, `TR-A05-001`, `TC-A05-001`, `DOC-001`, `TD-001`, `ISS-001`, `CHG-001` (A05 = Activity 5 เติมศูนย์ให้ครบ 2 หลัก)
-7. **Test Case ต้องครอบคลุม** Happy Path, Negative และ Return/Rework ตาม Decision ของแต่ละ Step
-8. **ทำทีละ Activity** และหยุดสรุปผลให้ตรวจก่อนไป Activity ถัดไป
+## Data Rules
 
-## กติกาการอัปเดตไฟล์ output
+1. **Never guess.** Every filled cell must have a source in the `Source Ref / Page` column (format: `ชื่อเล่ม น.xx` for PDF, `ชื่อเล่ม สไลด์ xx` for PPTX, `ชื่อเล่ม §ชื่อหัวข้อ` for DOCX and page-less files, `path/ไฟล์:บรรทัด` for code — data read from images gets the suffix `[อ่านจากภาพ]`). See "Sources for sheets without a Source Ref column" below.
+2. **Data not found** → leave blank and open an item in `10_Open_Issue` stating the Activity, the missing sheet/cell, and the question for a subject expert.
+3. **Document and code disagree** → use the document value and open an Open Issue listing both values with sources.
+4. **Existing draft data** (status "Draft - รอเทียบเล่ม" or "Draft / รอเทียบเล่ม") must be compared with the documents:
+   - Matches → keep and add the source
+   - Differs → correct it per the document
+   - Not in the documents → keep and open an Open Issue
+5. **Dropdown values must come only from sheet `99_Lists`.** If a cell's dropdown has an inline list defined in the template (e.g. Scenario Type, Screen Type, Test Result), use only values from that list. Never type values outside the list.
+6. **IDs follow the existing pattern and must be unique**: `FLOW-A05-001`, `SCR-A05-001-01`, `TR-A05-001`, `TC-A05-001`, `DOC-001`, `TD-001`, `ISS-001`, `CHG-001` (A05 = Activity 5, zero-padded to 2 digits)
+7. **Test Cases must cover** Happy Path, Negative, and Return/Rework for each Step's Decision.
+8. **One Activity at a time**; stop and summarize for review before moving to the next Activity.
 
-- ถ้ายังไม่มีไฟล์ output ให้คัดลอกจาก template ถ้ามีแล้วให้ **อัปเดตไฟล์เดิมเสมอ**
-- ก่อนแก้ทุกครั้ง สำรองไฟล์ไป `output/backup/` ใส่วันเวลาในชื่อไฟล์ เช่น `ECMIS_Master_Activity_Template_FlowScreenTrace_20260921-1530.xlsx`
-- **ห้ามแตะ** แถวที่สถานะ "ยืนยันแล้ว" และคอลัมน์ `Actual Result`, `Test Result`, `Step Result`, `Defect ID`
-- จับคู่แถวเดิมกับข้อมูลใหม่ **ด้วยรหัส ไม่ใช่ลำดับแถว**
-- รหัสเดิมห้ามเปลี่ยนเลข รายการใหม่รันเลขต่อจากเลขสูงสุด รหัสที่เคยลบ (ดูจาก `18_Change_Log`) ห้ามนำกลับมาใช้
-- ค่าไม่ตรงกับฉบับใหม่ → แก้เป็นค่าใหม่ และบันทึกค่าเดิมใน `18_Change_Log`
-- รายการที่ไม่พบในฉบับใหม่ → ลบแถว พร้อมลบแถวที่อ้างถึงในแท็บอื่นให้ครบ และบันทึกข้อมูลทั้งแถวใน `18_Change_Log`
-  - ยกเว้นแถว "ยืนยันแล้ว" หรือมีผลทดสอบ/Defect แล้ว → **ไม่ลบ** ให้เปิด Open Issue แทน
-- ต้นรอบล้างไฮไลต์ของรอบก่อน ระหว่างรอบไฮไลต์ช่องที่แก้ด้วย **สีเหลืองอ่อน** (`FFF2CC`) และแถวที่เพิ่มใหม่ด้วย **สีเขียวอ่อน** (`E2EFDA`)
-- **ก่อนเขียนไฟล์ ต้องสรุปรายการเพิ่ม/แก้/ลบแยกตามแท็บให้ผู้ใช้ยืนยันก่อนทุกครั้ง**
+## Output Update Rules
 
-## ข้อสังเกตเกี่ยวกับโครงสร้าง template (ใช้ประกอบทุกขั้น)
+- If the output file doesn't exist, copy it from the template. If it exists, **always update the existing file**.
+- Before every edit, back up to `output/backup/` with a timestamp in the name, e.g. `ECMIS_Master_Activity_Template_FlowScreenTrace_20260921-1530.xlsx`
+- **Never touch** rows with status "ยืนยันแล้ว" or the columns `Actual Result`, `Test Result`, `Step Result`, `Defect ID`
+- Match existing rows to new data **by ID, not by row order**
+- Existing IDs never change number. New items continue from the highest number. IDs previously deleted (see `18_Change_Log`) are never reused.
+- Value differs from the new version → update to the new value and log the old value in `18_Change_Log`
+- Item not found in the new version → delete the row plus all rows referencing it in other sheets, and log the full row in `18_Change_Log`
+  - Except rows that are "ยืนยันแล้ว" or already have test results/Defects → **do not delete**; open an Open Issue instead
+- At the start of a run, clear the previous run's highlights. During the run, highlight edited cells **light yellow** (`FFF2CC`) and new rows **light green** (`E2EFDA`)
+- **Before writing the file, always summarize adds/edits/deletes per sheet and get user confirmation**
 
-### ตำแหน่งตาราง
-- ทุกแท็บ: แถว 1 = ชื่อแท็บ, แถว 2 = คำอธิบาย, แถว 5 = หัวคอลัมน์, ข้อมูลเริ่มแถว 6 ถึงแถวสุดท้ายของกรอบตาราง (เช่น `04_MainFlow` ถึงแถว 205, `11_Screen_Sequence` ถึงแถว 505)
-- เพิ่มข้อมูลในแถวว่างภายในกรอบตาราง ใช้ style ของแถวนั้น (ห้ามเปลี่ยนสี/เส้นขอบ ยกเว้นไฮไลต์ตามกติกา)
-- แท็บ `11_Process_Step_Detail` กับ `11_Screen_Sequence` ใช้เลข 11 เหมือนกัน — อ้างด้วยชื่อแท็บเต็มเสมอ
+## Template Structure Notes (apply in every step)
 
-### คอลัมน์สถานะ (ใช้ตัดสินว่าแถวไหน "ยืนยันแล้ว")
-| แท็บ | คอลัมน์สถานะ |
+### Table layout
+- Every sheet: row 1 = sheet title, row 2 = description, row 5 = column headers, data from row 6 to the last row of the table frame (e.g. `04_MainFlow` to row 205, `11_Screen_Sequence` to row 505)
+- Add data in empty rows inside the table frame, using that row's style (never change fill/borders except for the highlight rules)
+- `11_Process_Step_Detail` and `11_Screen_Sequence` share the number 11 — always refer to them by full sheet name
+
+### Status columns (decide which rows are "ยืนยันแล้ว")
+| Sheet | Status column |
 |---|---|
 | 01_ภาพรวม_Activity | สถานะยืนยัน |
 | 03_ใครทำอะไร | สถานะยืนยัน |
@@ -62,26 +64,26 @@
 | 09_Permission | สถานะยืนยัน |
 | 11_Process_Step_Detail | Confirmation Status |
 | 16_Traceability | Confirmation |
-| 11_Screen_Sequence | Screen Type = "Draft / รอเทียบเล่ม" หมายถึงยังเป็นร่าง |
+| 11_Screen_Sequence | Screen Type = "Draft / รอเทียบเล่ม" means still a draft |
 
-แท็บที่ไม่มีคอลัมน์สถานะ (12, 13, 14, 15, 17) ให้ถือสถานะตามแถว Flow/Step ที่อ้างถึง
+Sheets without a status column (12, 13, 14, 15, 17) inherit the status of the referenced Flow/Step row.
 
-### ที่มาของแท็บที่ไม่มีคอลัมน์ Source Ref
-- แท็บที่มีคอลัมน์ที่มา: `11_Process_Step_Detail`, `12_Document_Matrix`, `13_LAW_Transition`, `14_TestCase_Master`, `16_Traceability` (`Source Ref / Page`) และ `17_Test_Data` (`Source / Rule`) → ใส่ที่มาในคอลัมน์นั้น
-- แท็บที่ไม่มีคอลัมน์ที่มา (00–09, 11_Screen_Sequence, 15_Test_Steps) → ที่มาของทุกช่องที่เติม/แก้ ต้องอยู่ในคอลัมน์ `ที่มา` ของ `18_Change_Log` (บันทึกทั้งประเภท เพิ่ม และ แก้) **ห้ามเพิ่มคอลัมน์ใหม่ใน template**
-- `10_Open_Issue` ใช้คอลัมน์ `Ref / Meeting` เป็นที่มา
+### Sources for sheets without a Source Ref column
+- Sheets with a source column: `11_Process_Step_Detail`, `12_Document_Matrix`, `13_LAW_Transition`, `14_TestCase_Master`, `16_Traceability` (`Source Ref / Page`) and `17_Test_Data` (`Source / Rule`) → put the source in that column
+- Sheets without a source column (00–09, 11_Screen_Sequence, 15_Test_Steps) → the source of every filled/edited cell must be in the `ที่มา` column of `18_Change_Log` (log both types เพิ่ม and แก้). **Never add new columns to the template**
+- `10_Open_Issue` uses the `Ref / Meeting` column as its source
 
-### สูตรและ hyperlink (ต้องคงไว้และชี้แถวให้ถูก)
-- `00_Activity_Index`: `Open Issue` (COUNTIFS จาก 10_Open_Issue), `Completion %`
+### Formulas and hyperlinks (keep them and point to the right rows)
+- `00_Activity_Index`: `Open Issue` (COUNTIFS from 10_Open_Issue), `Completion %`
 - `04_MainFlow`: `Screen Count` = COUNTIF(`11_Screen_Sequence`!D, Flow ID)
 - `16_Traceability`: `Test Case Count`, `Coverage`, `Gap / Missing`
-- Hyperlink เป็นสูตร `=HYPERLINK("#'ชื่อแท็บ'!A{แถว}","ข้อความ")` อยู่ในคอลัมน์ `Link to Flow` / `Link to Screen Sequence` (แท็บ 11_Process_Step_Detail, 14, 15, 16) และ `Flow Link` (11_Screen_Sequence)
-- **แถวใน hyperlink ต้องเป็นแถวที่รหัสปลายทางอยู่จริง** (ค้นหาจาก Flow ID / Screen Seq ID) ไม่ใช่เลขแถวเดียวกันกับแถวต้นทาง — ทุกครั้งที่เพิ่ม/ลบ/ย้ายแถว ต้องคำนวณ hyperlink ใหม่ทั้งแท็บ
-- ช่วงอ้างอิงในสูตรเป็นช่วงคงที่ (เช่น `$A$6:$A$405`) — การลบแถวให้ใช้วิธี **เลื่อนข้อมูลแถวล่างขึ้นแทนแถวที่ลบภายในกรอบตาราง** แล้วเขียนสูตรของแต่ละแถวใหม่ตาม pattern เดิม ห้ามใช้การลบแถวของ Excel/openpyxl (`delete_rows`) เพราะทำให้กรอบตาราง dropdown และช่วงสูตรเพี้ยน
-- ค่า cache ของสูตร HYPERLINK ใน template เป็นค่า error ที่ตัวสร้างไฟล์ทิ้งไว้ ("HYPERLINK is not implemented") Excel จะคำนวณใหม่ตอนเปิดไฟล์ — การตรวจสูตรให้ตรวจจากตัวสูตร ไม่ใช่ค่า cache
+- Hyperlinks are formulas `=HYPERLINK("#'ชื่อแท็บ'!A{แถว}","ข้อความ")` in columns `Link to Flow` / `Link to Screen Sequence` (sheets 11_Process_Step_Detail, 14, 15, 16) and `Flow Link` (11_Screen_Sequence)
+- **The row in a hyperlink must be the row where the target ID actually is** (look up by Flow ID / Screen Seq ID), not the same row number as the source row — whenever rows are added/deleted/moved, recompute hyperlinks for the whole sheet
+- Formula ranges are fixed (e.g. `$A$6:$A$405`) — delete a row by **shifting the rows below up within the table frame**, then rewrite each row's formulas per the existing pattern. Never use Excel/openpyxl row deletion (`delete_rows`); it breaks the table frame, dropdowns, and formula ranges
+- The cached value of HYPERLINK formulas in the template is an error left by the generator ("HYPERLINK is not implemented"); Excel recalculates on open — check the formula itself, not the cached value
 
-### เครื่องมือ
-- อ่านโค้ดด้วยแผนที่โค้ด graphify (`references/code-graph.md` ในโฟลเดอร์ skill) เป็นตัวช่วยหาตำแหน่ง — ที่มาที่บันทึกต้องเป็น `path/ไฟล์:บรรทัด` จากการเปิดไฟล์จริง ถ้าไม่มี graphify ให้อ่านโค้ดแบบปกติ
-- แปลงเล่มเอกสารด้วย markitdown ผ่าน `convert_docs.py` เท่านั้น — หน้าที่สคริปต์ติดป้าย "ต้องอ่านจากภาพ" ให้ Claude อ่านจากไฟล์ต้นฉบับแทน
-- แก้ Excel ด้วย Python `openpyxl` (โหลดแบบปกติ ไม่ใช้ `data_only=True` เพื่อไม่ให้สูตรหาย)
-- สคริปต์ชั่วคราวเก็บนอกโปรเจกต์ (scratchpad) ห้ามทิ้งไฟล์ .xlsx อื่นไว้ใน `output/`
+### Tools
+- Read code with the graphify code map (`references/code-graph.md` in the skill folder) as a locator — recorded sources must be `path/ไฟล์:บรรทัด` from actually opening the file. Without graphify, read code normally
+- Convert documents with markitdown via `convert_docs.py` only — pages the script labels "ต้องอ่านจากภาพ" must be read by Claude from the original file
+- Edit Excel with Python `openpyxl` (normal load, not `data_only=True`, so formulas are kept)
+- Keep temporary scripts outside the project (scratchpad); never leave other .xlsx files in `output/`

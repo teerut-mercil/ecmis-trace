@@ -1,16 +1,16 @@
 # Graph Report - AI  (2026-09-22)
 
 ## Corpus Check
-- 31 files · ~33,409 words
+- 32 files · ~34,113 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 162 nodes · 163 edges · 26 communities (18 shown, 8 thin omitted)
-- Extraction: 94% EXTRACTED · 6% INFERRED · 1% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.84)
+- 172 nodes · 172 edges · 27 communities (19 shown, 8 thin omitted)
+- Extraction: 94% EXTRACTED · 5% INFERRED · 1% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a84efa42`
+- Built from commit: `07bde5cb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -40,18 +40,19 @@
 - install.sh script
 - ขั้นตอน
 - แผนที่โค้ด (graphify) — ใช้ประกอบขั้น 3 และขั้น 6
+- ทำงานคู่ขนานด้วย sub-agent (Sonnet) — ใช้ประกอบขั้น 2, 3 และ 6
 
 ## God Nodes (most connected - your core abstractions)
 1. `ECMIS Master Activity Template (converted)` - 21 edges
 2. `/ecmis — พาทำ Activity ครบทุกขั้น` - 11 edges
 3. `ขั้นตอน` - 9 edges
-4. `convert_one()` - 8 edges
-5. `graphify reference: extra exports and benchmark` - 8 edges
-6. `convert_pdf()` - 6 edges
-7. `ecmis-trace project` - 6 edges
-8. `graphify skill (knowledge graph pipeline)` - 6 edges
-9. `main()` - 5 edges
-10. `graphify reference: query, path, explain` - 5 edges
+4. `ทำงานคู่ขนานด้วย sub-agent (Sonnet) — ใช้ประกอบขั้น 2, 3 และ 6` - 9 edges
+5. `convert_one()` - 8 edges
+6. `graphify reference: extra exports and benchmark` - 8 edges
+7. `convert_pdf()` - 6 edges
+8. `ecmis-trace project` - 6 edges
+9. `graphify skill (knowledge graph pipeline)` - 6 edges
+10. `main()` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `AI CLAUDE.md graphify rules` --semantically_similar_to--> `.claude CLAUDE.md`  [INFERRED] [semantically similar]
@@ -71,7 +72,7 @@
 ## Hyperedges (group relationships)
 - **Flow to Test Case traceability chain** — graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_04_mainflow, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_11_process_step_detail, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_14_testcase_master, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_15_test_steps, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_16_traceability [INFERRED 0.75]
 
-## Communities (26 total, 8 thin omitted)
+## Communities (27 total, 8 thin omitted)
 
 ### Community 0 - "ecmis-trace project"
 Cohesion: 0.15
@@ -141,12 +142,16 @@ Nodes (11): 1. ตรวจว่ามี test ตาม user flow แล้ว
 Cohesion: 0.33
 Nodes (5): 1. ตรวจว่ามี graphify, 2. สร้าง/อัปเดตแผนที่, 3. ใช้แผนที่หาโค้ด, หลักการ, แผนที่โค้ด (graphify) — ใช้ประกอบขั้น 3 และขั้น 6
 
+### Community 26 - "ทำงานคู่ขนานด้วย sub-agent (Sonnet) — ใช้ประกอบขั้น 2, 3 และ 6"
+Cohesion: 0.20
+Nodes (9): กติกาที่ต้องใส่ในคำสั่งของ sub-agent ทุกตัว, การถามผู้ใช้ (ขั้น 0), การรวมผล (ตัวหลักทำทุกครั้ง), ขั้น 2 — สกัดข้อมูล, ขั้น 3 — เทียบกับโค้ด, ขั้น 6 — Playwright test, ทำงานคู่ขนานด้วย sub-agent (Sonnet) — ใช้ประกอบขั้น 2, 3 และ 6, หลักการ (+1 more)
+
 ## Ambiguous Edges - Review These
 - `Sheet 11_Process_Step_Detail` → `Sheet 11_Screen_Sequence`  [AMBIGUOUS]
   ecmis-trace/CLAUDE.md · relation: semantically_similar_to
 
 ## Knowledge Gaps
-- **75 isolated node(s):** `build-ecmis-zip.sh script`, `install.sh script`, `For /graphify add`, `For --watch`, `Step 6b - Wiki (only if --wiki flag)` (+70 more)
+- **83 isolated node(s):** `build-ecmis-zip.sh script`, `install.sh script`, `For /graphify add`, `For --watch`, `Step 6b - Wiki (only if --wiki flag)` (+78 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -156,6 +161,6 @@ _Questions this graph is uniquely positioned to answer:_
 - **What is the exact relationship between `Sheet 11_Process_Step_Detail` and `Sheet 11_Screen_Sequence`?**
   _Edge tagged AMBIGUOUS (relation: semantically_similar_to) - confidence is low._
 - **What connects `build-ecmis-zip.sh script`, `install.sh script`, `For /graphify add` to the rest of the system?**
-  _75 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _83 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ECMIS Master Activity Template (converted)` be split into smaller, more focused modules?**
   _Cohesion score 0.08866995073891626 - nodes in this community are weakly interconnected._

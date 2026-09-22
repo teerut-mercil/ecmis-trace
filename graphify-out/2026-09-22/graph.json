@@ -843,6 +843,126 @@
       "source_location": "L1"
     },
     {
+      "id": "ecmis_trace_claude_skills_ecmis_references_subagents",
+      "label": "subagents.md",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "subagents.md",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e01\u0e15_\u0e01\u0e32\u0e17_\u0e15_\u0e2d\u0e07\u0e43\u0e2a_\u0e43\u0e19\u0e04_\u0e32\u0e2a_\u0e07\u0e02\u0e2d\u0e07_sub_agent_\u0e17_\u0e01\u0e15_\u0e27",
+      "label": "\u0e01\u0e15\u0e34\u0e01\u0e32\u0e17\u0e35\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e2a\u0e48\u0e43\u0e19\u0e04\u0e33\u0e2a\u0e31\u0e48\u0e07\u0e02\u0e2d\u0e07 sub-agent \u0e17\u0e38\u0e01\u0e15\u0e31\u0e27",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e01\u0e15\u0e34\u0e01\u0e32\u0e17\u0e35\u0e15\u0e2d\u0e07\u0e43\u0e2a\u0e43\u0e19\u0e04\u0e4d\u0e32\u0e2a\u0e31\u0e07\u0e02\u0e2d\u0e07 sub-agent \u0e17\u0e01\u0e15\u0e31\u0e27",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L12"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e01\u0e32\u0e23\u0e16\u0e32\u0e21\u0e1c_\u0e43\u0e0a_\u0e02_\u0e19_0",
+      "label": "\u0e01\u0e32\u0e23\u0e16\u0e32\u0e21\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49 (\u0e02\u0e31\u0e49\u0e19 0)",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e01\u0e32\u0e23\u0e16\u0e32\u0e21\u0e1c\u0e43\u0e0a (\u0e02\u0e31\u0e19 0)",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L60"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e01\u0e32\u0e23\u0e23\u0e27\u0e21\u0e1c\u0e25_\u0e15_\u0e27\u0e2b\u0e25_\u0e01\u0e17_\u0e32\u0e17_\u0e01\u0e04\u0e23_\u0e07",
+      "label": "\u0e01\u0e32\u0e23\u0e23\u0e27\u0e21\u0e1c\u0e25 (\u0e15\u0e31\u0e27\u0e2b\u0e25\u0e31\u0e01\u0e17\u0e33\u0e17\u0e38\u0e01\u0e04\u0e23\u0e31\u0e49\u0e07)",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e01\u0e32\u0e23\u0e23\u0e27\u0e21\u0e1c\u0e25 (\u0e15\u0e31\u0e27\u0e2b\u0e25\u0e31\u0e01\u0e17\u0e4d\u0e32\u0e17\u0e01\u0e04\u0e23\u0e31\u0e07)",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e02_\u0e19_2_\u0e2a\u0e01_\u0e14\u0e02_\u0e2d\u0e21_\u0e25",
+      "label": "\u0e02\u0e31\u0e49\u0e19 2 \u2014 \u0e2a\u0e01\u0e31\u0e14\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e02\u0e31\u0e19 2 \u2014 \u0e2a\u0e01\u0e31\u0e14\u0e02\u0e2d\u0e21\u0e25",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L35"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e02_\u0e19_3_\u0e40\u0e17_\u0e22\u0e1a\u0e01_\u0e1a\u0e42\u0e04_\u0e14",
+      "label": "\u0e02\u0e31\u0e49\u0e19 3 \u2014 \u0e40\u0e17\u0e35\u0e22\u0e1a\u0e01\u0e31\u0e1a\u0e42\u0e04\u0e49\u0e14",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e02\u0e31\u0e19 3 \u2014 \u0e40\u0e17\u0e35\u0e22\u0e1a\u0e01\u0e31\u0e1a\u0e42\u0e04\u0e14",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L45"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e02_\u0e19_6_playwright_test",
+      "label": "\u0e02\u0e31\u0e49\u0e19 6 \u2014 Playwright test",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e02\u0e31\u0e19 6 \u2014 playwright test",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L52"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e02\u0e19\u0e32\u0e19\u0e14_\u0e27\u0e22_sub_agent_sonnet_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_2_3_\u0e41\u0e25\u0e30_6",
+      "label": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e17\u0e4d\u0e32\u0e07\u0e32\u0e19\u0e04\u0e02\u0e19\u0e32\u0e19\u0e14\u0e27\u0e22 sub-agent (sonnet) \u2014 \u0e43\u0e0a\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e2b\u0e25_\u0e01\u0e01\u0e32\u0e23",
+      "label": "\u0e2b\u0e25\u0e31\u0e01\u0e01\u0e32\u0e23",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e2b\u0e25\u0e31\u0e01\u0e01\u0e32\u0e23",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e44\u0e1f\u0e25_\u0e2a_\u0e27\u0e19\u0e22_\u0e2d\u0e22",
+      "label": "\u0e44\u0e1f\u0e25\u0e4c\u0e2a\u0e48\u0e27\u0e19\u0e22\u0e48\u0e2d\u0e22",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "\u0e17\u0e33\u0e07\u0e32\u0e19\u0e04\u0e39\u0e48\u0e02\u0e19\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22 sub-agent (Sonnet) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 2, 3 \u0e41\u0e25\u0e30 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e44\u0e1f\u0e25\u0e4c\u0e2a\u0e27\u0e19\u0e22\u0e2d\u0e22",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L21"
+    },
+    {
       "id": "ecmis_trace_claude_skills_ecmis_skill",
       "label": "SKILL.md",
       "_origin": "ast",
@@ -881,7 +1001,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 0 \u2014 \u0e15\u0e23\u0e27\u0e08\u0e04\u0e27\u0e32\u0e21\u0e1e\u0e23\u0e2d\u0e21",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L32"
+      "source_location": "L34"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_1_\u0e40\u0e15\u0e23_\u0e22\u0e21\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23",
@@ -893,7 +1013,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 1 \u2014 \u0e40\u0e15\u0e23\u0e35\u0e22\u0e21\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L48"
+      "source_location": "L51"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_2_\u0e2a\u0e01_\u0e14\u0e02_\u0e2d\u0e21_\u0e25",
@@ -905,7 +1025,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 2 \u2014 \u0e2a\u0e01\u0e31\u0e14\u0e02\u0e2d\u0e21\u0e25",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L51"
+      "source_location": "L54"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_3_\u0e40\u0e17_\u0e22\u0e1a\u0e01_\u0e1a\u0e42\u0e04_\u0e14",
@@ -917,7 +1037,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 3 \u2014 \u0e40\u0e17\u0e35\u0e22\u0e1a\u0e01\u0e31\u0e1a\u0e42\u0e04\u0e14",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L64"
+      "source_location": "L67"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_4_\u0e2d_\u0e1b\u0e40\u0e14\u0e15_excel",
@@ -929,7 +1049,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 4 \u2014 \u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15 excel",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L68"
+      "source_location": "L71"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_5_\u0e15\u0e23\u0e27\u0e08\u0e44\u0e1f\u0e25_output",
@@ -941,7 +1061,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 5 \u2014 \u0e15\u0e23\u0e27\u0e08\u0e44\u0e1f\u0e25\u0e4c output",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L71"
+      "source_location": "L74"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_6_playwright_test_\u0e15\u0e32\u0e21_user_flow",
@@ -953,7 +1073,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 6 \u2014 playwright test \u0e15\u0e32\u0e21 user flow",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L74"
+      "source_location": "L77"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e16_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e32\u0e07\u0e01\u0e25\u0e32\u0e07\u0e17\u0e32\u0e07",
@@ -965,7 +1085,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e16\u0e32\u0e07\u0e32\u0e19\u0e04\u0e32\u0e07\u0e01\u0e25\u0e32\u0e07\u0e17\u0e32\u0e07",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L87"
+      "source_location": "L90"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e20\u0e32\u0e1e\u0e23\u0e27\u0e21",
@@ -989,7 +1109,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e2a\u0e23\u0e1b\u0e17\u0e32\u0e22\u0e07\u0e32\u0e19",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L80"
+      "source_location": "L83"
     },
     {
       "id": "claude_skills_graphify_references_exports",
@@ -2972,6 +3092,105 @@
       "weight": 1.0
     },
     {
+      "source": "ecmis_trace_claude_skills_ecmis_references_subagents",
+      "target": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e02\u0e19\u0e32\u0e19\u0e14_\u0e27\u0e22_sub_agent_sonnet_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_2_3_\u0e41\u0e25\u0e30_6",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e02\u0e19\u0e32\u0e19\u0e14_\u0e27\u0e22_sub_agent_sonnet_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_2_3_\u0e41\u0e25\u0e30_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e01\u0e15_\u0e01\u0e32\u0e17_\u0e15_\u0e2d\u0e07\u0e43\u0e2a_\u0e43\u0e19\u0e04_\u0e32\u0e2a_\u0e07\u0e02\u0e2d\u0e07_sub_agent_\u0e17_\u0e01\u0e15_\u0e27",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e02\u0e19\u0e32\u0e19\u0e14_\u0e27\u0e22_sub_agent_sonnet_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_2_3_\u0e41\u0e25\u0e30_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e44\u0e1f\u0e25_\u0e2a_\u0e27\u0e19\u0e22_\u0e2d\u0e22",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e02\u0e19\u0e32\u0e19\u0e14_\u0e27\u0e22_sub_agent_sonnet_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_2_3_\u0e41\u0e25\u0e30_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e01\u0e32\u0e23\u0e23\u0e27\u0e21\u0e1c\u0e25_\u0e15_\u0e27\u0e2b\u0e25_\u0e01\u0e17_\u0e32\u0e17_\u0e01\u0e04\u0e23_\u0e07",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e02\u0e19\u0e32\u0e19\u0e14_\u0e27\u0e22_sub_agent_sonnet_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_2_3_\u0e41\u0e25\u0e30_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e02_\u0e19_2_\u0e2a\u0e01_\u0e14\u0e02_\u0e2d\u0e21_\u0e25",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e02\u0e19\u0e32\u0e19\u0e14_\u0e27\u0e22_sub_agent_sonnet_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_2_3_\u0e41\u0e25\u0e30_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e02_\u0e19_3_\u0e40\u0e17_\u0e22\u0e1a\u0e01_\u0e1a\u0e42\u0e04_\u0e14",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e02\u0e19\u0e32\u0e19\u0e14_\u0e27\u0e22_sub_agent_sonnet_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_2_3_\u0e41\u0e25\u0e30_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e2b\u0e25_\u0e01\u0e01\u0e32\u0e23",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e02\u0e19\u0e32\u0e19\u0e14_\u0e27\u0e22_sub_agent_sonnet_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_2_3_\u0e41\u0e25\u0e30_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e02_\u0e19_6_playwright_test",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e17_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e02\u0e19\u0e32\u0e19\u0e14_\u0e27\u0e22_sub_agent_sonnet_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_2_3_\u0e41\u0e25\u0e30_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_subagents_\u0e01\u0e32\u0e23\u0e16\u0e32\u0e21\u0e1c_\u0e43\u0e0a_\u0e02_\u0e19_0",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/subagents.md",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
       "source": "ecmis_trace_claude_skills_ecmis_scripts_convert_docs",
       "target": "ecmis_trace_claude_skills_ecmis_scripts_convert_docs_convert_one",
       "relation": "contains",
@@ -3100,7 +3319,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -3111,7 +3330,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L48",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -3122,7 +3341,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L51",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -3133,7 +3352,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L64",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -3144,7 +3363,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L68",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -3155,7 +3374,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L71",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -3166,7 +3385,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L74",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -3177,7 +3396,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L80",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -3188,7 +3407,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L87",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -3968,5 +4187,5 @@
       "source_file": "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md"
     }
   ],
-  "built_at_commit": "a84efa4246ded9e00d74f4c3d093fa266788bf2d"
+  "built_at_commit": "07bde5cb448b79440b6c93acd6c4762b1e049755"
 }

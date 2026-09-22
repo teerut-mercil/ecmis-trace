@@ -1,42 +1,42 @@
-# ขั้น 1 — เตรียมเอกสาร (แปลงเล่มด้วย markitdown)
+# Step 1 — Prepare docs (convert with markitdown)
 
-แปลงเล่มเอกสารทั้งหมดใน `input/docs` เป็นข้อความใน `work/docs` แล้วสรุปว่าแต่ละเล่มครอบคลุม Activity ไหน
+Convert all documents in `input/docs` to text in `work/docs`, then summarize which Activities each document covers.
 
-## ขอบเขต
-- **ห้ามแตะไฟล์ Excel ใด ๆ** (template และ output)
-- ห้ามแก้ไฟล์ใน `input/`
-- **ใช้สคริปต์ `convert_docs.py` (markitdown) แปลงเอกสารเท่านั้น** ห้ามแปลงเองด้วยวิธีอื่น
+## Scope
+- **Never touch any Excel file** (template or output)
+- Never modify files in `input/`
+- **Convert documents only with `convert_docs.py` (markitdown)** — no other conversion method
 
-## ขั้นตอน
-1. รันตัวแปลง (แปลงเฉพาะไฟล์ใหม่/เปลี่ยน; ใส่ `--force` ถ้าผู้ใช้ขอแปลงใหม่ทั้งหมด)
+## Procedure
+1. Run the converter (converts only new/changed files; add `--force` if the user asks to reconvert everything)
    ```
    python3 "<SKILL_DIR>/scripts/convert_docs.py" .
    ```
-   (`<SKILL_DIR>` = โฟลเดอร์ skill ตามที่ระบุใน SKILL.md)
-   ผลเป็น JSON: `converted` / `skipped` / `failed` / `orphaned` ต่อไฟล์มี `pages`, `scanned_pages`, `garbled_pages`, `needs_vision`, `ref_style`
-   - exit 2 → ไม่มีไฟล์ใน `input/docs` ให้หยุดแจ้งผู้ใช้
-   - `failed` → แจ้งผู้ใช้พร้อมเหตุผล (เช่น `.doc` ให้บันทึกเป็น `.docx` ก่อน) แล้วทำไฟล์อื่นต่อ
-   - ถ้า `converted` ว่าง ไม่มี `orphaned` และมี `work/docs/_index.md` แล้ว → ข้ามไปข้อ 4
+   (`<SKILL_DIR>` = skill folder as defined in SKILL.md)
+   Output is JSON: `converted` / `skipped` / `failed` / `orphaned`; each file has `pages`, `scanned_pages`, `garbled_pages`, `needs_vision`, `ref_style`
+   - exit 2 → no files in `input/docs`; stop and tell the user
+   - `failed` → tell the user with the reason (e.g. `.doc` must be saved as `.docx` first), then continue with other files
+   - If `converted` is empty, there is no `orphaned`, and `work/docs/_index.md` exists → skip to item 4
 
-2. รูปแบบไฟล์ที่ได้ `work/docs/{ชื่อไฟล์เดิม}.md`
-   | ชนิด | ตัวแบ่ง | รูปแบบที่มา |
+2. Output files are `work/docs/{original name}.md`
+   | Type | Separator | Citation format |
    |---|---|---|
-   | PDF | `===== หน้า 12 / 240 =====` (ถ้าเลขในเล่มต่างจากเลขไฟล์: `===== หน้า 12 / 240 (เลขในเล่ม: 8) =====`) | `ชื่อเล่ม น.12` |
+   | PDF | `===== หน้า 12 / 240 =====` (if the printed page number differs from the file page: `===== หน้า 12 / 240 (เลขในเล่ม: 8) =====`) | `ชื่อเล่ม น.12` |
    | PPTX | `===== สไลด์ 3 / 20 =====` | `ชื่อเล่ม สไลด์ 3` |
-   | DOCX, XLSX และอื่น ๆ | ไม่มีเลขหน้า ใช้หัวข้อ Markdown | `ชื่อเล่ม §ชื่อหัวข้อ` เช่น `คู่มือ.docx §3.2.1 การตรวจสอบ` |
+   | DOCX, XLSX, others | no page numbers, use Markdown headings | `ชื่อเล่ม §ชื่อหัวข้อ` e.g. `คู่มือ.docx §3.2.1 การตรวจสอบ` |
 
-3. **หน้าที่ต้องอ่านจากภาพ** — ทำทุกหน้าใน `scanned_pages`, `garbled_pages` และไฟล์ที่ `needs_vision: true`
-   - `[สแกน — ต้องอ่านจากภาพ]` = ภาพสแกน ดึงข้อความไม่ได้
-   - `[ข้อความไทยเพี้ยน — ต้องอ่านจากภาพ]` = สระ/วรรณยุกต์ไทยหลุดบรรทัดจากการดึงข้อความ PDF
-   - เปิดหน้านั้นจากไฟล์ต้นฉบับใน `input/docs/` ด้วย Read (PDF ใช้ `pages`, ไฟล์รูปเปิดตรง) แล้วถอดข้อความภาษาไทย+อังกฤษ
-   - แทนเนื้อหาของหน้านั้นในไฟล์ `.md` ด้วยข้อความที่ถอดได้ และเปลี่ยนป้ายหัวหน้าเป็น `[อ่านจากภาพ]`
-   - คงตัวแบ่งหน้าและเลขหน้าเดิมไว้ทุกครั้ง
-   - ตัวอักษรที่อ่านไม่ชัด ให้ใส่ `[?]` **ห้ามเดา** โดยเฉพาะรหัส LAW / SDD / Page Code
-   - ถ้ามีหลายสิบหน้า แจ้งจำนวนหน้าให้ผู้ใช้ทราบก่อนเริ่ม เพราะใช้เวลานาน
+3. **Pages that must be read from images** — do every page in `scanned_pages`, `garbled_pages`, and files with `needs_vision: true`
+   - `[สแกน — ต้องอ่านจากภาพ]` = scanned image, no extractable text
+   - `[ข้อความไทยเพี้ยน — ต้องอ่านจากภาพ]` = Thai vowels/tone marks displaced by PDF text extraction
+   - Open that page from the original in `input/docs/` with Read (PDF: use `pages`; images: open directly) and transcribe the Thai+English text
+   - Replace that page's content in the `.md` file with the transcription and change the page header label to `[อ่านจากภาพ]`
+   - Always keep the original page separator and page number
+   - Unclear characters → write `[?]`. **Never guess**, especially LAW / SDD / Page Code IDs
+   - If there are dozens of pages, tell the user the page count before starting since it takes time
 
-4. สร้างหรืออัปเดต `work/docs/_index.md` สรุปรายเล่ม (อัปเดตเฉพาะแถวของเล่มที่เปลี่ยน และลบแถวของเล่มใน `orphaned`):
+4. Create or update `work/docs/_index.md` summarizing each document (update only rows of changed documents, delete rows of documents in `orphaned`), with these Thai column headers:
    | เล่ม | จำนวนหน้า | ชนิด (ข้อความ/สแกน/ผสม) | วิธีอ้างอิง (เลขหน้า/สไลด์/หัวข้อ) | Activity ที่ครอบคลุม (พร้อมช่วงหน้าหรือหัวข้อ) | ตำแหน่งรหัส LAW | ตำแหน่งรหัส SDD | ตำแหน่ง Page Code | หมายเหตุ |
-   - ระบุช่วงหน้า/หัวข้อที่พบรหัสแต่ละประเภท และตัวอย่างรูปแบบรหัสที่พบ (เช่น `LAW-xxx`, `SDD-xxx`)
-   - ระบุหน้าที่ `[อ่านจากภาพ]` และความเสี่ยงความแม่นยำ
+   - State the page ranges/headings where each ID type appears and sample ID formats found (e.g. `LAW-xxx`, `SDD-xxx`)
+   - List pages marked `[อ่านจากภาพ]` and their accuracy risk
 
-5. รายงานผู้ใช้สั้น ๆ: เล่มที่แปลงใหม่/ข้าม/ล้มเหลว, สรุปจาก `_index.md`, หน้าที่อ่านจากภาพ (ควรให้คนตรวจทานเพราะอาจคลาดเคลื่อน) และ Activity ที่ยังหาเล่มอ้างอิงไม่เจอ
+5. Brief report to the user (Thai): documents newly converted/skipped/failed, summary from `_index.md`, pages read from images (should be human-reviewed as they may be inaccurate), and Activities with no reference document found yet.

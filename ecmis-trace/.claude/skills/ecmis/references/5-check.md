@@ -1,27 +1,27 @@
-# ขั้น 5 — ตรวจไฟล์ output
+# Step 5 — Check output
 
-ตรวจความถูกต้องของไฟล์ output (coverage, ที่มา, รหัส/การอ้างอิง/hyperlink, สูตร, dropdown, แถวที่ห้ามแก้) และรายงานรายการที่ไม่ผ่าน
+Validate the output file (coverage, sources, IDs/references/hyperlinks, formulas, dropdowns, protected rows) and report failing items.
 
-Activity: **{Activity}** (ถ้าไม่ระบุ ให้ตรวจทุก Activity ในไฟล์)
+Activity: **{Activity}** (if not given, check every Activity in the file)
 
-## ขอบเขต
-- **อ่านอย่างเดียว** ห้ามแก้ไฟล์ output — รายงานผลเท่านั้น
-- ไฟล์ที่ตรวจ: `output/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` ถ้าไม่มีให้หยุดแจ้งผู้ใช้
-- โหลดด้วย openpyxl แบบปกติ (ไม่ใช้ data_only) เพื่อตรวจตัวสูตร
+## Scope
+- **Read-only** — never modify the output file; report only
+- File checked: `output/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx`; if missing, stop and tell the user
+- Load with openpyxl normally (not data_only) to inspect formulas
 
-## รายการตรวจ
-1. **Coverage** — ทุก LAW Step (แถวใน `11_Process_Step_Detail` และ `16_Traceability` ที่มี LAW / Function No.) มี Test Case อย่างน้อย 1 รายการที่มีอยู่จริงใน `14_TestCase_Master` และแต่ละ Step ที่มี Decision มี Test Case ครอบคลุม Happy Path, Negative, Return/Rework
-2. **ที่มา** — ทุกแถวที่มีข้อมูลในแท็บที่มีคอลัมน์ `Source Ref / Page` (หรือ `Source / Rule`) ต้องมีค่าในคอลัมน์นั้น; แท็บที่ไม่มีคอลัมน์ที่มา ต้องมีรายการใน `18_Change_Log` ที่มีช่องที่มาสำหรับแถวนั้น
-3. **รหัสและการอ้างอิงข้ามแท็บ**
-   - รหัสไม่ซ้ำในแท็บของตัวเอง และตรง pattern (`FLOW-Axx-nnn`, `SCR-Axx-nnn-nn`, `TR-Axx-nnn`, `TC-Axx-nnn`, `DOC-nnn`, `TD-nnn`, `ISS-nnn`, `CHG-nnn`)
-   - รหัสที่อ้างถึงต้องมีอยู่จริง: Flow ID, Primary Screen Seq ID, Screen Seq ID, Previous/Next Screen, From/To Screen Seq ID, Transition Ref, Test Case ID, Test Data ID, Related Test Case ID
-   - ไม่มีการนำรหัสที่ถูกลบ (ตาม `18_Change_Log`) กลับมาใช้
-   - **Hyperlink** (`Link to Flow`, `Link to Screen Sequence`, `Flow Link`): แยกแท็บ/แถวปลายทางจากสูตร HYPERLINK แล้วตรวจว่าแถวนั้นมีรหัส Flow ID / Screen Seq ID ตรงกับแถวต้นทาง และข้อความลิงก์ตรงกับรหัส (สำหรับ `Flow Link`)
-4. **สูตร** — ทุกสูตรตาม pattern ใน CLAUDE.md ยังอยู่ครบทุกแถวข้อมูล, ไม่มี `#REF!` / ชื่อแท็บผิด / ช่วงอ้างอิงเพี้ยนจาก template, และค่าที่ cache ไว้ (ถ้ามี) ไม่เป็น error — ยกเว้นค่า cache "HYPERLINK is not implemented" ที่มาจาก template (ให้ตรวจจากตัวสูตรแทน)
-5. **Dropdown** — ค่าทุกช่องที่มี data validation อยู่ในรายการที่อนุญาต (99_Lists หรือ inline list ของช่องนั้น) และ data validation / กรอบตาราง / ชื่อแท็บ / ลำดับคอลัมน์ ยังเหมือน template
-6. **แถวที่ห้ามแก้** — เทียบกับไฟล์ล่าสุดใน `output/backup/`: แถว "ยืนยันแล้ว" (จับคู่ด้วยรหัส) ต้องไม่เปลี่ยนค่า และคอลัมน์ `Actual Result`, `Test Result`, `Step Result`, `Defect ID` ต้องไม่เปลี่ยนค่า ถ้าไม่มีไฟล์ backup ให้รายงานว่าข้ามข้อนี้
+## Checks
+1. **Coverage** — every LAW Step (rows in `11_Process_Step_Detail` and `16_Traceability` with LAW / Function No.) has at least 1 Test Case that actually exists in `14_TestCase_Master`, and each Step with a Decision has Test Cases covering Happy Path, Negative, Return/Rework
+2. **Sources** — every data row in sheets with a `Source Ref / Page` (or `Source / Rule`) column has a value there; sheets without a source column must have a `18_Change_Log` entry with a source for that row
+3. **IDs and cross-sheet references**
+   - IDs unique within their sheet and matching the pattern (`FLOW-Axx-nnn`, `SCR-Axx-nnn-nn`, `TR-Axx-nnn`, `TC-Axx-nnn`, `DOC-nnn`, `TD-nnn`, `ISS-nnn`, `CHG-nnn`)
+   - Referenced IDs actually exist: Flow ID, Primary Screen Seq ID, Screen Seq ID, Previous/Next Screen, From/To Screen Seq ID, Transition Ref, Test Case ID, Test Data ID, Related Test Case ID
+   - No deleted IDs (per `18_Change_Log`) reused
+   - **Hyperlinks** (`Link to Flow`, `Link to Screen Sequence`, `Flow Link`): parse target sheet/row from the HYPERLINK formula and check that row's Flow ID / Screen Seq ID matches the source row, and the link text matches the ID (for `Flow Link`)
+4. **Formulas** — every formula per the CLAUDE.md patterns is present on all data rows; no `#REF!` / wrong sheet names / ranges drifted from the template; cached values (if any) are not errors — except the "HYPERLINK is not implemented" cache from the template (check the formula instead)
+5. **Dropdowns** — every data-validated cell's value is in the allowed list (99_Lists or the cell's inline list), and data validation / table frame / sheet names / column order still match the template
+6. **Protected rows** — compare with the latest file in `output/backup/`: "ยืนยันแล้ว" rows (matched by ID) must be unchanged, and columns `Actual Result`, `Test Result`, `Step Result`, `Defect ID` must be unchanged. If no backup exists, report this check as skipped
 
-## รายงาน
-- ตารางสรุป: ข้อ | ผ่าน/ไม่ผ่าน | จำนวนรายการที่ไม่ผ่าน
-- รายการที่ไม่ผ่านทั้งหมด: ข้อ | แท็บ | แถว | รหัส | คอลัมน์ | ปัญหา | ข้อเสนอแก้
-- ห้ามแก้เอง ให้ผู้ใช้ตัดสินใจว่าจะแก้โดยรัน `/ecmis {Activity}` ใหม่ หรือเปิด Open Issue
+## Report (Thai)
+- Summary table: ข้อ | ผ่าน/ไม่ผ่าน | จำนวนรายการที่ไม่ผ่าน
+- All failing items: ข้อ | แท็บ | แถว | รหัส | คอลัมน์ | ปัญหา | ข้อเสนอแก้
+- Don't fix anything yourself; the user decides whether to fix by rerunning `/ecmis {Activity}` or opening an Open Issue

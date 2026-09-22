@@ -1,66 +1,66 @@
-# ทำงานคู่ขนานด้วย sub-agent (Sonnet) — ใช้ประกอบขั้น 2, 3 และ 6
+# Parallel work with sub-agents (Sonnet) — used in steps 2, 3 and 6
 
-ใช้ sub-agent รุ่น **Sonnet** เป็นผู้ลงมือทำงานหลัก แบ่งงานส่วนที่แยกกันได้ให้ทำพร้อมกัน แล้วให้ตัวหลัก (ผู้ประสานงาน) รวมผล ตรวจความสอดคล้อง และเป็นผู้ตัดสินใจ/เขียนไฟล์สุดท้ายเพียงคนเดียว
+Use **Sonnet** sub-agents as the main workers: split independent parts to run in parallel, while the main agent (coordinator) merges results, checks consistency, and is the only one who decides and writes final files.
 
-## หลักการ
-- **ผู้ใช้เลือกเองในขั้น 0** ว่าจะใช้ sub-agent หรือไม่ (ดูข้อ "การถามผู้ใช้") — ถ้าเลือกไม่ใช้ ให้ทำทุกขั้นแบบคนเดียวตามปกติ และไม่ต้องอ่านไฟล์นี้ต่อ
-- เรียก sub-agent ด้วยเครื่องมือ Agent โดยกำหนด `model: sonnet` — งานที่แยกกันได้ให้ส่งใน **ข้อความเดียวหลายคำสั่ง** เพื่อให้ทำพร้อมกัน
-- ตัวหลักเป็นคนเดียวที่: คุยกับผู้ใช้, ถาม AskUserQuestion, ตั้งรหัส/`NEW-n`, เขียนไฟล์รวม (`_extract.md`, `_verify.md`, `_screens.md`, `_playwright.md`) และ **เขียนไฟล์ Excel (ขั้น 4 ไม่ใช้ sub-agent)**
-- **ถ้าเรียก sub-agent ไม่ได้** (ไม่มี Sonnet, เครื่องมือ Agent ใช้ไม่ได้, sub-agent ล้มเหลว) → แจ้งสั้น ๆ แล้วทำส่วนนั้นต่อเองแบบคนเดียว ไม่ต้องถามผู้ใช้ ไม่หยุดงาน
-- จำนวน sub-agent ต่อรอบ: ไม่เกิน 4 ตัว — ถ้างานน้อย (เช่น เล่มเดียวไม่กี่หน้า, flow เดียว) ให้ใช้น้อยตัวหรือทำเองได้
+## Principles
+- **The user chooses in step 0** whether to use sub-agents (see "Asking the user") — if not, do every step solo as usual and stop reading this file
+- Call sub-agents with the Agent tool using `model: sonnet` — send independent tasks as **multiple calls in one message** so they run in parallel
+- Only the main agent: talks to the user, uses AskUserQuestion, assigns IDs/`NEW-n`, writes merged files (`_extract.md`, `_verify.md`, `_screens.md`, `_playwright.md`), and **writes the Excel file (step 4 never uses sub-agents)**
+- **If sub-agents can't be used** (no Sonnet, Agent tool unavailable, sub-agent failed) → say so briefly and do that part solo; don't ask the user, don't stop
+- Sub-agents per round: at most 4 — for small work (e.g. one short document, one flow) use fewer or do it yourself
 
-## กติกาที่ต้องใส่ในคำสั่งของ sub-agent ทุกตัว
-sub-agent ไม่เห็นบทสนทนานี้ คำสั่งต้องครบในตัว ระบุทุกข้อ:
-1. Activity, ขอบเขตงานของตัวนี้ (ส่วนไหน/Flow ไหน/แท็บไหน) และสิ่งที่ **ไม่ใช่** งานของตัวนี้ (เพื่อไม่ทำซ้ำกับตัวอื่น)
-2. path ที่ต้องอ่าน และ **ไฟล์เดียวที่เขียนได้** (ไฟล์ส่วนย่อยตามข้อ "ไฟล์ส่วนย่อย") — ห้ามเขียนไฟล์อื่น
-3. ให้อ่าน `CLAUDE.md` ของโปรเจกต์ และไฟล์ reference ของขั้นนั้น (ส่ง path เต็มของ `<SKILL_DIR>/references/…`) แล้วทำตามกติกาข้อมูล: ห้ามเดา, ทุกรายการมีที่มา, ป้าย `[อ่านจากภาพ]` / `[code]`
-4. **ห้าม**: แตะไฟล์ Excel, แก้โค้ด prototype, ถามผู้ใช้, ตั้งรหัสจริง (ใช้ `NEW-<ตัวย่อกลุ่ม>-n` เช่น `NEW-B-3`), รัน `graphify extract/update`
-5. สิ่งที่หาไม่เจอหรือไม่แน่ใจ → เขียนเป็น "รายการคำถาม" ในไฟล์ส่วนย่อย ไม่ต้องหยุดถาม
-6. ตอบกลับตัวหลักสั้น ๆ: จำนวนรายการที่ได้, จำนวนคำถาม, ปัญหาที่เจอ (ไม่ต้องส่งเนื้อหาทั้งหมดกลับมา — อยู่ในไฟล์แล้ว)
+## Rules every sub-agent prompt must include
+Sub-agents can't see this conversation; the prompt must be self-contained and state all of:
+1. Activity, this agent's scope (which part/Flow/sheet), and what is **not** its job (to avoid duplicating others)
+2. Paths to read and **the single file it may write** (a part file per "Part files") — no other files
+3. Read the project `CLAUDE.md` and the step's reference file (give the full path `<SKILL_DIR>/references/…`) and follow the data rules: never guess, every item has a source, tags `[อ่านจากภาพ]` / `[code]`
+4. **Forbidden**: touching Excel files, modifying prototype code, asking the user, assigning real IDs (use `NEW-<group letter>-n`, e.g. `NEW-B-3`), running `graphify extract/update`
+5. Anything not found or uncertain → write it under "รายการคำถาม" in the part file; don't stop to ask
+6. Reply to the main agent briefly: item count, question count, problems hit (don't send the full content back — it's in the file)
 
-## ไฟล์ส่วนย่อย
-- เก็บที่ `work/extract/_parts/A{nn}_<ขั้น>_<กลุ่ม>.md` เช่น `A05_extract_B.md`, `A05_verify_FLOW-A05-002.md`, `A05_screens_FLOW-A05-001.md`
-- ต้นรอบของขั้นนั้น ลบไฟล์ส่วนย่อยของขั้นเดิมใน Activity นี้ทิ้งก่อน (กันข้อมูลค้างจากรอบก่อน)
-- รวมเสร็จและตรวจผ่านแล้ว → ลบไฟล์ส่วนย่อยของขั้นนั้น ผลจริงอยู่ในไฟล์รวมเท่านั้น
+## Part files
+- Stored at `work/extract/_parts/A{nn}_<step>_<group>.md`, e.g. `A05_extract_B.md`, `A05_verify_FLOW-A05-002.md`, `A05_screens_FLOW-A05-001.md`
+- At the start of a step, delete that step's old part files for this Activity (avoid stale data)
+- After merging and checking → delete that step's part files; real results live only in the merged file
 
-## การรวมผล (ตัวหลักทำทุกครั้ง)
-1. อ่านไฟล์ส่วนย่อยครบทุกไฟล์ — ถ้ามีกลุ่มที่ sub-agent ล้มเหลว/ไม่เสร็จ ให้ทำกลุ่มนั้นเองก่อนรวม
-2. **ตัดรายการซ้ำ** (เรื่องเดียวกันจากคนละกลุ่ม) — จับคู่ด้วยรหัสเดิมก่อน แล้วค่อยใช้ชื่อ + ที่มา
-3. **ตรวจความขัดกัน** ระหว่างกลุ่ม (เช่น ชื่อ Step/หน้าจอสะกดต่างกัน, สถานะถัดไปไม่ตรงกัน, ผลเทียบโค้ดของ component เดียวกันต่างกัน) → เปิดดูที่มาเองแล้วตัดสิน ถ้าเล่มขัดกันเองให้ยกเป็นรายการคำถาม
-4. แปลง `NEW-<กลุ่ม>-n` เป็น `NEW-1`, `NEW-2`, … ต่อเนื่องทั้งไฟล์ และแก้ทุกจุดที่อ้างถึงให้ตรงกัน
-5. **สุ่มตรวจที่มา** อย่างน้อย 3 รายการต่อกลุ่ม (เปิดหน้า/บรรทัดที่อ้างจริง) — ถ้าไม่ตรง ให้ตรวจทั้งกลุ่มนั้นใหม่
-6. รวมรายการคำถามทุกกลุ่มเป็นชุดเดียว ตัดข้อซ้ำ
-7. แจ้งความคืบหน้าสั้น ๆ เช่น `ขั้น 2/6 รวมผลจาก 4 ส่วน — ตัดซ้ำ 3 รายการ`
+## Merging (main agent, every time)
+1. Read all part files — if a group's sub-agent failed/didn't finish, do that group yourself before merging
+2. **Remove duplicates** (same item from different groups) — match by existing ID first, then by name + source
+3. **Check for conflicts** between groups (e.g. differently spelled Step/screen names, mismatched next status, different code-check results for the same component) → open the sources yourself and decide; if the documents contradict each other, raise a question
+4. Renumber `NEW-<group>-n` to `NEW-1`, `NEW-2`, … sequentially across the file and fix every reference
+5. **Spot-check sources**: at least 3 items per group (open the cited page/line) — if any is wrong, recheck that whole group
+6. Merge all groups' questions into one list, removing duplicates
+7. Report short progress, e.g. `ขั้น 2/6 รวมผลจาก 4 ส่วน — ตัดซ้ำ 3 รายการ`
 
-## ขั้น 2 — สกัดข้อมูล
-ตัวหลักทำข้อ 1–3 ของ `2-extract.md` เอง (หาเล่ม/ช่วงหน้า, หัวคอลัมน์, รหัสเดิม) แล้ว:
-1. **โครงหลักก่อน** — ตัวหลักสกัด `04 Main Flow` (รายการ Step ตามลำดับ พร้อมรหัสเดิม/`NEW-n`) ให้เสร็จก่อน เพื่อให้ทุกกลุ่มใช้ชื่อและลำดับ Step เดียวกัน
-2. **รอบที่ 1 (พร้อมกัน)** — ส่งโครง Main Flow ไปกับคำสั่งทุกตัว:
-   - กลุ่ม A: 01 / 02 / 03 / 05 / 06 / 07 / 08 / 09
-   - กลุ่ม B: 11 Process Step Detail + 11 Screen Sequence
-   - กลุ่ม C: 12 Document Matrix + 13 LAW Transition
-3. **รอบที่ 2** — หลังรวมรอบที่ 1: กลุ่ม D: 14–15 Test Case / Test Steps + 17 Test Data (ต้องใช้ Decision, หน้าจอ และ Transition จากรอบที่ 1 — ส่ง path ไฟล์รวมไปด้วย)
-4. ตัวหลักรวมผลเป็น `A{nn}_extract.md` ตามโครงของ `2-extract.md`, ทำข้อ 6 (เทียบร่างเดิม) และข้อ 7 (รายการคำถาม) ให้ครบ แล้วไปจุดตรวจ 1
+## Step 2 — Extract
+The main agent does items 1–3 of `2-extract.md` itself (find documents/page ranges, column headers, existing IDs), then:
+1. **Backbone first** — the main agent extracts `04 Main Flow` (ordered Step list with existing IDs/`NEW-n`) so all groups use the same Step names and order
+2. **Round 1 (parallel)** — send the Main Flow backbone with every prompt:
+   - Group A: 01 / 02 / 03 / 05 / 06 / 07 / 08 / 09
+   - Group B: 11 Process Step Detail + 11 Screen Sequence
+   - Group C: 12 Document Matrix + 13 LAW Transition
+3. **Round 2** — after merging round 1: Group D: 14–15 Test Case / Test Steps + 17 Test Data (needs Decisions, screens, and Transitions from round 1 — pass the merged file path)
+4. The main agent merges into `A{nn}_extract.md` per the `2-extract.md` structure, completes item 6 (compare with draft) and item 7 (questions), then goes to Checkpoint 1
 
-## ขั้น 3 — เทียบกับโค้ด
-1. ตัวหลักสร้าง/อัปเดตแผนที่โค้ด (`code-graph.md` ข้อ 2) **ก่อน** แจกงาน — sub-agent ใช้ได้เฉพาะ `graphify query/explain/path/god-nodes` แบบอ่านอย่างเดียว
-2. แบ่งรายการชั้นหน้าจอใน `A{nn}_extract.md` ตาม Flow (หรือกลุ่มหน้าจอ ถ้า Flow เดียวแต่หน้าจอเยอะ) — 1 sub-agent ต่อกลุ่ม ให้แต่ละตัวทำข้อ 2–5 ของ `3-verify.md` เฉพาะกลุ่มตัวเอง
-3. component/ไฟล์ที่ใช้ร่วมกันหลาย Flow (เช่น enum สถานะ, layout, สิทธิ์) — มอบให้ **กลุ่มแรกกลุ่มเดียว** ตรวจ แล้วบอกกลุ่มอื่นว่าไม่ต้องตรวจซ้ำ
-4. "พบในโค้ดแต่ไม่พบในเล่ม" — ตัวหลักตัดซ้ำตอนรวม (หลายกลุ่มอาจเจอเรื่องเดียวกัน)
-5. ตัวหลักรวมเป็น `A{nn}_verify.md` ตามข้อ 6 ของ `3-verify.md` แล้วรายงานตามข้อ 7
+## Step 3 — Verify vs code
+1. The main agent builds/updates the code map (`code-graph.md` item 2) **before** dispatching — sub-agents may only use read-only `graphify query/explain/path/god-nodes`
+2. Split screen-level items in `A{nn}_extract.md` by Flow (or by screen group if one Flow has many screens) — 1 sub-agent per group, each doing items 2–5 of `3-verify.md` for its group only
+3. Components/files shared across Flows (e.g. status enums, layout, permissions) — assign to **only the first group**, and tell the others not to recheck
+4. "พบในโค้ดแต่ไม่พบในเล่ม" — the main agent dedupes when merging (several groups may find the same thing)
+5. The main agent merges into `A{nn}_verify.md` per item 6 of `3-verify.md` and reports per item 7
 
-## ขั้น 6 — Playwright test
-ตัวหลักทำข้อ 1–3 ของ `6-playwright.md` เอง (ตรวจ test เดิม, รวบรวม user flow, เตรียมการรัน) แล้ว:
-1. **Extracting screen details (ข้อ 4)** — ตัวหลักเปิด prototype **ครั้งเดียว** ที่พอร์ตเดียว แล้วส่ง URL ให้ sub-agent 1 ตัวต่อ Flow (ห้ามแต่ละตัวเปิด server เอง) แต่ละตัวใช้ browser context ของตัวเองและตั้งสถานะเริ่มต้นเองตามกลไกของ prototype, เขียนผลลงไฟล์ส่วนย่อย → ตัวหลักรวมเป็น `A{nn}_screens.md` และปิด server
-2. **⏸ จุดตรวจ 3** — ตัวหลักทำเองตามข้อ 5
-3. **เขียน test (ข้อ 6)** — ตัวหลักเขียนส่วนที่ใช้ร่วมกันก่อน: `playwright.config.ts`, `e2e/helpers/screen.ts`, `package.json`, `.gitignore` และติดตั้ง Playwright (ข้อ 7.1) — จากนั้น sub-agent 1 ตัวต่อ Flow เขียน `e2e/flows/<flow-id>-….spec.ts` **ไฟล์ของตัวเองเท่านั้น** (ห้ามแก้ helper/config — ถ้าต้องการฟังก์ชันเพิ่มให้แจ้งกลับตัวหลัก)
-4. **รันรายไฟล์ (ข้อ 7.2–7.3)** — แต่ละ sub-agent รันเฉพาะไฟล์ spec ของตัวเองจนผ่าน (ใช้ `--workers=1` กันแย่ง server; ให้ Playwright เปิด server ตาม `webServer` + `reuseExistingServer`) — กรณีจะเปลี่ยนเป็น `test.fixme` ให้ส่งเหตุผลและที่มากลับมา **ตัวหลักเป็นผู้ยืนยัน** ว่าเป็น "prototype ไม่ตรง flow" จริง ไม่ใช่ปัญหาที่ test
-5. **รันรวม (ข้อ 7.4–7.6)** — ตัวหลักรันทั้งชุดเอง รวมถึง `--repeat-each=2` และ test ชุดเดิมของ repo ตรวจว่า style/ชื่อ `describe`/`test` ของทุกไฟล์สม่ำเสมอกัน แล้วบันทึก `A{nn}_playwright.md` ตามข้อ 8
+## Step 6 — Playwright tests
+The main agent does items 1–3 of `6-playwright.md` itself (check existing tests, gather user flows, prepare to run), then:
+1. **Extracting screen details (item 4)** — the main agent starts the prototype **once** on one port and passes the URL to 1 sub-agent per Flow (sub-agents must not start their own servers). Each uses its own browser context and sets initial state itself via the prototype's mechanisms, writing to a part file → the main agent merges into `A{nn}_screens.md` and stops the server
+2. **⏸ Checkpoint 3** — main agent does it per item 5
+3. **Write tests (item 6)** — the main agent writes the shared parts first: `playwright.config.ts`, `e2e/helpers/screen.ts`, `package.json`, `.gitignore`, and installs Playwright (item 7.1) — then 1 sub-agent per Flow writes `e2e/flows/<flow-id>-….spec.ts`, **its own file only** (never edit helpers/config — request extra functions from the main agent)
+4. **Per-file runs (items 7.2–7.3)** — each sub-agent runs only its own spec until it passes (use `--workers=1` to avoid server contention; let Playwright start the server via `webServer` + `reuseExistingServer`). To switch to `test.fixme`, send the reason and source back — **the main agent confirms** it is a genuine prototype-vs-flow mismatch, not a test problem
+5. **Full run (items 7.4–7.6)** — the main agent runs the whole suite itself, including `--repeat-each=2` and the repo's existing tests, checks that style/`describe`/`test` naming is consistent across files, then saves `A{nn}_playwright.md` per item 8
 
-## การถามผู้ใช้ (ขั้น 0)
-ถามครั้งเดียวต่อรอบ หลังตรวจความพร้อมเสร็จ (AskUserQuestion) พร้อมบอกขนาดงานคร่าว ๆ (จำนวนเล่ม/หน้าที่เกี่ยวกับ Activity ถ้ารู้, มีโค้ดหรือไม่):
+## Asking the user (step 0)
+Ask once per run after the readiness check (AskUserQuestion), with a rough size of the work (number of documents/pages related to the Activity if known, whether code exists):
 "จะให้แบ่งงานให้ผู้ช่วยหลายตัว (sub-agent) ทำพร้อมกันไหม? — เร็วขึ้นเมื่องานใหญ่ แต่ใช้โควตามากขึ้น"
-- `ใช้ผู้ช่วยทำพร้อมกัน` — แนะนำเมื่อ เล่มหลายเล่ม/หลายสิบหน้า, หลาย Flow, หรือหน้าจอเยอะ (ใส่ "(แนะนำ)" ต่อท้ายตัวเลือกนี้เมื่อเข้าเงื่อนไข)
-- `ทำทีละขั้นคนเดียว` — แนะนำเมื่องานเล็ก (ใส่ "(แนะนำ)" ต่อท้ายเมื่อไม่เข้าเงื่อนไขข้างบน)
+- `ใช้ผู้ช่วยทำพร้อมกัน` — recommended when many documents/dozens of pages, several Flows, or many screens (append "(แนะนำ)" to this option when the condition holds)
+- `ทำทีละขั้นคนเดียว` — recommended for small work (append "(แนะนำ)" when the condition above doesn't hold)
 
-คำตอบใช้กับขั้น 2, 3 และ 6 ตลอดรอบนี้ ไม่ต้องถามซ้ำ (สั่ง `/ecmis <เลข> test` ก็ถามในขั้น 0 เช่นกัน)
+The answer applies to steps 2, 3 and 6 for the whole run; don't ask again (`/ecmis <no.> test` also asks in step 0).
