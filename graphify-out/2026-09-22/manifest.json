@@ -84,15 +84,15 @@
     "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
   },
   "ecmis-trace/CLAUDE.md": {
-    "mtime": 1789980725.836212,
-    "seen": 1789980837.390409,
-    "ast_hash": "ecda3f2a387cd1f60f6a2dcfdcbd33cd",
+    "mtime": 1790060648.64764,
+    "seen": 1790060654.358578,
+    "ast_hash": "d6736c7df9f62fc9533a5a5e91120f4b",
     "semantic_hash": ""
   },
   "ecmis-trace/README.md": {
-    "mtime": 1789981286.7788327,
-    "seen": 1789981296.1759648,
-    "ast_hash": "fe6ea1a6b70b3aef8f69cae83c259923",
+    "mtime": 1790060648.6484735,
+    "seen": 1790060654.358579,
+    "ast_hash": "a71465801929bbad2ded589083e5e3ab",
     "semantic_hash": ""
   },
   "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md": {
@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/SKILL.md": {
-    "mtime": 1789980725.8354073,
-    "seen": 1789980837.3904052,
-    "ast_hash": "1c9a08fdd1b142bb5369548ab1feb674",
+    "mtime": 1790060648.6465816,
+    "seen": 1790060654.358572,
+    "ast_hash": "7a4e7e4bd0e04f54b547fc916ab68e87",
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/references/1-prepare.md": {
@@ -126,9 +126,9 @@
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/references/3-verify.md": {
-    "mtime": 1789979948.495683,
-    "seen": 1789980004.839252,
-    "ast_hash": "038a638ac7c72f0c562ac5df502faaa8",
+    "mtime": 1790060648.6470947,
+    "seen": 1790060654.3585742,
+    "ast_hash": "56ad3fa14474b875b0c024884bd1f20d",
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/references/4-update.md": {
@@ -183,6 +183,12 @@
     "mtime": 1790059102.8472016,
     "seen": 1790059118.4091861,
     "ast_hash": "01772a30d3db3128df998451f06d87ca",
+    "semantic_hash": ""
+  },
+  "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md": {
+    "mtime": 1790060613.298989,
+    "seen": 1790060654.358577,
+    "ast_hash": "959d17fd0f10aeec9f3756237277af20",
     "semantic_hash": ""
   }
 }

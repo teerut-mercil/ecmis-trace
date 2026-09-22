@@ -84,15 +84,15 @@
     "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
   },
   "ecmis-trace/CLAUDE.md": {
-    "mtime": 1790060648.64764,
-    "seen": 1790060654.358578,
-    "ast_hash": "d6736c7df9f62fc9533a5a5e91120f4b",
+    "mtime": 1790061693.8763878,
+    "seen": 1790061700.407155,
+    "ast_hash": "624776491a006ea19f3579b65a19f721",
     "semantic_hash": ""
   },
   "ecmis-trace/README.md": {
-    "mtime": 1790060648.6484735,
-    "seen": 1790060654.358579,
-    "ast_hash": "a71465801929bbad2ded589083e5e3ab",
+    "mtime": 1790061693.8768055,
+    "seen": 1790061700.407156,
+    "ast_hash": "3a01c060052989dca683fb53ed047825",
     "semantic_hash": ""
   },
   "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md": {
@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/SKILL.md": {
-    "mtime": 1790060648.6465816,
-    "seen": 1790060654.358572,
-    "ast_hash": "7a4e7e4bd0e04f54b547fc916ab68e87",
+    "mtime": 1790061673.1939938,
+    "seen": 1790061700.4071481,
+    "ast_hash": "8d8431d28f6611c3712f1e74ea351ecb",
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/references/1-prepare.md": {
@@ -126,9 +126,9 @@
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/references/3-verify.md": {
-    "mtime": 1790060648.6470947,
-    "seen": 1790060654.3585742,
-    "ast_hash": "56ad3fa14474b875b0c024884bd1f20d",
+    "mtime": 1790061693.8755586,
+    "seen": 1790061700.4071512,
+    "ast_hash": "bd0f84da5c973bbf493ee075ebb37619",
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/references/4-update.md": {
@@ -186,9 +186,15 @@
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md": {
-    "mtime": 1790060613.298989,
-    "seen": 1790060654.358577,
-    "ast_hash": "959d17fd0f10aeec9f3756237277af20",
+    "mtime": 1790061693.8759737,
+    "seen": 1790061700.407153,
+    "ast_hash": "846cf832d2fe9b0de1e6fc9e0f9ae2b0",
+    "semantic_hash": ""
+  },
+  "ecmis-trace/.claude/skills/ecmis/references/code-graph.md": {
+    "mtime": 1790061662.570164,
+    "seen": 1790061700.4071538,
+    "ast_hash": "7e97b37f4d76cbb65ce626c3af91867e",
     "semantic_hash": ""
   }
 }

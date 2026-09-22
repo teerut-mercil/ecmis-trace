@@ -10,6 +10,7 @@
 - `template/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` = template ต้นฉบับ **ห้ามแก้**
 - `work/docs/` = เล่มที่แปลงเป็น Markdown ด้วย **markitdown** (สคริปต์ `scripts/convert_docs.py` ในโฟลเดอร์ skill) — PDF มีเลขหน้า, PPTX มีเลขสไลด์, DOCX และอื่น ๆ อ้างอิงด้วยหัวข้อ
 - `work/extract/` = ข้อมูลที่สกัดแยกราย Activity (extract / verify / plan)
+- `work/graph/` = แผนที่โค้ด (graphify) ของ prototype ใช้ช่วยหาโค้ดในขั้น 3 และ 6 — สร้างที่นี่เท่านั้น ห้ามสร้าง `graphify-out/` ใน repo prototype
 - ทุกขั้นทำผ่าน skill `/ecmis <เลข Activity>` (ติดตั้งที่ `.claude/skills/ecmis/` ในโปรเจกต์ หรือ `~/.claude/skills/ecmis/` แบบ global)
 - Output มีไฟล์เดียวคือ `output/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` **ห้ามสร้างไฟล์ output อื่น** (Playwright test และ screenshot ของขั้น 6 อยู่ใน repo prototype ไม่นับเป็น output)
 - `output/backup/` = ไฟล์สำรองก่อนแก้ทุกครั้ง (ไม่นับเป็น output)
@@ -79,6 +80,7 @@
 - ค่า cache ของสูตร HYPERLINK ใน template เป็นค่า error ที่ตัวสร้างไฟล์ทิ้งไว้ ("HYPERLINK is not implemented") Excel จะคำนวณใหม่ตอนเปิดไฟล์ — การตรวจสูตรให้ตรวจจากตัวสูตร ไม่ใช่ค่า cache
 
 ### เครื่องมือ
+- อ่านโค้ดด้วยแผนที่โค้ด graphify (`references/code-graph.md` ในโฟลเดอร์ skill) เป็นตัวช่วยหาตำแหน่ง — ที่มาที่บันทึกต้องเป็น `path/ไฟล์:บรรทัด` จากการเปิดไฟล์จริง ถ้าไม่มี graphify ให้อ่านโค้ดแบบปกติ
 - แปลงเล่มเอกสารด้วย markitdown ผ่าน `convert_docs.py` เท่านั้น — หน้าที่สคริปต์ติดป้าย "ต้องอ่านจากภาพ" ให้ Claude อ่านจากไฟล์ต้นฉบับแทน
 - แก้ Excel ด้วย Python `openpyxl` (โหลดแบบปกติ ไม่ใช้ `data_only=True` เพื่อไม่ให้สูตรหาย)
 - สคริปต์ชั่วคราวเก็บนอกโปรเจกต์ (scratchpad) ห้ามทิ้งไฟล์ .xlsx อื่นไว้ใน `output/`

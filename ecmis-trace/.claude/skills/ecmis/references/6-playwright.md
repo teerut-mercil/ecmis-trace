@@ -15,6 +15,7 @@ Activity: **{Activity}**
 
 ### 1. ตรวจว่ามี test ตาม user flow แล้วหรือยัง
 - หา `playwright.config.*` และไฟล์ `*.spec.ts` / `*.spec.js` (ไม่นับ `node_modules`) ใน prototype
+- ถ้ามีแผนที่โค้ด (`work/graph/graphify-out/graph.json`) ใช้ `graphify query` ตาม `code-graph.md` ข้อ 3 ช่วยหา route, หน้าจอตาม Page Code, กลไกตั้งสถานะเริ่มต้น (mock state / seed / login) และ test ที่มีอยู่ — แล้วเปิดไฟล์จริงเพื่อยืนยัน ถ้ายังไม่มีแผนที่ (เช่น สั่ง `/ecmis <เลข> test`) ให้สร้างตาม `code-graph.md` ข้อ 2 ก่อน
 - จับคู่ test ที่มีอยู่กับ flow ของ Activity นี้ จากชื่อไฟล์ ชื่อ `describe`/`test` และ comment หัวไฟล์ (Flow ID, Screen Seq ID, Page Code, LAW / Function No., Test Case ID)
 - ผล:
   - ทุก flow มี test แล้ว → แจ้ง "prototype มี Playwright test ตาม user flow ครบแล้ว" แสดงตาราง flow ↔ ไฟล์ test แล้วไปสรุปท้ายงาน

@@ -1,16 +1,16 @@
 # Graph Report - AI  (2026-09-22)
 
 ## Corpus Check
-- 30 files · ~32,963 words
+- 31 files · ~33,409 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 156 nodes · 158 edges · 25 communities (17 shown, 8 thin omitted)
+- 162 nodes · 163 edges · 26 communities (18 shown, 8 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 1% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `54b65307`
+- Built from commit: `a84efa42`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -39,6 +39,7 @@
 - build-ecmis-zip.sh script
 - install.sh script
 - ขั้นตอน
+- แผนที่โค้ด (graphify) — ใช้ประกอบขั้น 3 และขั้น 6
 
 ## God Nodes (most connected - your core abstractions)
 1. `ECMIS Master Activity Template (converted)` - 21 edges
@@ -70,7 +71,7 @@
 ## Hyperedges (group relationships)
 - **Flow to Test Case traceability chain** — graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_04_mainflow, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_11_process_step_detail, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_14_testcase_master, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_15_test_steps, graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_16_traceability [INFERRED 0.75]
 
-## Communities (25 total, 8 thin omitted)
+## Communities (26 total, 8 thin omitted)
 
 ### Community 0 - "ecmis-trace project"
 Cohesion: 0.15
@@ -136,12 +137,16 @@ Nodes (3): ขั้น 4 — อัปเดต Excel, ขั้นตอน, �
 Cohesion: 0.17
 Nodes (11): 1. ตรวจว่ามี test ตาม user flow แล้วหรือยัง, 2. รวบรวม user flow, 3. เตรียมการรัน prototype, 4. Extracting screen details, 5. ⏸ จุดตรวจ 3 — ยืนยันก่อนเขียน test ลง prototype, 6. เขียน test, 7. ติดตั้งและรัน จนผ่านทั้งหมด, 8. บันทึกและรายงาน (+3 more)
 
+### Community 25 - "แผนที่โค้ด (graphify) — ใช้ประกอบขั้น 3 และขั้น 6"
+Cohesion: 0.33
+Nodes (5): 1. ตรวจว่ามี graphify, 2. สร้าง/อัปเดตแผนที่, 3. ใช้แผนที่หาโค้ด, หลักการ, แผนที่โค้ด (graphify) — ใช้ประกอบขั้น 3 และขั้น 6
+
 ## Ambiguous Edges - Review These
 - `Sheet 11_Process_Step_Detail` → `Sheet 11_Screen_Sequence`  [AMBIGUOUS]
   ecmis-trace/CLAUDE.md · relation: semantically_similar_to
 
 ## Knowledge Gaps
-- **71 isolated node(s):** `build-ecmis-zip.sh script`, `install.sh script`, `For /graphify add`, `For --watch`, `Step 6b - Wiki (only if --wiki flag)` (+66 more)
+- **75 isolated node(s):** `build-ecmis-zip.sh script`, `install.sh script`, `For /graphify add`, `For --watch`, `Step 6b - Wiki (only if --wiki flag)` (+70 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -151,6 +156,6 @@ _Questions this graph is uniquely positioned to answer:_
 - **What is the exact relationship between `Sheet 11_Process_Step_Detail` and `Sheet 11_Screen_Sequence`?**
   _Edge tagged AMBIGUOUS (relation: semantically_similar_to) - confidence is low._
 - **What connects `build-ecmis-zip.sh script`, `install.sh script`, `For /graphify add` to the rest of the system?**
-  _71 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _75 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ECMIS Master Activity Template (converted)` be split into smaller, more focused modules?**
   _Cohesion score 0.08866995073891626 - nodes in this community are weakly interconnected._
