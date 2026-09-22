@@ -454,42 +454,6 @@
       "source_location": "L7"
     },
     {
-      "id": "releasing",
-      "label": "RELEASING.md",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "Releasing the ECMIS skill",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "releasing.md",
-      "source_file": "RELEASING.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "releasing_local_build",
-      "label": "Local build",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "Releasing the ECMIS skill",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "local build",
-      "source_file": "RELEASING.md",
-      "source_location": "L19"
-    },
-    {
-      "id": "releasing_releasing_the_ecmis_skill",
-      "label": "Releasing the ECMIS skill",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "Releasing the ECMIS skill",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "releasing the ecmis skill",
-      "source_file": "RELEASING.md",
-      "source_location": "L1"
-    },
-    {
       "id": "ecmis_trace_claude_skills_ecmis_scripts_convert_docs",
       "label": "convert_docs.py",
       "_origin": "ast",
@@ -1343,21 +1307,6 @@
       "source_url": null
     },
     {
-      "id": "ecmis_trace_claude_source_for_tabs_without_column",
-      "label": "Source recorded in 18_Change_Log for tabs without Source column",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 1,
-      "community_name": "ECMIS Master Activity Template (converted)",
-      "contributor": null,
-      "file_type": "concept",
-      "norm_label": "source recorded in 18_change_log for tabs without source column",
-      "source_file": "ecmis-trace/CLAUDE.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
       "id": "graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_00_activity_index",
       "label": "Sheet 00_Activity_Index",
       "_origin": "semantic",
@@ -1643,21 +1592,6 @@
       "source_url": null
     },
     {
-      "id": "graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_18_change_log",
-      "label": "Sheet 18_Change_Log",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 1,
-      "community_name": "ECMIS Master Activity Template (converted)",
-      "contributor": null,
-      "file_type": "document",
-      "norm_label": "sheet 18_change_log",
-      "source_file": "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
       "id": "graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_99_lists",
       "label": "Sheet 99_Lists",
       "_origin": "semantic",
@@ -1718,21 +1652,6 @@
       "source_url": null
     },
     {
-      "id": "ecmis_trace_claude_no_guessing_rule",
-      "label": "No-guessing rule: every filled cell needs Source Ref",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 1,
-      "community_name": "ECMIS Master Activity Template (converted)",
-      "contributor": null,
-      "file_type": "rationale",
-      "norm_label": "no-guessing rule: every filled cell needs source ref",
-      "source_file": "ecmis-trace/CLAUDE.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
       "id": "ecmis_trace_claude_open_issue_rule",
       "label": "Missing data or doc/code mismatch opens Open Issue; doc value wins",
       "_origin": "semantic",
@@ -1788,6 +1707,51 @@
       "contributor": null,
       "file_type": "rationale",
       "norm_label": "work one activity at a time, stop for review",
+      "source_file": "ecmis-trace/CLAUDE.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "ecmis_trace_claude_source_for_tabs_without_column",
+      "label": "Source recorded in 18_Change_Log for tabs without Source column",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 19,
+      "community_name": "Source recorded in 18_Change_Log for tabs without Source column",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "source recorded in 18_change_log for tabs without source column",
+      "source_file": "ecmis-trace/CLAUDE.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "graphify_out_converted_ecmis_master_activity_template_flowscreentrace_ea116dc0_18_change_log",
+      "label": "Sheet 18_Change_Log",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 19,
+      "community_name": "Source recorded in 18_Change_Log for tabs without Source column",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "sheet 18_change_log",
+      "source_file": "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "ecmis_trace_claude_no_guessing_rule",
+      "label": "No-guessing rule: every filled cell needs Source Ref",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 19,
+      "community_name": "Source recorded in 18_Change_Log for tabs without Source column",
+      "contributor": null,
+      "file_type": "rationale",
+      "norm_label": "no-guessing rule: every filled cell needs source ref",
       "source_file": "ecmis-trace/CLAUDE.md",
       "source_location": null,
       "source_url": null
@@ -2821,28 +2785,6 @@
       "weight": 1.0
     },
     {
-      "source": "releasing",
-      "target": "releasing_releasing_the_ecmis_skill",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "RELEASING.md",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "releasing_releasing_the_ecmis_skill",
-      "target": "releasing_local_build",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "RELEASING.md",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
       "source": "ecmis_trace_claude_skills_ecmis_scripts_convert_docs_rationale_111",
       "target": "ecmis_trace_claude_skills_ecmis_scripts_convert_docs_convert_one",
       "relation": "rationale_for",
@@ -3553,5 +3495,5 @@
       "source_file": "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md"
     }
   ],
-  "built_at_commit": "c1ad0c5428def5e4b41e93c80e40caacb98ca0ca"
+  "built_at_commit": "8a6d8611d0bc369201fb275a3476932c45f1bb68"
 }

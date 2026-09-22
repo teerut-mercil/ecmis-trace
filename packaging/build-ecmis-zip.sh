@@ -8,8 +8,9 @@ REPO="$(cd "$HERE/.." && pwd)"
 SRC="$REPO/ecmis-trace"
 OUT_DIR="${1:-$REPO/dist}"
 
-VERSION="$(date +%Y%m%d)"
-if git -C "$REPO" rev-parse --short HEAD >/dev/null 2>&1; then
+# ECMIS_VERSION ตั้งจาก CI ตอน release (เช่น 1.2.3) — ถ้าไม่ตั้ง ใช้ วันที่-commit
+VERSION="${ECMIS_VERSION:-$(date +%Y%m%d)}"
+if [ -z "${ECMIS_VERSION:-}" ] && git -C "$REPO" rev-parse --short HEAD >/dev/null 2>&1; then
   VERSION="$VERSION-$(git -C "$REPO" rev-parse --short HEAD)"
 fi
 NAME="ecmis-skill-$VERSION"
