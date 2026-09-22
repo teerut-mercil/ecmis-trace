@@ -10,6 +10,7 @@
 - `template/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` = template ต้นฉบับ **ห้ามแก้**
 - `work/docs/` = เล่มที่แปลงเป็น Markdown ด้วย **markitdown** (สคริปต์ `scripts/convert_docs.py` ในโฟลเดอร์ skill) — PDF มีเลขหน้า, PPTX มีเลขสไลด์, DOCX และอื่น ๆ อ้างอิงด้วยหัวข้อ
 - `work/extract/` = ข้อมูลที่สกัดแยกราย Activity (extract / verify / plan)
+- `work/extract/_parts/` = ไฟล์ส่วนย่อยชั่วคราวของ sub-agent (เมื่อผู้ใช้เลือกทำพร้อมกัน — ดู `references/subagents.md` ในโฟลเดอร์ skill) ตัวหลักรวมเข้าไฟล์ของ Activity แล้วลบทิ้ง ไม่ใช่ที่มาของข้อมูล
 - `work/graph/` = แผนที่โค้ด (graphify) ของ prototype ใช้ช่วยหาโค้ดในขั้น 3 และ 6 — สร้างที่นี่เท่านั้น ห้ามสร้าง `graphify-out/` ใน repo prototype
 - ทุกขั้นทำผ่าน skill `/ecmis <เลข Activity>` (ติดตั้งที่ `.claude/skills/ecmis/` ในโปรเจกต์ หรือ `~/.claude/skills/ecmis/` แบบ global)
 - Output มีไฟล์เดียวคือ `output/ECMIS_Master_Activity_Template_FlowScreenTrace.xlsx` **ห้ามสร้างไฟล์ output อื่น** (Playwright test และ screenshot ของขั้น 6 อยู่ใน repo prototype ไม่นับเป็น output)

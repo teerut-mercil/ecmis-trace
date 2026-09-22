@@ -660,7 +660,7 @@
       "node_kind": "heading",
       "norm_label": "2. \u0e23\u0e27\u0e1a\u0e23\u0e27\u0e21 user flow",
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L24"
+      "source_location": "L25"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_references_6_playwright_3_\u0e40\u0e15\u0e23_\u0e22\u0e21\u0e01\u0e32\u0e23\u0e23_\u0e19_prototype",
@@ -672,7 +672,7 @@
       "node_kind": "heading",
       "norm_label": "3. \u0e40\u0e15\u0e23\u0e35\u0e22\u0e21\u0e01\u0e32\u0e23\u0e23\u0e31\u0e19 prototype",
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L35"
+      "source_location": "L36"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_references_6_playwright_4_extracting_screen_details",
@@ -684,7 +684,7 @@
       "node_kind": "heading",
       "norm_label": "4. extracting screen details",
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L49"
+      "source_location": "L50"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_references_6_playwright_5_\u0e08_\u0e14\u0e15\u0e23\u0e27\u0e08_3_\u0e22_\u0e19\u0e22_\u0e19\u0e01_\u0e2d\u0e19\u0e40\u0e02_\u0e22\u0e19_test_\u0e25\u0e07_prototype",
@@ -696,7 +696,7 @@
       "node_kind": "heading",
       "norm_label": "5. \u23f8 \u0e08\u0e14\u0e15\u0e23\u0e27\u0e08 3 \u2014 \u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e2d\u0e19\u0e40\u0e02\u0e35\u0e22\u0e19 test \u0e25\u0e07 prototype",
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L59"
+      "source_location": "L60"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_references_6_playwright_6_\u0e40\u0e02_\u0e22\u0e19_test",
@@ -708,7 +708,7 @@
       "node_kind": "heading",
       "norm_label": "6. \u0e40\u0e02\u0e35\u0e22\u0e19 test",
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L70"
+      "source_location": "L71"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_references_6_playwright_7_\u0e15_\u0e14\u0e15_\u0e07\u0e41\u0e25\u0e30\u0e23_\u0e19_\u0e08\u0e19\u0e1c_\u0e32\u0e19\u0e17_\u0e07\u0e2b\u0e21\u0e14",
@@ -720,7 +720,7 @@
       "node_kind": "heading",
       "norm_label": "7. \u0e15\u0e34\u0e14\u0e15\u0e31\u0e07\u0e41\u0e25\u0e30\u0e23\u0e31\u0e19 \u0e08\u0e19\u0e1c\u0e32\u0e19\u0e17\u0e31\u0e07\u0e2b\u0e21\u0e14",
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L99"
+      "source_location": "L100"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_references_6_playwright_8_\u0e1a_\u0e19\u0e17_\u0e01\u0e41\u0e25\u0e30\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19",
@@ -732,7 +732,7 @@
       "node_kind": "heading",
       "norm_label": "8. \u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e41\u0e25\u0e30\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19",
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L110"
+      "source_location": "L111"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_references_6_playwright_\u0e02_\u0e19_6_playwright_test_\u0e15\u0e32\u0e21_user_flow",
@@ -769,6 +769,78 @@
       "norm_label": "\u0e02\u0e2d\u0e1a\u0e40\u0e02\u0e15",
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
       "source_location": "L7"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_code_graph",
+      "label": "code-graph.md",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e48\u0e42\u0e04\u0e49\u0e14 (graphify) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 3 \u0e41\u0e25\u0e30\u0e02\u0e31\u0e49\u0e19 6",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "code-graph.md",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_code_graph_1_\u0e15\u0e23\u0e27\u0e08\u0e27_\u0e32\u0e21_graphify",
+      "label": "1. \u0e15\u0e23\u0e27\u0e08\u0e27\u0e48\u0e32\u0e21\u0e35 graphify",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e48\u0e42\u0e04\u0e49\u0e14 (graphify) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 3 \u0e41\u0e25\u0e30\u0e02\u0e31\u0e49\u0e19 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. \u0e15\u0e23\u0e27\u0e08\u0e27\u0e32\u0e21\u0e35 graphify",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L11"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_code_graph_2_\u0e2a\u0e23_\u0e32\u0e07_\u0e2d_\u0e1b\u0e40\u0e14\u0e15\u0e41\u0e1c\u0e19\u0e17",
+      "label": "2. \u0e2a\u0e23\u0e49\u0e32\u0e07/\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e48",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e48\u0e42\u0e04\u0e49\u0e14 (graphify) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 3 \u0e41\u0e25\u0e30\u0e02\u0e31\u0e49\u0e19 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. \u0e2a\u0e23\u0e32\u0e07/\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e41\u0e1c\u0e19\u0e17\u0e35",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_code_graph_3_\u0e43\u0e0a_\u0e41\u0e1c\u0e19\u0e17_\u0e2b\u0e32\u0e42\u0e04_\u0e14",
+      "label": "3. \u0e43\u0e0a\u0e49\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e48\u0e2b\u0e32\u0e42\u0e04\u0e49\u0e14",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e48\u0e42\u0e04\u0e49\u0e14 (graphify) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 3 \u0e41\u0e25\u0e30\u0e02\u0e31\u0e49\u0e19 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. \u0e43\u0e0a\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e2b\u0e32\u0e42\u0e04\u0e14",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L31"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_code_graph_\u0e2b\u0e25_\u0e01\u0e01\u0e32\u0e23",
+      "label": "\u0e2b\u0e25\u0e31\u0e01\u0e01\u0e32\u0e23",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e48\u0e42\u0e04\u0e49\u0e14 (graphify) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 3 \u0e41\u0e25\u0e30\u0e02\u0e31\u0e49\u0e19 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e2b\u0e25\u0e31\u0e01\u0e01\u0e32\u0e23",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "ecmis_trace_claude_skills_ecmis_references_code_graph_\u0e41\u0e1c\u0e19\u0e17_\u0e42\u0e04_\u0e14_graphify_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_3_\u0e41\u0e25\u0e30\u0e02_\u0e19_6",
+      "label": "\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e48\u0e42\u0e04\u0e49\u0e14 (graphify) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 3 \u0e41\u0e25\u0e30\u0e02\u0e31\u0e49\u0e19 6",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e48\u0e42\u0e04\u0e49\u0e14 (graphify) \u2014 \u0e43\u0e0a\u0e49\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e49\u0e19 3 \u0e41\u0e25\u0e30\u0e02\u0e31\u0e49\u0e19 6",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\u0e41\u0e1c\u0e19\u0e17\u0e35\u0e42\u0e04\u0e14 (graphify) \u2014 \u0e43\u0e0a\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02\u0e31\u0e19 3 \u0e41\u0e25\u0e30\u0e02\u0e31\u0e19 6",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L1"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill",
@@ -821,7 +893,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 1 \u2014 \u0e40\u0e15\u0e23\u0e35\u0e22\u0e21\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L47"
+      "source_location": "L48"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_2_\u0e2a\u0e01_\u0e14\u0e02_\u0e2d\u0e21_\u0e25",
@@ -833,7 +905,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 2 \u2014 \u0e2a\u0e01\u0e31\u0e14\u0e02\u0e2d\u0e21\u0e25",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L50"
+      "source_location": "L51"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_3_\u0e40\u0e17_\u0e22\u0e1a\u0e01_\u0e1a\u0e42\u0e04_\u0e14",
@@ -845,7 +917,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 3 \u2014 \u0e40\u0e17\u0e35\u0e22\u0e1a\u0e01\u0e31\u0e1a\u0e42\u0e04\u0e14",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L63"
+      "source_location": "L64"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_4_\u0e2d_\u0e1b\u0e40\u0e14\u0e15_excel",
@@ -857,7 +929,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 4 \u2014 \u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15 excel",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L67"
+      "source_location": "L68"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_5_\u0e15\u0e23\u0e27\u0e08\u0e44\u0e1f\u0e25_output",
@@ -869,7 +941,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 5 \u2014 \u0e15\u0e23\u0e27\u0e08\u0e44\u0e1f\u0e25\u0e4c output",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L70"
+      "source_location": "L71"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e02_\u0e19_6_playwright_test_\u0e15\u0e32\u0e21_user_flow",
@@ -881,7 +953,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e02\u0e31\u0e19 6 \u2014 playwright test \u0e15\u0e32\u0e21 user flow",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L73"
+      "source_location": "L74"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e16_\u0e32\u0e07\u0e32\u0e19\u0e04_\u0e32\u0e07\u0e01\u0e25\u0e32\u0e07\u0e17\u0e32\u0e07",
@@ -893,7 +965,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e16\u0e32\u0e07\u0e32\u0e19\u0e04\u0e32\u0e07\u0e01\u0e25\u0e32\u0e07\u0e17\u0e32\u0e07",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L86"
+      "source_location": "L87"
     },
     {
       "id": "ecmis_trace_claude_skills_ecmis_skill_\u0e20\u0e32\u0e1e\u0e23\u0e27\u0e21",
@@ -917,7 +989,7 @@
       "node_kind": "heading",
       "norm_label": "\u0e2a\u0e23\u0e1b\u0e17\u0e32\u0e22\u0e07\u0e32\u0e19",
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L79"
+      "source_location": "L80"
     },
     {
       "id": "claude_skills_graphify_references_exports",
@@ -2758,13 +2830,24 @@
     },
     {
       "source": "ecmis_trace_claude_skills_ecmis_references_6_playwright_\u0e02_\u0e19\u0e15\u0e2d\u0e19",
+      "target": "ecmis_trace_claude_skills_ecmis_references_6_playwright_7_\u0e15_\u0e14\u0e15_\u0e07\u0e41\u0e25\u0e30\u0e23_\u0e19_\u0e08\u0e19\u0e1c_\u0e32\u0e19\u0e17_\u0e07\u0e2b\u0e21\u0e14",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_6_playwright_\u0e02_\u0e19\u0e15\u0e2d\u0e19",
       "target": "ecmis_trace_claude_skills_ecmis_references_6_playwright_8_\u0e1a_\u0e19\u0e17_\u0e01\u0e41\u0e25\u0e30\u0e23\u0e32\u0e22\u0e07\u0e32\u0e19",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L110",
+      "source_location": "L111",
       "weight": 1.0
     },
     {
@@ -2786,7 +2869,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -2797,7 +2880,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -2808,7 +2891,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L49",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -2819,7 +2902,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
@@ -2830,18 +2913,62 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L70",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
-      "source": "ecmis_trace_claude_skills_ecmis_references_6_playwright_\u0e02_\u0e19\u0e15\u0e2d\u0e19",
-      "target": "ecmis_trace_claude_skills_ecmis_references_6_playwright_7_\u0e15_\u0e14\u0e15_\u0e07\u0e41\u0e25\u0e30\u0e23_\u0e19_\u0e08\u0e19\u0e1c_\u0e32\u0e19\u0e17_\u0e07\u0e2b\u0e21\u0e14",
+      "source": "ecmis_trace_claude_skills_ecmis_references_code_graph",
+      "target": "ecmis_trace_claude_skills_ecmis_references_code_graph_\u0e41\u0e1c\u0e19\u0e17_\u0e42\u0e04_\u0e14_graphify_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_3_\u0e41\u0e25\u0e30\u0e02_\u0e19_6",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "ecmis-trace/.claude/skills/ecmis/references/6-playwright.md",
-      "source_location": "L99",
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_code_graph_\u0e41\u0e1c\u0e19\u0e17_\u0e42\u0e04_\u0e14_graphify_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_3_\u0e41\u0e25\u0e30\u0e02_\u0e19_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_code_graph_1_\u0e15\u0e23\u0e27\u0e08\u0e27_\u0e32\u0e21_graphify",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_code_graph_\u0e41\u0e1c\u0e19\u0e17_\u0e42\u0e04_\u0e14_graphify_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_3_\u0e41\u0e25\u0e30\u0e02_\u0e19_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_code_graph_2_\u0e2a\u0e23_\u0e32\u0e07_\u0e2d_\u0e1b\u0e40\u0e14\u0e15\u0e41\u0e1c\u0e19\u0e17",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_code_graph_\u0e41\u0e1c\u0e19\u0e17_\u0e42\u0e04_\u0e14_graphify_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_3_\u0e41\u0e25\u0e30\u0e02_\u0e19_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_code_graph_3_\u0e43\u0e0a_\u0e41\u0e1c\u0e19\u0e17_\u0e2b\u0e32\u0e42\u0e04_\u0e14",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "ecmis_trace_claude_skills_ecmis_references_code_graph_\u0e41\u0e1c\u0e19\u0e17_\u0e42\u0e04_\u0e14_graphify_\u0e43\u0e0a_\u0e1b\u0e23\u0e30\u0e01\u0e2d\u0e1a\u0e02_\u0e19_3_\u0e41\u0e25\u0e30\u0e02_\u0e19_6",
+      "target": "ecmis_trace_claude_skills_ecmis_references_code_graph_\u0e2b\u0e25_\u0e01\u0e01\u0e32\u0e23",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ecmis-trace/.claude/skills/ecmis/references/code-graph.md",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -2984,7 +3111,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -2995,7 +3122,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -3006,7 +3133,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L63",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -3017,7 +3144,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L67",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -3028,7 +3155,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L70",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -3039,7 +3166,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L73",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -3050,7 +3177,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L79",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -3061,7 +3188,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ecmis-trace/.claude/skills/ecmis/SKILL.md",
-      "source_location": "L86",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -3841,5 +3968,5 @@
       "source_file": "graphify-out/converted/ECMIS_Master_Activity_Template_FlowScreenTrace_ea116dc0.md"
     }
   ],
-  "built_at_commit": "54b653071522a53250a020836ebc2cca91234ffc"
+  "built_at_commit": "a84efa4246ded9e00d74f4c3d093fa266788bf2d"
 }

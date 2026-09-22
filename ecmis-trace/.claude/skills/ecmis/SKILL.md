@@ -17,7 +17,7 @@ Activity: **$ARGUMENTS**
 ## ภาพรวม
 
 ```
-0. ตรวจความพร้อม     → โฟลเดอร์, template, เล่มเอกสาร, markitdown, graphify (ถ้ามีโค้ด)
+0. ตรวจความพร้อม     → โฟลเดอร์, template, เล่มเอกสาร, markitdown, graphify (ถ้ามีโค้ด), ถามว่าใช้ sub-agent ไหม
 1. เตรียมเอกสาร      → references/1-prepare.md   (ข้ามถ้าเล่มไม่เปลี่ยน)
 2. สกัดข้อมูล         → references/2-extract.md   ⏸ จุดตรวจ 1: ผู้ใช้ตรวจข้อมูล/ตอบคำถาม
 3. เทียบกับโค้ด       → references/3-verify.md    (ใช้แผนที่โค้ด references/code-graph.md)
@@ -25,6 +25,8 @@ Activity: **$ARGUMENTS**
 5. ตรวจไฟล์ output    → references/5-check.md
 6. Playwright test    → references/6-playwright.md (ใช้แผนที่โค้ด) ⏸ จุดตรวจ 3: ผู้ใช้ยืนยันก่อนเขียน test ลง prototype
 ```
+
+ขั้น 2, 3, 6 แบ่งงานให้ sub-agent (Sonnet) ทำพร้อมกันได้ ถ้าผู้ใช้เลือกในขั้น 0 → `references/subagents.md` (ตัวหลักรวมผลและเขียนไฟล์สุดท้ายเสมอ, ขั้น 4 ไม่ใช้ sub-agent)
 
 ก่อนเริ่มแต่ละขั้น ให้อ่านไฟล์ reference ของขั้นนั้นแล้วทำตาม (ข้อความ "หยุดรอผู้ใช้ก่อนไปขั้นถัดไป" ในไฟล์ reference ให้ถือตามจุดตรวจในไฟล์นี้แทน — หยุดจริงเฉพาะจุดตรวจ ⏸)
 ระหว่างทางแจ้งความคืบหน้าสั้น ๆ เช่น `ขั้น 2/6 สกัดข้อมูล Activity 5…`
@@ -44,13 +46,14 @@ Activity: **$ARGUMENTS**
    - exit 0 → ผ่าน
    - exit 3 → JSON บอกแพ็กเกจที่ขาดและ `python` ที่ใช้ ให้ถามผู้ใช้ว่า "ยังไม่ได้ติดตั้งตัวแปลงเอกสาร (markitdown) ติดตั้งให้เลยไหม?" ถ้าตกลง รัน `"<python>" -m pip install <แพ็กเกจที่ขาด>` แล้วตรวจซ้ำ ถ้าติดตั้งไม่สำเร็จให้แสดงข้อความ error และหยุด
 4. **graphify (ตัวช่วยอ่านโค้ด)** — เฉพาะเมื่อ `input/code/` ไม่ว่าง ทำตามข้อ 1 ของ `references/code-graph.md` (ถ้าไม่มีให้ถามว่าจะติดตั้งให้ไหม) — ไม่มีก็ทำงานต่อได้ แค่อ่านโค้ดแบบปกติ ใส่ผลในตาราง ✅/❌ ด้วย
+5. **sub-agent** — ถามผู้ใช้ตามข้อ "การถามผู้ใช้ (ขั้น 0)" ใน `references/subagents.md` ว่าจะให้ผู้ช่วยหลายตัวทำพร้อมกันไหม — คำตอบใช้กับขั้น 2, 3, 6 ตลอดรอบนี้
 
 ## ขั้น 1 — เตรียมเอกสาร
 ทำตาม `references/1-prepare.md` — สคริปต์แปลงเฉพาะไฟล์ที่เพิ่มหรือเปลี่ยน ถ้าไม่มีไฟล์เปลี่ยนและมี `work/docs/_index.md` อยู่แล้ว ให้แจ้ง "เอกสารไม่เปลี่ยน ใช้ของเดิม" แล้วไปขั้น 2
 
 ## ขั้น 2 — สกัดข้อมูล
 - ถ้ามี `work/extract/A{nn}_extract.md` อยู่แล้ว **และ** ขั้น 1 ไม่มีเล่มเปลี่ยน → ถามผู้ใช้: ใช้ไฟล์เดิม (แนะนำ) / สกัดใหม่
-- ทำตาม `references/2-extract.md`
+- ทำตาม `references/2-extract.md` — ถ้าเลือกใช้ sub-agent ให้แบ่งงานตาม `references/subagents.md` ข้อ "ขั้น 2"
 
 **⏸ จุดตรวจ 1** — สรุปให้ผู้ใช้เห็นในแชท (ไม่ต้องให้เปิดไฟล์เอง):
 - จำนวน Step / หน้าจอ / Transition / Test Case ที่สกัดได้
@@ -63,7 +66,7 @@ Activity: **$ARGUMENTS**
 
 ## ขั้น 3 — เทียบกับโค้ด
 - ถ้า `input/code/` ว่าง → ถามผู้ใช้: `ข้ามการเทียบโค้ด` / `หยุดเพื่อวางโค้ดก่อน` ถ้าข้าม ให้สร้าง `A{nn}_verify.md` ที่ระบุว่า "ข้ามการเทียบโค้ด — ไม่มี source code" และไม่เติมข้อมูลชั้นหน้าจอจากโค้ด
-- ไม่เช่นนั้นสร้าง/อัปเดตแผนที่โค้ดตาม `references/code-graph.md` ข้อ 2 (ถ้ามี graphify) แล้วทำตาม `references/3-verify.md` แล้วไปขั้น 4 ต่อได้เลย (แจ้งสรุปผลสั้น ๆ: ตรงเล่ม / ไม่ตรงเล่ม / ไม่พบในโค้ด)
+- ไม่เช่นนั้นสร้าง/อัปเดตแผนที่โค้ดตาม `references/code-graph.md` ข้อ 2 (ถ้ามี graphify) แล้วทำตาม `references/3-verify.md` (ถ้าเลือกใช้ sub-agent ให้แบ่งงานตาม `references/subagents.md` ข้อ "ขั้น 3") แล้วไปขั้น 4 ต่อได้เลย (แจ้งสรุปผลสั้น ๆ: ตรงเล่ม / ไม่ตรงเล่ม / ไม่พบในโค้ด)
 
 ## ขั้น 4 — อัปเดต Excel
 ทำตาม `references/4-update.md` — **⏸ จุดตรวจ 2** อยู่ในขั้นนี้ (ยืนยันแผนก่อนเขียนไฟล์)
@@ -72,7 +75,7 @@ Activity: **$ARGUMENTS**
 ทำตาม `references/5-check.md` สำหรับ Activity นี้ แล้วไปขั้น 6 ต่อ
 
 ## ขั้น 6 — Playwright test ตาม user flow
-ทำตาม `references/6-playwright.md` กับ prototype ของ Activity นี้ (โค้ดใน `input/code/`) — ใช้แผนที่โค้ด (`references/code-graph.md`) ช่วยหาไฟล์ test/route/หน้าจอ
+ทำตาม `references/6-playwright.md` กับ prototype ของ Activity นี้ (โค้ดใน `input/code/`) — ใช้แผนที่โค้ด (`references/code-graph.md`) ช่วยหาไฟล์ test/route/หน้าจอ — ถ้าเลือกใช้ sub-agent ให้แบ่งงานตาม `references/subagents.md` ข้อ "ขั้น 6"
 - ถ้า prototype มี Playwright test ตาม user flow ครบแล้ว → แจ้งแล้วข้าม
 - ถ้ายังไม่มี/มีไม่ครบ → Extracting screen details ตาม user flow ในเอกสารของ prototype, **⏸ จุดตรวจ 3** ยืนยันก่อนเขียน test, แล้วรันจนผ่านทั้งหมด
 - ไม่มี prototype (`input/code/` ว่าง หรือข้ามขั้น 3) → ข้ามขั้นนี้

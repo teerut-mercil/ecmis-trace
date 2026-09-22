@@ -84,9 +84,9 @@
     "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
   },
   "ecmis-trace/CLAUDE.md": {
-    "mtime": 1790061693.8763878,
-    "seen": 1790061700.407155,
-    "ast_hash": "624776491a006ea19f3579b65a19f721",
+    "mtime": 1790062027.4441795,
+    "seen": 1790062028.5635,
+    "ast_hash": "8b505e39f9e033becbe3b3cd30e84d55",
     "semantic_hash": ""
   },
   "ecmis-trace/README.md": {
@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/SKILL.md": {
-    "mtime": 1790061673.1939938,
-    "seen": 1790061700.4071481,
-    "ast_hash": "8d8431d28f6611c3712f1e74ea351ecb",
+    "mtime": 1790062020.262265,
+    "seen": 1790062028.563493,
+    "ast_hash": "9e8f1912dc4b131854038c0994498b6b",
     "semantic_hash": ""
   },
   "ecmis-trace/.claude/skills/ecmis/references/1-prepare.md": {
@@ -195,6 +195,12 @@
     "mtime": 1790061662.570164,
     "seen": 1790061700.4071538,
     "ast_hash": "7e97b37f4d76cbb65ce626c3af91867e",
+    "semantic_hash": ""
+  },
+  "ecmis-trace/.claude/skills/ecmis/references/subagents.md": {
+    "mtime": 1790062007.5390587,
+    "seen": 1790062028.563499,
+    "ast_hash": "0c23d54cae82a181e6cea3043f7b8739",
     "semantic_hash": ""
   }
 }
